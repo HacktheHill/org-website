@@ -1,7 +1,7 @@
 import React from "react";
 import { t } from "../../i18n";
 import "../../global.css";
-import maple_leaf from "../../assets/SVGs/maple_leaf.svg";
+import HackTheHill_Outlined_Red from "../../assets/Logos/HTH/HackTheHill_Outlined_Red.svg";
 
 export default function Contact() {
 	return (
@@ -9,7 +9,7 @@ export default function Contact() {
 			<div className="flex flex-col basis-1/3 gap-16 xl:w-full xl:basis-full xl:gap-4 lg:gap-0 sm:gap-4">
 				<div className="flex flex-row justify-between items-center w-full gap-16 md:gap-4 sm:gap-2">
 					<h1 className="text-5xl md:text-4xl sm:text-3xl">{t("contact.title")}</h1>
-					<img {...maple_leaf} className="md:size-20 sm:size-16"></img>
+					<img {...HackTheHill_Outlined_Red} className="md:size-20 sm:size-16"></img>
 				</div>
 				<p className="text-2xl whitespace-pre-line w-full pr-16 xl:text-lg xl:pr-0 md:text-sm sm:text-xs">
 					{t("contact.description")}
