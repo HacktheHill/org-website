@@ -310,6 +310,12 @@ export default {
 		privacy: "Privacy Policy",
 		message: "by HtH Dev team",
 	},
+	blog: {
+		title: "Blog",
+		read: "Read",
+		author_prefix: "By",
+		back: "Back",
+	},
 	documents: {
 		title: "Documents",
 		subtitle: "Discover the official documents of Hack the Hill.",

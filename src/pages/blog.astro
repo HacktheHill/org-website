@@ -3,8 +3,11 @@ import BlogPage from "../components/Blog/BlogPage";
 import Layout from "../layouts/Layout.astro";
 const title = "Hack The Hill - Blog";
 const pathName = "/blog";
+import { sanityClient } from "sanity:client";
+const query = `*[_type == "blog" && defined(slug)] | order(publishedAt desc)`;
+const posts = await sanityClient.fetch(query);
 ---
 
 <Layout title={title} pathName={pathName}>
-	<BlogPage client:load />
+	<BlogPage posts={posts} client:load />
 </Layout>

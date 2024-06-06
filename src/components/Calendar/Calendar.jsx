@@ -19,12 +19,14 @@ import calendar from "/src/assets/icons/calendar.svg";
 import location from "/src/assets/icons/location.svg";
 import Button from "../Button/Button";
 import beaver3 from "/src/assets/beavar/Beaver3.svg";
+import { useStore } from "@nanostores/react";
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
 
 export default function Calendar() {
+	const $locale = useStore(locale);
 	let today = startOfToday();
 	let [selectedDay, setSelectedDay] = useState(today);
 	let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -152,7 +154,7 @@ export default function Calendar() {
 									t("events.previous")
 								) : showUpcomingEvents === 1 ? (
 									t("events.upcoming")
-								) : locale.get() === "fr" ? (
+								) : $locale === "fr" ? (
 									<span>
 										{displayDay} {t("events.months")[displayMonth] || displayMonth}, {displayYear}
 									</span>
@@ -205,7 +207,7 @@ export default function Calendar() {
 										?.map((event, i) => <Event event={event} index={i} key={i} />)
 								) : selectedDayEvents?.length > 0 ? (
 									selectedDayEvents?.map((event, i) => <Event event={event} index={i} key={i} />)
-								) : locale.get() === "fr" ? (
+								) : $locale === "fr" ? (
 									<>Aucuns évenements</>
 								) : (
 									<>No events</>
@@ -221,6 +223,7 @@ export default function Calendar() {
 }
 
 function Event({ event, index }) {
+	const $locale = useStore(locale);
 	let startDateTime = parseISO(event?.startDatetime);
 	let endDateTime = parseISO(event?.endDatetime);
 
@@ -237,7 +240,7 @@ function Event({ event, index }) {
 			<div className="flex-col gap-4">
 				<h4 className="font-semibold">{event?.title}</h4>
 				<p className="text-sm italic mb-4 items-center flex flex-row flex-wrap">
-					{locale.get() === "fr" ? (
+					{$locale === "fr" ? (
 						<span>
 							{displayDay} {t("events.months")[displayMonth] || displayMonth}, {displayYear}
 						</span>

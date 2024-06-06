@@ -5,7 +5,7 @@ import chevron_white from "../../assets/icons/chevron_white.svg";
 import "../../global.css";
 import "./Button.css";
 
-export default function Button({ children, onClick, disabled = false, fill = true }) {
+export default function Button({ children, onClick, disabled = false, fill = true, flip = false }) {
 	const [isHovered, setIsHovered] = useState(false);
 
 	return (
@@ -19,6 +19,27 @@ export default function Button({ children, onClick, disabled = false, fill = tru
 			onMouseLeave={() => setIsHovered(false)}
 		>
 			<div className={`flex justify-center items-center gap-1.5 ${fill && "pl-6 pr-4"}`}>
+				{flip && (
+					<span className="h-full w-6 flex justify-center items-center gap-1">
+						<img
+							src={fill ? chevron.src : chevron_white.src}
+							alt="chevron"
+							className={`backface transition-all duration-200 -scale-x-100 ${
+								isHovered ? "opacity-100 translate-x-1" : "opacity-0 translate-x-2"
+							}
+							${fill ? "filter-none" : "filter-invert"}`}
+							width="8px"
+						/>
+						<img
+							src={fill ? chevron.src : chevron_white.src}
+							alt="chevron"
+							className={`backface transition-all duration-200 -scale-x-100 ${
+								isHovered ? "-translate-x-0" : "-translate-x-1"
+							} ${fill ? "filter-none" : "filter-invert"}`}
+							width="8px"
+						/>
+					</span>
+				)}
 				<span className={`font-medium text-sm h-full ${!fill && "translate-y-[0.2rem]"}`}>
 					<div>
 						{children}
@@ -31,25 +52,27 @@ export default function Button({ children, onClick, disabled = false, fill = tru
 						)}
 					</div>
 				</span>
-				<span className="h-full w-6 flex justify-center items-center gap-1">
-					<img
-						src={fill ? chevron.src : chevron_white.src}
-						alt="chevron"
-						className={`backface transition-all duration-200 scale-100 ${
-							isHovered ? "opacity-100 translate-x-1" : "opacity-0 translate-x-2"
-						}
+				{!flip && (
+					<span className="h-full w-6 flex justify-center items-center gap-1">
+						<img
+							src={fill ? chevron.src : chevron_white.src}
+							alt="chevron"
+							className={`backface transition-all duration-200 scale-100 ${
+								isHovered ? "opacity-100 translate-x-1" : "opacity-0 translate-x-2"
+							}
 							${fill ? "filter-none" : "filter-invert"}`}
-						width="8px"
-					/>
-					<img
-						src={fill ? chevron.src : chevron_white.src}
-						alt="chevron"
-						className={`backface transition-all duration-200 scale-100 ${
-							isHovered ? "-translate-x-0" : "-translate-x-1"
-						} ${fill ? "filter-none" : "filter-invert"}`}
-						width="8px"
-					/>
-				</span>
+							width="8px"
+						/>
+						<img
+							src={fill ? chevron.src : chevron_white.src}
+							alt="chevron"
+							className={`backface transition-all duration-200 scale-100 ${
+								isHovered ? "-translate-x-0" : "-translate-x-1"
+							} ${fill ? "filter-none" : "filter-invert"}`}
+							width="8px"
+						/>
+					</span>
+				)}
 			</div>
 		</button>
 	);

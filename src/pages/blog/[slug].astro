@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogPost from "../../components/Blog/BlogPost.jsx";
+import { sanityClient } from "sanity:client";
+
+
+export const getStaticPaths = (async () => {
+  const query = `*[_type == "blog" && defined(slug)] | order(publishedAt desc)`;
+  const posts = await sanityClient.fetch(query);
+
+  return posts.map((post : any) => {
+    return {
+      params: {
+        slug: post.slug.current,
+      },
+      props : {
+        post,
+      },
+    };
+  });
+});
+
+
+const { post } = Astro.props;
+---
+
+<Layout>
+  <BlogPost data={post} client:load />
+</Layout>
+
