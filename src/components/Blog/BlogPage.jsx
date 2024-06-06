@@ -28,8 +28,8 @@ export default function BlogPage() {
 					<h2 className="mt-8">Blog</h2>
 					<p>{`You are seeing ${posts.length} blog posts`}</p>
 					<ul>
-						{posts?.map(post => (
-							<li key={post.title?.[`${$locale}`]}>
+						{posts?.map((post, i) => (
+							<li key={i}>
 								<a href={"/blog/" + post.slug.current} className="post-link">
 									{post.title?.[`${$locale}`]}
 								</a>
