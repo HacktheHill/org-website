@@ -317,6 +317,7 @@ export default {
 		title: "Blog",
 		read: "Lire",
 		author_prefix: "Par",
+		back: "Retour",
 	},
 	documents: {
 		title: "Documents",

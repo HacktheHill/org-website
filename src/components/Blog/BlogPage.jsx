@@ -38,6 +38,8 @@ export default function BlogPage({ posts }) {
 								key={i}
 								className="basis-1/2 lg:basis-full p-3 hover:cursor-pointer transition-all duration-300 hover:scale-[1.02]"
 								onClick={() => (window.location.href = `/blog/${post.slug.current}`)}
+								data-aos="fade-up"
+								data-aos-offset={i >= 2 ? "-100" : "0"}
 							>
 								<div
 									className={`flex flex-col items-start justify-between gap-2 p-4 rounded-3xl relative overflow-hidden ${
