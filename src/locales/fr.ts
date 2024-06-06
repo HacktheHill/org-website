@@ -313,6 +313,11 @@ export default {
 		privacy: "Politique de Confidentialité",
 		message: "par l'Équipe Web de HtH",
 	},
+	blog: {
+		title: "Blog",
+		read: "Lire",
+		author_prefix: "Par",
+	},
 	documents: {
 		title: "Documents",
 		subtitle: "Découvrez nos documents officiels.",
