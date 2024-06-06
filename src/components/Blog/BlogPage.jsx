@@ -9,11 +9,12 @@ import { sanityClient } from "sanity:client";
 
 export default function BlogPage() {
 	const [posts, setPosts] = useState([]);
+	const query = `*[_type == "blog" && defined(slug)] | order(publishedAt desc)`;
 
 	useEffect(() => {
 		AOS.init({ once: false, duration: 700 });
 
-		sanityClient.fetch(`*[_type == "blog" && defined(slug)] | order(publishedAt desc)`).then(posts => {
+		sanityClient.fetch(query).then(posts => {
 			setPosts(posts);
 		});
 	}, []);
