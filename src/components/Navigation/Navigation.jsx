@@ -3,9 +3,10 @@ import { locale, t } from "../../i18n";
 import React, { useState, useEffect } from "react";
 import logo from "/src/assets/Logos/HTH/Hth_red_glow.svg";
 import bg_2024 from "/src/assets/SVGs/2024.svg";
+import { useStore } from "@nanostores/react";
 
 export default function Navigation(props) {
-	const [language, setLanguage] = useState(true);
+	const $locale = useStore(locale);
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 
 	useEffect(() => {
@@ -57,11 +58,10 @@ export default function Navigation(props) {
 						className="flex h-full w-16 items-center bg-transparent border-none p-4 cursor-pointer font-bold transition-all duration-100 hover:text-shade-1"
 						type="submit"
 						onClick={() => {
-							setLanguage(!language);
-							locale.set(language ? "fr" : "en");
+							locale.set($locale === "en" ? "fr" : "en");
 						}}
 					>
-						{language ? "FR" : "EN"}
+						{`${$locale === "en" ? "fr" : "en"}`.toUpperCase()}
 					</button>
 					<div
 						className="flex h-8 w-24 justify-center items-center bg-2024-bg bg-cover bg-top border-none rounded-xl p-4 text-bg-2024 cursor-pointer font-bold transition-all duration-100 opacity-85 hover:opacity-100"

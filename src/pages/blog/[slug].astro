@@ -7,7 +7,6 @@ import { sanityClient } from "sanity:client";
 export const getStaticPaths = (async () => {
   const query = `*[_type == "blog" && defined(slug)] | order(publishedAt desc)`;
   const posts = await sanityClient.fetch(query);
-  console.log(posts);
 
   return posts.map((post : any) => {
     return {
@@ -26,6 +25,6 @@ const { post } = Astro.props;
 ---
 
 <Layout>
-  <BlogPost data={post} />
+  <BlogPost data={post} client:load />
 </Layout>
 

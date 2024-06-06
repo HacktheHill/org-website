@@ -4,10 +4,12 @@ import Construction from "../Construction/Construction";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import shape from "../../assets/patterns/ssshape.svg";
-
 import { sanityClient } from "sanity:client";
+import { useStore } from "@nanostores/react";
+import { locale } from "../../i18n";
 
 export default function BlogPage() {
+	const $locale = useStore(locale);
 	const [posts, setPosts] = useState([]);
 	const query = `*[_type == "blog" && defined(slug)] | order(publishedAt desc)`;
 
@@ -27,9 +29,9 @@ export default function BlogPage() {
 					<p>{`You are seeing ${posts.length} blog posts`}</p>
 					<ul>
 						{posts?.map(post => (
-							<li key={post.title}>
+							<li key={post.title?.[`${$locale}`]}>
 								<a href={"/blog/" + post.slug.current} className="post-link">
-									{post.title}
+									{post.title?.[`${$locale}`]}
 								</a>
 							</li>
 						))}
