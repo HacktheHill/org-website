@@ -18,3 +18,9 @@ If you're part of the Hack the Hill team, refer to our [Contribution guidelines]
 For questions or inquiries, please reach out to [development@hackthehill.com](mailto:development@hackthehill.com).
 
 Copyright © 2024 Hack the Hill. All Rights Reserved.
+
+## Environment Variables
+
+Make sure to create a `.env` file in the root directory of the project and add the following environment variables:
+
+SANITY_PROJECT_ID=<your_project_id>
