@@ -5,6 +5,8 @@ import partytown from "@astrojs/partytown";
 import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
 const DEV = process.argv[2] === "build" ? false : true;
+import { loadEnv } from "vite";
+const { SANITY_PROJECT_ID } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +18,7 @@ export default defineConfig({
 		partytown(),
 		tailwind(),
 		sanity({
-			projectId: "j9zfvetu",
+			projectId: SANITY_PROJECT_ID,
 			dataset: "production",
 			useCdn: false,
 			apiVersion: "2024-06-05",
