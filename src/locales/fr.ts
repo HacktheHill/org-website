@@ -364,7 +364,7 @@ export default {
 	},
 	contact: {
 		title: "Contactez-nous",
-		subtitle: "Nous aimerions avoir de vos nouvelles !",
+		description: "Nous aimerions avoir de vos nouvelles !",
 		name: "Nom",
 		email: "Courriel",
 		subject: "Sujet",
