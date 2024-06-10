@@ -362,4 +362,13 @@ export default {
 		title: "404 Page Non Trouvée",
 		subtitle: "La page que vous cherchez n'existe pas.",
 	},
+	contact: {
+		title: "Contactez-nous",
+		subtitle: "Nous aimerions avoir de vos nouvelles !",
+		name: "Nom",
+		email: "Courriel",
+		subject: "Sujet",
+		message: "Message",
+		send: "Envoyer",
+	}
 } as const;

@@ -22,7 +22,7 @@ export default function HomePage() {
 			<Sponsors />
 			<Gallery />
 			<Testimonials />
-			{/*<Contact />*/}
+			<Contact />
 		</div>
 	);
 }

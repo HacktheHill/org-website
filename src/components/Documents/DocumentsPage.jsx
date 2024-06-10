@@ -21,10 +21,10 @@ export default function DocumentsPage() {
 				</div>
 				<div className="grid grid-rows-2 grid-cols-2 gap-8 w-10/12 max-w-2xl xl:flex xl:flex-wrap">
 					<div
-						className="row-start-1 col-start-2 row-end-1 col-end-3 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-blur-svg relative"
+						className="row-start-1 col-start-2 row-end-1 col-end-3 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-blur-svg relative sm:gap-16"
 						data-aos="fade-left"
 					>
-						<div className="flex flex-row justify-between items-center w-full gap-4">
+						<div className="flex flex-row justify-between items-center w-full gap-4 xs:flex-wrap">
 							<h2>{t("documents.constitution")}</h2>
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%]"
@@ -50,11 +50,11 @@ export default function DocumentsPage() {
 						</div>
 					</div>
 					<div
-						className="row-start-1 col-start-1 row-end-1 col-end-2 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-[#020106] overflow-hidden"
+						className="row-start-1 col-start-1 row-end-1 col-end-2 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-[#020106] overflow-hidden sm:gap-16"
 						data-aos="fade-right"
 					>
-						<div className="flex flex-row justify-between items-center w-full gap-4">
-							<h2>{t("documents.privacy")}</h2>
+						<div className="flex flex-row justify-between items-center w-full gap-4 xs:flex-wrap">
+							<h2 className="flex flex-wrap">{t("documents.privacy")}</h2>
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 								src={cv.src}
@@ -76,12 +76,12 @@ export default function DocumentsPage() {
 						</div>
 					</div>
 					<div
-						className="row-start-2 col-start-1 row-end-2 col-end-2 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-blur-svg overflow-hidden"
+						className="row-start-2 col-start-1 row-end-2 col-end-2 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-blur-svg overflow-hidden sm:gap-16"
 						data-aos="fade-right"
 						data-aos-offset="-100"
 					>
-						<div className="flex flex-row justify-between items-center w-full gap-4">
-							<h2>{t("documents.conduct")}</h2>
+						<div className="flex flex-row justify-between items-center w-full gap-4 xs:flex-wrap">
+							<h2 className="flex flex-wrap">{t("documents.conduct")}</h2>
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 								src={cv.src}
@@ -103,12 +103,12 @@ export default function DocumentsPage() {
 						</div>
 					</div>
 					<div
-						className="row-start-2 col-start-2 row-end-2 col-end-2 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-[#020106] overflow-hidden"
+						className="row-start-2 col-start-2 row-end-2 col-end-2 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-[#020106] overflow-hidden sm:gap-16"
 						data-aos="fade-left"
 						data-aos-offset="-100"
 					>
-						<div className="flex flex-row justify-between items-center w-full gap-4">
-							<h2>{t("documents.service")}</h2>
+						<div className="flex flex-row justify-between items-center w-full gap-4 xs:flex-wrap">
+							<h2 className="flex flex-wrap">{t("documents.service")}</h2>
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 								src={cv.src}

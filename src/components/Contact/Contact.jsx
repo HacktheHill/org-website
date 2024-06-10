@@ -1,7 +1,7 @@
 import React from "react";
 import { t } from "../../i18n";
 import "../../global.css";
-import HackTheHill_Outlined_Red from "../../assets/Logos/HTH/HackTheHill_Outlined_Red.svg";
+import beaver_construction from "../../assets/beavar/beaver_construction.svg";
 
 export default function Contact() {
 	return (
@@ -9,7 +9,7 @@ export default function Contact() {
 			<div className="flex flex-col basis-1/3 gap-16 xl:w-full xl:basis-full xl:gap-4 lg:gap-0 sm:gap-4">
 				<div className="flex flex-row justify-between items-center w-full gap-16 md:gap-4 sm:gap-2">
 					<h1 className="text-5xl md:text-4xl sm:text-3xl">{t("contact.title")}</h1>
-					<img {...HackTheHill_Outlined_Red} className="md:size-20 sm:size-16"></img>
+					<img {...beaver_construction} className="size-32 md:size-24 sm:size-20"></img>
 				</div>
 				<p className="text-2xl whitespace-pre-line w-full pr-16 xl:text-lg xl:pr-0 md:text-sm sm:text-xs">
 					{t("contact.description")}
@@ -40,7 +40,7 @@ export default function Contact() {
 					type="submit"
 					className="col-start-8 col-span-5 row-span-1 h-full w-full rounded-xl bg-primary bg-opacity-20 outline outline-2 outline-light_accent text-2xl font-bold xl:col-start-5 xl:col-span-4 xl:text-xl lg:text-lg sm:text-base hover:bg-opacity-35"
 				>
-					{t("contact.submit")}
+					{t("contact.send")}
 				</button>
 			</form>
 		</div>

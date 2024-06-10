@@ -360,4 +360,13 @@ export default {
 		title: "404 Page Not Found",
 		subtitle: "The page you are looking for does not exist.",
 	},
+	contact: {
+		title: "Contact Us",
+		description: "Have a question or want to get in touch? Send us a message!",
+		name: "Name",
+		email: "Email",
+		subject: "Subject",
+		message: "Message",
+		send: "Send",
+	},
 } as const;
