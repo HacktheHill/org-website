@@ -1,357 +1,194 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../global.css";
-import { t } from "../../i18n";
-import Construction from "../Construction/Construction";
+import shape from "../../assets/patterns/ssshape.svg";
+import { sanityClient } from "sanity:client";
+import { useStore } from "@nanostores/react";
+import { locale, t } from "../../i18n";
+import imageUrlBuilder from "@sanity/image-url";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 
-export default function TeamPage() {
-	const team = [
-		{
-			name: "Mumtahin Farabi",
-			role: t("team.roles.president"),
-			image: "/headshots/Farabi.webp",
-		},
-		{
-			name: "Justin Wang",
-			role: t("team.roles.community.director"),
-			image: "/headshots/Justin.webp",
-		},
-		{
-			name: "Meriem Mostefai",
-			role: t("team.roles.design.director"),
-			image: "/headshots/Meriem.webp",
-		},
-		{
-			name: "Ryan Awad",
-			role: t("team.roles.development.director"),
-			image: "/headshots/Ryan.webp",
-		},
-		{
-			name: "Andrea Todorovic",
-			role: t("team.roles.logistics.director"),
-			image: "/headshots/Andrea.webp",
-		},
-		{
-			name: "Pavly Saleh",
-			role: t("team.roles.logistics.director"),
-			image: "/headshots/Pav.webp",
-		},
-		{
-			name: "Disala de Silva",
-			role: t("team.roles.marketing.director"),
-			image: "/headshots/Disala.webp",
-		},
-		{
-			name: "Daniel Thorp",
-			role: t("team.roles.operations.director"),
-			image: "/headshots/Daniel.webp",
-		},
-		{
-			name: "Manaal Mujeebuddin",
-			role: t("team.roles.sponsorship.director"),
-			image: "/headshots/Manaal.webp",
-		},
-		{
-			name: "Kheswari Gukhool",
-			role: t("team.roles.community.manager"),
-			image: "/headshots/Khes.webp",
-		},
-		{
-			name: "Tim Mao",
-			role: t("team.roles.community.coordinator"),
-			image: "/headshots/Tim.webp",
-		},
-		{
-			name: "Mustafa Ahmed",
-			role: t("team.roles.community.coordinator"),
-			image: "/headshots/Mustafa.webp",
-		},
-		{
-			name: "Hasith De Alwis",
-			role: t("team.roles.community.coordinator"),
-			image: "/headshots/Hasith.webp",
-		},
-		{
-			name: "Cece Ma",
-			role: t("team.roles.community.coordinator"),
-			image: "/headshots/Cece.webp",
-		},
-		{
-			name: "Mingye Chen",
-			role: t("team.roles.competitions.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Tahmeed Khan",
-			role: t("team.roles.competitions.coordinator"),
-			image: "/headshots/Tahmeed.webp",
-		},
-		{
-			name: "Siva Senthilkumaran",
-			role: t("team.roles.competitions.coordinator"),
-			image: "/headshots/Siva.webp",
-		},
-		{
-			name: "Thomas Nolasque",
-			role: t("team.roles.competitions.coordinator"),
-			image: "/headshots/Thomas.webp",
-		},
-		{
-			name: "Humayrah Jhumka",
-			role: t("team.roles.design.coordinator"),
-			image: "/headshots/Humayrah.webp",
-		},
-		{
-			name: "Christmas Pranommit",
-			role: t("team.roles.design.coordinator"),
-			image: "/headshots/Christmas.webp",
-		},
-		{
-			name: "Amy Bradbrook",
-			role: t("team.roles.design.coordinator"),
-			image: "/headshots/Amy.webp",
-		},
-		{
-			name: "Aashna Verma",
-			role: t("team.roles.design.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Jordan Lau",
-			role: t("team.roles.design.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Jo Gurvantamir",
-			role: t("team.roles.design.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Ethan Tang",
-			role: t("team.roles.logistics.coordinator"),
-			image: "/headshots/Ethan.webp",
-		},
-		{
-			name: "Saheen Jeyarajah",
-			role: t("team.roles.development.manager"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Sacha Arseneault",
-			role: t("team.roles.development.manager"),
-			image: "/headshots/Sacha.webp",
-		},
-		{
-			name: "Hiba Tantawi",
-			role: t("team.roles.development.manager"),
-			image: "/headshots/Hiba.webp",
-		},
-		{
-			name: "Chiso Chisom",
-			role: t("team.roles.development.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Osa Ikhinmwin",
-			role: t("team.roles.development.coordinator"),
-			image: "/headshots/Osa.webp",
-		},
-		{
-			name: "Erik Ang",
-			role: t("team.roles.development.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Ahmed Nasr",
-			role: t("team.roles.development.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Lukas Enkhtsog",
-			role: t("team.roles.development.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Mattia Vergnat",
-			role: t("team.roles.development.coordinator"),
-			image: "/headshots/Mattia.webp",
-		},
-		{
-			name: "Christina Song",
-			role: t("team.roles.development.coordinator"),
-			image: "/headshots/Christina.webp",
-		},
-		{
-			name: "Martin Patrouchev",
-			role: t("team.roles.development.coordinator"),
-			image: "/headshots/Martin.webp",
-		},
-		{
-			name: "Thinula de Silva",
-			role: t("team.roles.logistics.coordinator"),
-			image: "/headshots/Thinula.webp",
-		},
-		{
-			name: "Saima Mujeebuddin",
-			role: t("team.roles.logistics.coordinator"),
-			image: "/headshots/Saima.webp",
-		},
-		{
-			name: "Juan Hiedra Primera",
-			role: t("team.roles.logistics.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Divya Vithiyatharan",
-			role: t("team.roles.logistics.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Jaden Fielding",
-			role: t("team.roles.logistics.coordinator"),
-			image: "/headshots/Jaden.webp",
-		},
-		{
-			name: "Valarie Wong",
-			role: t("team.roles.logistics.coordinator"),
-			image: "/headshots/Valarie.webp",
-		},
-		{
-			name: "Lehem Temesgen",
-			role: t("team.roles.logistics.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Madison Moran",
-			role: t("team.roles.marketing.manager"),
-			image: "/headshots/Maddy.webp",
-		},
-		{
-			name: "Rafael Arif",
-			role: t("team.roles.marketing.manager"),
-			image: "/headshots/Raf.webp",
-		},
-		{
-			name: "Stefan Todorovic",
-			role: t("team.roles.marketing.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Nyah Wagner",
-			role: t("team.roles.marketing.coordinator"),
-			image: "/headshots/Nyah.webp",
-		},
-		{
-			name: "Eliana Schartner",
-			role: t("team.roles.marketing.coordinator"),
-			image: "/headshots/Eliana.webp",
-		},
-		{
-			name: "Myra Tariq",
-			role: t("team.roles.marketing.coordinator"),
-			image: "/headshots/Myra.webp",
-		},
-		{
-			name: "Nalan Kurnaz",
-			role: t("team.roles.marketing.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Raiyan Aziz",
-			role: t("team.roles.marketing.coordinator"),
-			image: "/headshots/Raiyan.webp",
-		},
-		{
-			name: "Esra Abdulwahab",
-			role: t("team.roles.marketing.coordinator"),
-			image: "/headshots/Esra.webp",
-		},
-		{
-			name: "Yazan Khasawneh",
-			role: t("team.roles.operations.manager"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Sanil Srivastava",
-			role: t("team.roles.operations.coordinator"),
-			image: "/headshots/Sanil.webp",
-		},
-		{
-			name: "Sakshit Sharma",
-			role: t("team.roles.operations.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Elodie Abdo",
-			role: t("team.roles.operations.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Qasim Sadeed",
-			role: t("team.roles.operations.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Jad Mghabghab",
-			role: t("team.roles.sponsorship.manager"),
-			image: "/headshots/Jad.webp",
-		},
-		{
-			name: "Alae Boufarrachene",
-			role: t("team.roles.sponsorship.manager"),
-			image: "/headshots/Alae.webp",
-		},
-		{
-			name: "Anisaftab Saiyed",
-			role: t("team.roles.sponsorship.coordinator"),
-			image: "/headshots/Anis.webp",
-		},
-		{
-			name: "Ouyi Xu",
-			role: t("team.roles.sponsorship.coordinator"),
-			image: "/headshots/Ouyi.webp",
-		},
-		{
-			name: "Rola Elghonimy",
-			role: t("team.roles.sponsorship.coordinator"),
-			image: "/headshots/Rola.webp",
-		},
-		{
-			name: "Rayhaan Farooq",
-			role: t("team.roles.sponsorship.coordinator"),
-			image: "/headshots/Ray.webp",
-		},
-		{
-			name: "Shrikar Vempati",
-			role: t("team.roles.sponsorship.coordinator"),
-			image: "/headshots/Shrikar.webp",
-		},
-		{
-			name: "Raaed Mirza",
-			role: t("team.roles.sponsorship.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Ansh Kakkar",
-			role: t("team.roles.sponsorship.coordinator"),
-			image: "/headshots/Ansh.webp",
-		},
-		{
-			name: "Zahra Suleymanova",
-			role: t("team.roles.sponsorship.coordinator"),
-			image: "/headshots/Template.webp",
-		},
-		{
-			name: "Bea.var",
-			role: t("team.roles.mascot"),
-			image: "/headshots/Beavar.webp",
-		},
-	];
+export default function TeamPage({ teams }) {
+	const [selectedYear, setSelectedYear] = useState(teams?.sort((a, b) => b.year - a.year)?.[0]?.year.toString());
+	const $locale = useStore(locale);
+	const builder = imageUrlBuilder(sanityClient);
+	const suf = `year_${selectedYear}`;
+	const t_teamNames = t("team.teams");
+	const t_positions = t("team.positions");
+	const [subTeams, setSubTeams] = useState({});
+
+	function urlFor(source) {
+		return builder.image(source);
+	}
 
 	useEffect(() => {
 		AOS.init({ once: false, duration: 700 });
 	}, []);
 
-	return <Construction pageNotFound={false} />;
+	useEffect(() => {
+		setSubTeams({});
+		teams
+			?.filter(currTeam => currTeam?.year?.toString() === selectedYear)?.[0]
+			?.members.map(member => {
+				const subTeam =
+					member.position?.[suf] === "president" ||
+					member.position?.[suf] === "secretary" ||
+					member.position?.[suf] === "director"
+						? "executive"
+						: member.teamName?.[suf] || "other";
+
+				setSubTeams(prevState => {
+					const newState = { ...prevState };
+					newState[subTeam] = [...(prevState[subTeam] || []), member];
+					return newState;
+				});
+
+				return null;
+			});
+
+		setSubTeams(prevState => {
+			const newState = { ...prevState };
+			Object.keys(newState).forEach(subTeam => {
+				newState[subTeam] = newState[subTeam].sort((a, b) => {
+					if (a.position?.[suf] === "president") return -1;
+					if (b.position?.[suf] === "president") return 1;
+					if (a.position?.[suf] === "secretary") return -1;
+					if (b.position?.[suf] === "secretary") return 1;
+					if (a.position?.[suf] === "director") return -1;
+					if (b.position?.[suf] === "director") return 1;
+					if (a.position?.[suf] === "manager") return -1;
+					if (b.position?.[suf] === "manager") return 1;
+					if (a.position?.[suf] === "coordinator") return -1;
+					if (b.position?.[suf] === "coordinator") return 1;
+					if (a.position?.[suf] === "advisor") return -1;
+					if (b.position?.[suf] === "advisor") return 1;
+					if (a.name < b.name) return -1;
+					if (a.name > b.name) return 1;
+					return 0;
+				});
+			});
+			return newState;
+		});
+	}, [selectedYear]);
+
+	const memberCard = (member, i) => (
+		<li key={i} className="basis-1/5 xl:basis-1/3 md:basis-1/2 p-4" data-aos="fade-up">
+			<div
+				className={`flex flex-col text-center gap-2 p-4 rounded-3xl overflow-hidden  border border-theme-red ${
+					i % 2 === 0 ? "bg-blur-svg" : "bg-dark"
+				}`}
+			>
+				<img
+					src={
+						member?.photo?.[suf]
+							? urlFor(member?.photo?.[suf].asset).url()
+							: urlFor(
+									teams?.filter(currTeam => currTeam?.year?.toString() === selectedYear)[0]
+										?.fallbackPhoto?.asset,
+							  ).url()
+					}
+					className="w-full h-full object-cover rounded-[50%] shadow-small-glow"
+				/>
+
+				<h6>{member.name}</h6>
+
+				{member?.position?.[suf] && member?.teamName?.[suf] ? (
+					$locale === "en" ? (
+						<h5>{`${t_teamNames[member?.teamName?.[suf]]} ${t_positions[member?.position?.[suf]]}`}</h5>
+					) : (
+						<h5>{`${t_positions[member?.position?.[suf]]} ${t_teamNames[member?.teamName?.[suf]]} `}</h5>
+					)
+				) : member?.position?.[suf] ? (
+					<h5>{t_positions[member?.position?.[suf]]}</h5>
+				) : (
+					<h5>{t("team.member")}</h5>
+				)}
+				<div className="w-full flex flex-row justify-center items-center gap-4 text-xl">
+					{member?.linkedin && (
+						<a
+							href={member?.linkedin}
+							target="_blank"
+							rel="noreferrer"
+							aria-label="LinkedIn"
+							className="transition-all duration-300 text-white hover:opacity-100 opacity-80"
+						>
+							<Icon icon={faLinkedin} />
+						</a>
+					)}
+
+					{member?.github && (
+						<a
+							href={member?.github}
+							target="_blank"
+							rel="noreferrer"
+							aria-label="LinkedIn"
+							className="transition-all duration-300 text-white
+							hover:opacity-100 opacity-80"
+						>
+							<Icon icon={faGithub} />
+						</a>
+					)}
+
+					{member?.website && (
+						<a
+							href={member?.website}
+							target="_blank"
+							rel="noreferrer"
+							aria-label="LinkedIn"
+							className="transition-all duration-300 text-white hover:opacity-100 opacity-80"
+						>
+							<Icon icon={faGlobe} />
+						</a>
+					)}
+				</div>
+			</div>
+		</li>
+	);
+
+	return (
+		<div className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
+			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1]">
+				<div className="flex flex-row justify-between items-center text-left w-full" data-aos="fade-up">
+					<h1 data-aos="fade-up">{t("team.title")}</h1>
+					<select
+						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer"
+						onChange={e => setSelectedYear(e.target.value)}
+						value={selectedYear}
+					>
+						{teams
+							?.sort((a, b) => b.year - a.year)
+							.map((team, i) => (
+								<option key={i} value={team.year.toString()}>
+									{team.year.toString()}
+								</option>
+							))}
+					</select>
+				</div>
+				<ul className="flex flex-wrap justify-evenly w-10/12 max-w-2xl gap-16">
+					{subTeams &&
+						Object.keys(subTeams).map((subTeam, i) => (
+							<li key={i} className="w-full">
+								<h2>{$locale === "en" ? subTeam : t_teamNames[subTeam].split(" ").slice(-1)[0]}</h2>
+								<ul className="flex flex-wrap justify-between w-full mt-2">
+									{subTeams[subTeam].map((member, i) => memberCard(member, i))}
+								</ul>
+							</li>
+						))}
+				</ul>
+			</div>
+			<img
+				src={shape.src}
+				alt="shape"
+				className="w-full max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
+			/>
+			<img
+				src={shape.src}
+				alt="shape"
+				className="w-full max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
+			/>
+		</div>
+	);
 }

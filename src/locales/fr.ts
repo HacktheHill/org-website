@@ -338,6 +338,27 @@ export default {
 		service_desc: "Nos conditions de service définissent les conditions d'utilisation de notre site Web.",
 		service_btn: "Lire les Conditions de Service",
 	},
+	team: {
+		title: "Équipe",
+		positions: {
+			President: "Président",
+			Secretary: "Secrétaire",
+			Director: "Directeur",
+			Manager: "Gestionnaire",
+			Coordinator: "Coordinateur",
+			Advisor: "Conseiller",
+		},
+		teams: {
+			Community: "de Communauté",
+			Design: "du Design",
+			Development: "du Développement",
+			Logistics: "de Logistique",
+			Marketing: "de Marketing",
+			Operations: "des Opérations",
+			Sponsorship: "des Commanditaires",
+		},
+		member: "Membre",
+	},
 	events: {
 		title: "Événements",
 		subtitle: "Découvrez nos événements à venir.",
