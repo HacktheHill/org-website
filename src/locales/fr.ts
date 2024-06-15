@@ -318,6 +318,7 @@ export default {
 		read: "Lire",
 		author_prefix: "Par",
 		back: "Retour",
+		enjoyed: "Vous avez apprécié cet article? Lisez-en un autre!",
 	},
 	documents: {
 		title: "Documents",

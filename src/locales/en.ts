@@ -315,6 +315,7 @@ export default {
 		read: "Read",
 		author_prefix: "By",
 		back: "Back",
+		enjoyed: "Enjoyed this article? See more on our blog!",
 	},
 	documents: {
 		title: "Documents",

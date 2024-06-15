@@ -15,19 +15,19 @@ export default function DocumentsPage() {
 
 	return (
 		<div className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
-			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1]">
+			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
 				<div className="flex flex-col text-left w-full" data-aos="fade-up">
 					<h1 data-aos="fade-up">{t("documents.title")}</h1>
 				</div>
 				<div className="grid grid-rows-2 grid-cols-2 gap-8 w-10/12 max-w-2xl xl:flex xl:flex-wrap">
 					<div
-						className="row-start-1 col-start-2 row-end-1 col-end-3 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-blur-svg relative"
+						className="row-start-1 col-start-2 row-end-1 col-end-3 flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-blur-svg relative"
 						data-aos="fade-left"
 					>
-						<div className="flex flex-row justify-between items-center w-full gap-4">
+						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
 							<h2>{t("documents.constitution")}</h2>
 							<img
-								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%]"
+								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
 								alt="Document"
 							/>
@@ -50,13 +50,13 @@ export default function DocumentsPage() {
 						</div>
 					</div>
 					<div
-						className="row-start-1 col-start-1 row-end-1 col-end-2 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-dark overflow-hidden"
+						className="row-start-1 col-start-1 row-end-1 col-end-2 flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
 						data-aos="fade-right"
 					>
-						<div className="flex flex-row justify-between items-center w-full gap-4">
+						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
 							<h2>{t("documents.privacy")}</h2>
 							<img
-								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
+								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
 								alt="Document"
 							/>
@@ -76,14 +76,14 @@ export default function DocumentsPage() {
 						</div>
 					</div>
 					<div
-						className="row-start-2 col-start-1 row-end-2 col-end-2 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-blur-svg overflow-hidden"
+						className="row-start-2 col-start-1 row-end-2 col-end-2 flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-blur-svg overflow-hidden"
 						data-aos="fade-right"
 						data-aos-offset="-100"
 					>
-						<div className="flex flex-row justify-between items-center w-full gap-4">
+						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
 							<h2>{t("documents.conduct")}</h2>
 							<img
-								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
+								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
 								alt="Document"
 							/>
@@ -103,14 +103,14 @@ export default function DocumentsPage() {
 						</div>
 					</div>
 					<div
-						className="row-start-2 col-start-2 row-end-2 col-end-2 flex flex-col items-start justify-between gap-32 p-8 rounded-3xl bg-dark overflow-hidden"
+						className="row-start-2 col-start-2 row-end-2 col-end-2 flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
 						data-aos="fade-left"
 						data-aos-offset="-100"
 					>
-						<div className="flex flex-row justify-between items-center w-full gap-4">
+						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
 							<h2>{t("documents.service")}</h2>
 							<img
-								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
+								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
 								alt="Document"
 							/>
@@ -134,12 +134,12 @@ export default function DocumentsPage() {
 			<img
 				src={shape.src}
 				alt="shape"
-				className="w-full max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
+				className="w-full md:w-[200%] md:translate-x-0 md:-translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 			/>
 			<img
 				src={shape.src}
 				alt="shape"
-				className="w-full max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
+				className="w-full md:w-[200%] md:translate-x-0 md:translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
 			/>
 		</div>
 	);

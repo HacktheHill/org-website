@@ -4,6 +4,7 @@ import BlogPost from "../../components/Blog/BlogPost.jsx";
 import { sanityClient } from "sanity:client";
 
 
+
 export const getStaticPaths = (async () => {
   const query = `*[_type == "blog" && defined(slug)] | order(publishedAt desc)`;
   const posts = await sanityClient.fetch(query);
@@ -19,12 +20,19 @@ export const getStaticPaths = (async () => {
     };
   });
 });
+interface Post {
+  title: {
+    en: string;
+    fr: string;
+  };
+  slug: { current: string };
+}
 
-
-const { post } = Astro.props;
+const { post }: { post: Post } = Astro.props;
 ---
 
-<Layout>
+<Layout  title={post.title.en} pathName={`/blog/${post.slug.current}`}
+>
   <BlogPost data={post} client:load />
 </Layout>
 

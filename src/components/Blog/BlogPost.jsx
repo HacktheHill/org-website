@@ -9,6 +9,7 @@ import { useStore } from "@nanostores/react";
 import { locale, t } from "../../i18n";
 import calendar from "../../assets/icons/calendar.svg";
 import Button from "../Button/Button";
+import "./BlogStyle.css";
 
 export default function BlogPost({ data }) {
 	const $locale = useStore(locale);
@@ -19,17 +20,19 @@ export default function BlogPost({ data }) {
 	}
 
 	return (
-		<div className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
-			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1]">
-				<div className="flex flex-col items-start justify-between gap-4 px-32 py-16 lg:px-8 rounded-3xl relative overflow-hidden bg-dark w-full">
+		<div id="post" className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
+			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
+				<div className="flex flex-col items-start justify-between gap-4 px-32 py-16 lg:px-4 rounded-3xl relative overflow-hidden bg-dark w-full">
 					<div className="absolute top-0 left-0 p-6">
 						<Button onClick={() => (window.location.href = "/blog")} fill={false} flip={true}>
 							{t("blog.back")}
 						</Button>
 					</div>
 
-					<h1 className="mt-16">{data.title?.[`${$locale}`]}</h1>
-					<h2 className="text-shadow_text">{data.subheader?.[`${$locale}`]}</h2>
+					<h1 className="mt-16">{data?.title?.[`${$locale}`]}</h1>
+					{data?.subheader?.[`${$locale}`] && (
+						<h2 className="text-shadow_text">{data?.subheader?.[`${$locale}`]}</h2>
+					)}
 					<div className="flex flex-row items-center mt-8 mb-4">
 						<span className="text-base lg:text-sm font-bold space-x-1">
 							<span>{`${t("blog.author_prefix").toUpperCase()} `}</span>
@@ -53,8 +56,13 @@ export default function BlogPost({ data }) {
 						/>
 						<div className="absolute z-10 bg-black bg-opacity-20 w-full h-full"></div>
 					</div>
-					<div className="w-full justify-between items-center mt-16 px-16">
+					<div className="w-full justify-between items-center mt-16 mb-32 px-16 md:px-0">
 						<PortableText value={data?.body?.[`${$locale}`]} />
+					</div>
+					<div className="absolute bottom-0 right-0 p-6 mt-16">
+						<Button onClick={() => (window.location.href = "/blog")} fill={false}>
+							{t("blog.enjoyed")}
+						</Button>
 					</div>
 				</div>
 			</div>

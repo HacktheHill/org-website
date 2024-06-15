@@ -102,13 +102,13 @@ export default function Gallery() {
 
 	return (
 		<div className="w-full flex bg-background justify-center items-cente">
-			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl">
+			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl md:w-11/12">
 				<div className="flex flex-col text-left w-full" data-aos="fade-up">
 					<h1>{t("gallery.title")}</h1>
 					<h2 className="text-shadow_text">{t("gallery.subtitle")}</h2>
 				</div>
 				<div className="flex h-4/6 flex-row justify-between items-center gap-16 2xl:flex-wrap">
-					<div className="flex px-16 justify-start items-center flex-wrap gap-8 2xl:justify-center 2xl:w-full md:px-2">
+					<div className="flex px-16 justify-start items-center flex-wrap gap-8 md:gap-3 2xl:justify-center 2xl:w-full md:px-2">
 						{albums.map(album => (
 							<div
 								key={album.tag}
@@ -119,14 +119,14 @@ export default function Gallery() {
 							>
 								<div>
 									<div
-										className={`w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl ${
+										className={`w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 ${
 											album.tag === activeFolder
 												? "border-red bg-blur-svg"
 												: "border-white bg-transparent"
 										}`}
 									>
 										<div
-											className={`absolute w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl transition-all duration-300 ${
+											className={`absolute w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 transition-all duration-300 ${
 												album.tag === activeFolder
 													? "border-red bg-blur-svg -translate-y-3 -translate-x-3"
 													: "border-white bg-white -translate-y-1.5 -translate-x-1.5 hover:-translate-y-2 hover:-translate-x-2"
@@ -147,6 +147,7 @@ export default function Gallery() {
 					<div
 						className="aspect-[5/3] grid grid-rows-12 grid-cols-12 gap-4 xl:basis-full xs:flex xs:flex-col aos-frame xl:flex xl:flex-col"
 						data-aos="zoom-in"
+						data-aos-offset="-100"
 					>
 						<div className="rounded-3xl bg-blur-svg gap-4 flex flex-col justify-between col-start-1 col-end-7 row-start-1 row-end-8 p-8">
 							<div className="flex flex-col justify-start items-start gap-8">
@@ -172,8 +173,9 @@ export default function Gallery() {
 							</div>
 						</div>
 						<div
-							className="rounded-3xl bg-dark row-start-8 col-start-1 row-end-13 col-end-9 p-4 xs:h-36 aos-frame"
+							className="rounded-3xl bg-dark row-start-8 col-start-1 row-end-13 col-end-9 p-4 md:p-2 xs:h-36 aos-frame"
 							data-aos="zoom-in"
+							data-aos-offset="-100"
 						>
 							<img
 								src={albums?.find(album => album.tag === selectedAlbum)?.img2.src}
@@ -182,8 +184,9 @@ export default function Gallery() {
 							/>
 						</div>
 						<div
-							className="rounded-3xl bg-dark row-start-1 col-start-7 row-end-8 col-end-13 p-4 xs:h-36 z-10 aos-frame"
+							className="rounded-3xl bg-dark row-start-1 col-start-7 row-end-8 col-end-13 p-4 md:p-2 xs:h-36 z-10 aos-frame"
 							data-aos="zoom-in"
+							data-aos-offset="-100"
 						>
 							<img
 								src={albums?.find(album => album.tag === selectedAlbum)?.img1.src}

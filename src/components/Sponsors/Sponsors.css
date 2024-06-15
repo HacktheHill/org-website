@@ -33,6 +33,6 @@
 
 @media (max-width: 768px) {
 	.marquee-group {
-		animation: marquee 90s linear infinite;
+		animation: marquee 45s linear infinite;
 	}
 }

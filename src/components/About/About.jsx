@@ -7,21 +7,17 @@ import about3 from "../../assets/about/about3.webp";
 import shape from "../../assets/patterns/ssshape.svg";
 
 export default function About() {
-	const podcastLink =
-		"https://www.youtube.com/embed/videoseries?si=ZobjNMvDAoBIorPw&controls=0&list=PLvXySQVib-mmNoOeoORHRGz2UyeSEgj7Q&autoplay=1&loop=1&mute=0";
-	const thumbnailLink = "https://img.youtube.com/vi/IQSd2UsGvrU/hqdefault.jpg";
-
 	return (
 		<>
 			<div className="w-full bg-background-dark flex justify-center items-center">
-				<div className="flex flex-col w-10/12 h-full justify-center items-center gap-36 py-36 text-center max-w-2xl overflow-x-hidden">
+				<div className="flex flex-col w-10/12 h-full justify-center items-center gap-36 md:gap-16 py-36 text-center max-w-2xl overflow-x-hidden md:w-11/12">
 					<div className="flex flex-col text-start w-full" data-aos="fade-up">
 						<h1>{t("about.title")}</h1>
 						<h2 className="text-shadow_text">{t("about.subtitle")}</h2>
 					</div>
-					<div className="flex h-4/6 flex-row justify-between items-center flex-wrap lg:gap-8 px-8">
+					<div className="flex h-4/6 flex-row justify-between items-center flex-wrap lg:gap-8 px-8 md:px-2">
 						<div className="flex flex-col w-6/7 text-pretty text-left z-[1]">
-							<div className="grid grid-rows-1 grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-20 lg:mb-20">
+							<div className="grid grid-rows-1 grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-20 md:gap-y-4 lg:mb-20">
 								<div
 									className="row-start-1 col-start-2 row-end-1 col-end-3 self-center flex flex-col gap-8"
 									data-aos="fade-up"
@@ -43,7 +39,7 @@ export default function About() {
 									</div>
 								</div>
 								<div
-									className="row-start-1 col-start-1 row-end-1 col-end-2 bg-blur-svg overflow-visible rounded-3xl p-4"
+									className="row-start-1 col-start-1 row-end-1 col-end-2 bg-blur-svg overflow-visible rounded-3xl p-4 md:p-2"
 									data-aos="fade-right"
 								>
 									<img {...team1} className="w-full h-full object-cover rounded-2xl" alt="about3" />
@@ -87,7 +83,7 @@ export default function About() {
 									/>
 								</svg>
 							</div>
-							<div className="grid grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-20 lg:mb-20">
+							<div className="grid grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-20 md:gap-y-4 lg:mb-20">
 								<div
 									className="col-start-1 col-end-2 self-center flex flex-col gap-8"
 									data-aos="fade-up"
@@ -106,7 +102,7 @@ export default function About() {
 									</div>
 								</div>
 								<div
-									className="col-start-2 col-end-3  bg-blur-svg overflow-visible rounded-3xl p-4"
+									className="col-start-2 col-end-3  bg-blur-svg overflow-visible rounded-3xl p-4  md:p-2"
 									data-aos="fade-left"
 								>
 									<img {...team3} className="w-full h-full object-cover rounded-2xl" alt="about3" />
@@ -149,7 +145,7 @@ export default function About() {
 									/>
 								</svg>
 							</div>
-							<div className="grid grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-20">
+							<div className="grid grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-20 md:gap-y-4">
 								<div
 									className=" row-start-7 col-start-2 row-end-9 col-end-3 self-center flex flex-col gap-8"
 									data-aos="fade-up"
@@ -169,7 +165,7 @@ export default function About() {
 									</div>
 								</div>
 								<div
-									className="row-start-7 col-start-1 row-end-9 col-end-2 bg-blur-svg overflow-visible rounded-3xl p-4"
+									className="row-start-7 col-start-1 row-end-9 col-end-2 bg-blur-svg overflow-visible rounded-3xl p-4  md:p-2"
 									data-aos="fade-right"
 								>
 									<img {...about3} className="w-full h-full object-cover rounded-2xl" alt="about3" />
@@ -180,17 +176,17 @@ export default function About() {
 					<img
 						src={shape.src}
 						alt="shape"
-						className="w-full opacity-35 absolute z-[0] translate-x-1/2 translate-y-1/8"
+						className="w-full max-w-bg-deco md:w-[200%] md:translate-x-0 md:-translate-y-1/2 opacity-35 absolute z-[0] translate-x-1/2"
 					/>
 					<img
 						src={shape.src}
 						alt="shape"
-						className="w-full max-w-bg-deco opacity-35 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
+						className="w-full max-w-bg-deco md:w-[200%] md:translate-x-0 md:translate-y-full opacity-35 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 					/>
 					<img
 						src={shape.src}
 						alt="shape"
-						className="w-full max-w-bg-deco opacity-35 absolute z-[0] -translate-x-1/2 translate-y-3/4 -scale-y-100"
+						className="w-full max-w-bg-deco md:w-[200%] md:translate-x-0 md:translate-y-[20rem] opacity-35 absolute z-[0] -translate-x-1/2 translate-y-3/4 -scale-y-100"
 					/>
 				</div>
 			</div>

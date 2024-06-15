@@ -134,3 +134,29 @@ p {
 		font-size: 0.85rem;
 	}
 }
+
+@media screen and (max-width: 480px) {
+	h1 {
+		font-size: 2rem;
+		line-height: 2.5rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+		letter-spacing: -1.25px;
+	}
+	h3 {
+		font-size: 0.875rem;
+	}
+	h4 {
+		font-size: 0.75rem;
+	}
+	h5 {
+		font-size: 0.75rem;
+	}
+	h6 {
+		font-size: 0.75rem;
+	}
+	p {
+		font-size: 0.75rem;
+	}
+}

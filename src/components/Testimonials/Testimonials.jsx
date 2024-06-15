@@ -46,7 +46,7 @@ export default function Testimonials() {
 
 	return (
 		<div className="flex justify-center items-center w-full bg-background-dark">
-			<div className="relative flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl overflow-hidden">
+			<div className="relative flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl overflow-hidden md:w-11/12">
 				<div className="flex flex-col text-left w-full z-[1]" data-aos="fade-up">
 					<h1>{t("testimonials.title")}</h1>
 					<h2 className="text-shadow_text">{t("testimonials.subtitle")}</h2>
