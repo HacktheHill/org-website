@@ -103,6 +103,7 @@ module.exports = {
 			"background-dark": "#0d1117",
 			button_hover: "#f0f6fc",
 			dark: "#020106",
+			"theme-red": "#660908",
 		},
 		screens: {
 			"3xl": { max: "1920px" },

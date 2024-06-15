@@ -336,6 +336,27 @@ export default {
 			"Our terms of service outline the rules and regulations for using our website and participating in our events.",
 		service_btn: "Read the Terms of Service",
 	},
+	team: {
+		title: "Team",
+		positions: {
+			President: "President",
+			Secretary: "Secretary",
+			Director: "Director",
+			Manager: "Manager",
+			Coordinator: "Coordinator",
+			Advisor: "Advisor",
+		},
+		teams: {
+			Community: "Community",
+			Design: "Design",
+			Development: "Development",
+			Logistics: "Logistics",
+			Marketing: "Marketing",
+			Operations: "Operations",
+			Sponsorship: "Sponsorship",
+		},
+		member: "Member",
+	},
 	events: {
 		title: "Events",
 		subtitle: "Check out some of our upcoming events!",

@@ -3,8 +3,15 @@ import TeamPage from "../components/Team/TeamPage";
 import Layout from "../layouts/Layout.astro";
 const title = "Hack The Hill - Team";
 const pathName = "/team";
+import { sanityClient } from "sanity:client";
+const query = `*[_type == "team"] {
+  year,
+  fallbackPhoto,
+  members[]->
+}`;
+const teams = await sanityClient.fetch(query);
 ---
 
 <Layout title={title} pathName={pathName}>
-	<TeamPage client:load />
+	<TeamPage teams={teams} client:load />
 </Layout>
