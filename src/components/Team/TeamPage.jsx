@@ -150,7 +150,7 @@ export default function TeamPage({ teams }) {
 
 	return (
 		<div className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
-			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1]">
+			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
 				<div className="flex flex-row justify-between items-center text-left w-full" data-aos="fade-up">
 					<h1 data-aos="fade-up">{t("team.title")}</h1>
 					<select
