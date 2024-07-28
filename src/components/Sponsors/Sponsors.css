@@ -6,7 +6,7 @@
 	width: 100%;
 }
 
-@keyframes marquee {
+@keyframes marquee1 {
 	0% {
 		transform: translateX(0);
 	}
@@ -15,8 +15,24 @@
 	}
 }
 
-.marquee-group {
-	animation: marquee 60s linear infinite;
+@keyframes marquee2 {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.marquee-group1 {
+	animation: marquee1 60s linear infinite;
+	display: flex;
+	gap: 1rem;
+	padding: 0.5rem 0.5rem;
+}
+
+.marquee-group2 {
+	animation: marquee2 60s linear infinite;
 	display: flex;
 	gap: 1rem;
 	padding: 0.5rem 0.5rem;
@@ -32,7 +48,10 @@
 }
 
 @media (max-width: 768px) {
-	.marquee-group {
-		animation: marquee 45s linear infinite;
+	.marquee-group1 {
+		animation: marquee1 45s linear infinite;
+	}
+	.marquee-group2 {
+		animation: marquee2 45s linear infinite;
 	}
 }

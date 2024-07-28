@@ -20,12 +20,13 @@ import location from "/src/assets/icons/location.svg";
 import Button from "../Button/Button";
 import beaver3 from "/src/assets/beavar/Beaver3.svg";
 import { useStore } from "@nanostores/react";
+import { toPlainText } from "@portabletext/react";
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
 
-export default function Calendar() {
+export default function Calendar({ events }) {
 	const $locale = useStore(locale);
 	let today = startOfToday();
 	let [selectedDay, setSelectedDay] = useState(today);
@@ -63,8 +64,7 @@ export default function Calendar() {
 		setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
 	}
 
-	const events = t("schedule.events");
-	let selectedDayEvents = events?.filter(event => isSameDay(parseISO(event?.startDatetime), selectedDay));
+	let selectedDayEvents = events?.filter(event => isSameDay(parseISO(event?.start), selectedDay));
 
 	return (
 		<div className="grid grid-cols-5 gap-8 lg:flex lg:flex-wrap w-full">
@@ -132,7 +132,7 @@ export default function Calendar() {
 
 							<div className="w-1 h-1 mx-auto mt-1">
 								{events?.length > 0 &&
-									events?.some(event => isSameDay(parseISO(event?.startDatetime), day)) && (
+									events?.some(event => isSameDay(parseISO(event?.start), day)) && (
 										<div className="w-1 h-1 rounded-full bg-white"></div>
 									)}
 							</div>
@@ -195,14 +195,14 @@ export default function Calendar() {
 						<div className=" h-[25rem] overflow-auto w-full pr-4">
 							<ol className="flex flex-col gap-2">
 								{showUpcomingEvents === -1 &&
-								events?.filter(event => parseISO(event?.startDatetime) < today).length > 0 ? (
+								events?.filter(event => parseISO(event?.start) < today).length > 0 ? (
 									events
-										?.filter(event => parseISO(event?.startDatetime) < today)
+										?.filter(event => parseISO(event?.start) < today)
 										?.map((event, i) => <Event event={event} index={i} key={i} />)
 								) : showUpcomingEvents === 1 &&
-								  events?.filter(event => parseISO(event?.startDatetime) >= today).length > 0 ? (
+								  events?.filter(event => parseISO(event?.start) >= today).length > 0 ? (
 									events
-										?.filter(event => parseISO(event?.startDatetime) >= today)
+										?.filter(event => parseISO(event?.start) >= today)
 
 										?.map((event, i) => <Event event={event} index={i} key={i} />)
 								) : selectedDayEvents?.length > 0 ? (
@@ -224,12 +224,12 @@ export default function Calendar() {
 
 function Event({ event, index }) {
 	const $locale = useStore(locale);
-	let startDateTime = parseISO(event?.startDatetime);
-	let endDateTime = parseISO(event?.endDatetime);
+	let start = parseISO(event?.start);
+	let end = parseISO(event?.end);
 
-	let displayDay = startDateTime.toString().slice(8, 10);
-	let displayMonth = startDateTime.toString().slice(4, 7);
-	let displayYear = startDateTime.toString().slice(11, 15);
+	let displayDay = start.toString().slice(8, 10);
+	let displayMonth = start.toString().slice(4, 7);
+	let displayYear = start.toString().slice(11, 15);
 
 	return (
 		<li
@@ -237,8 +237,8 @@ function Event({ event, index }) {
 				index % 2 !== 0 ? "bg-blur-svg" : "bg-black"
 			}`}
 		>
-			<div className="flex-col gap-4">
-				<h4 className="font-semibold">{event?.title}</h4>
+			<div className="flex-col gap-4 w-full">
+				<h4 className="font-semibold">{event?.title?.[`${$locale}`]}</h4>
 				<p className="text-sm italic mb-4 items-center flex flex-row flex-wrap">
 					{$locale === "fr" ? (
 						<span>
@@ -250,15 +250,16 @@ function Event({ event, index }) {
 						</span>
 					)}
 					<img src={calendar.src} alt="Location" className="h-4 w-4 mx-3 inline-block not-italic" />
-					<time dateTime={event?.startDatetime}>{format(startDateTime, "h:mm a").toLowerCase()}</time> -{" "}
-					<time dateTime={event?.endDatetime}>{format(endDateTime, "h:mm a").toLowerCase()}</time>
+					<time dateTime={event?.start}>{format(start, "h:mm a").toLowerCase()}</time> -{" "}
+					<time dateTime={event?.end}>{format(end, "h:mm a").toLowerCase()}</time>
 					<img src={location.src} alt="Location" className="h-4 w-4 mx-2 inline-block not-italic" />
 					<span className="text-normal">{event?.location}</span>
 				</p>
-				<p className="text-sm">{event?.description}</p>
-				<div className="flex justify-end mt-4">
+				<p className="text-sm">{toPlainText(event?.details?.[`${$locale}`])}</p>
+
+				<div className="flex justify-end mt-4 ">
 					<Button disabled={event?.disabled} onClick={() => window.open(event?.link, "_blank")} fill={true}>
-						{event?.status}
+						{event?.link_text?.[`${$locale}`]}
 					</Button>
 				</div>
 			</div>

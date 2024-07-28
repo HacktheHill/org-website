@@ -36,7 +36,14 @@ export default function BlogPost({ data }) {
 					<div className="flex flex-row items-center mt-8 mb-4">
 						<span className="text-base lg:text-sm font-bold space-x-1">
 							<span>{`${t("blog.author_prefix").toUpperCase()} `}</span>
-							<span className="text-primary">{`${data?.author?.toUpperCase()}`}&nbsp;</span>
+							<span
+								className={`text-primary ${data?.authorLink && "cursor-pointer"}`}
+								onClick={() => {
+									data?.authorLink && window.open(data?.authorLink, "_blank");
+								}}
+							>
+								{`${data?.author?.toUpperCase()}`}&nbsp;
+							</span>
 							<span>{"•"}</span>
 							<span>
 								{new Date(data?.publishedAt)

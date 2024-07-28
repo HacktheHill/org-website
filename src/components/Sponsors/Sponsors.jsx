@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { t } from "../../i18n";
+//Sponsors
 import Blackberry from "/src/assets/Logos/Partners/Blackberry.svg";
 import CSE from "/src/assets/Logos/Partners/CSE.svg";
 import CanadianTire from "/src/assets/Logos/Partners/CanadianTire.svg";
@@ -14,6 +15,22 @@ import echo3d from "/src/assets/Logos/Partners/Echo3d.svg";
 import voiceflow from "/src/assets/Logos/Partners/Voiceflow.svg";
 import StickerMule from "/src/assets/Logos/Partners/StickerMule.svg";
 import OpenProject from "/src/assets/Logos/Partners/OpenProject.svg";
+
+//Collaborators
+import BTA from "/src/assets/Logos/Collaborators/BTA.svg";
+import Carleton from "/src/assets/Logos/Collaborators/Carleton.svg";
+import CarletonIEEE from "/src/assets/Logos/Collaborators/CarletonIEEE.svg";
+import CCSS from "/src/assets/Logos/Collaborators/CCSS.png";
+import CSSA from "/src/assets/Logos/Collaborators/CSSA.svg";
+import EEF from "/src/assets/Logos/Collaborators/EEF.svg";
+import IEEE from "/src/assets/Logos/Collaborators/IEEE.svg";
+import MakerJam from "/src/assets/Logos/Collaborators/MakerJam.svg";
+import SCESoc from "/src/assets/Logos/Collaborators/SCESoc.svg";
+import uOCyberSec from "/src/assets/Logos/Collaborators/uOCyberSec.svg";
+import uOttawa from "/src/assets/Logos/Collaborators/uOttawa.svg";
+import uOttawaGDC from "/src/assets/Logos/Collaborators/uOttawaGDC.svg";
+import WIE from "/src/assets/Logos/Collaborators/WIE.svg";
+
 import "./Sponsors.css";
 import waves from "../../assets/patterns/wavesOpacity.svg";
 import union from "../../assets/patterns/uuunion.svg";
@@ -36,21 +53,37 @@ export default function Sponsors() {
 			{ href: "https://www.openproject.org/", ...OpenProject, alt: "OpenProject" },
 			{ href: "https://mule.to/p5ni", ...StickerMule, alt: "StickerMule" },
 		],
+		collaborators: [
+			{ href: "https://www.instagram.com/telferbta/", ...BTA, alt: "BTA" },
+			{ href: "https://carleton.ca/", ...Carleton, alt: "Carleton University" },
+			{ href: "https://www.instagram.com/ieeecarleton/", ...CarletonIEEE, alt: "IEEE Carleton" },
+			{ href: "https://ccss.carleton.ca/", ...CCSS, alt: "CCSS" },
+			{ href: "https://cssa-aei.ca/", ...CSSA, alt: "CSSA" },
+			{ href: "https://www.facebook.com/uottawaeeffdg/", ...EEF, alt: "EEF" },
+			{ href: "https://ieeeuottawa.ca/", ...IEEE, alt: "IEEE" },
+			{ href: "https://www.uottawa.ca/faculty-engineering/events/maker-jam", ...MakerJam, alt: "MakerJam" },
+			{ href: "https://scesoc.ca/", ...SCESoc, alt: "SCESoc" },
+			{ href: "https://uocybersec.com/", ...uOCyberSec, alt: "uOttawa CyberSec" },
+			{ href: "https://www.uottawa.ca/", ...uOttawa, alt: "uOttawa" },
+			{ href: "https://www.instagram.com/uogamedev/", ...uOttawaGDC, alt: "uOttawa GDC" },
+			{ href: "https://wie.ieeeottawa.ca/", ...WIE, alt: "WIE" },
+		],
 	};
 
 	const [hovered, setHovered] = useState(-1);
+	const [hovered2, setHovered2] = useState(-1);
 
-	const marqueeGroup = (data, index, pauseAnimation, startAnimation) => {
+	const marqueeGroup = (dataGroup, index, group, pauseAnimation, startAnimation, setHoverGroup) => {
 		return (
 			<div
-				id={`marquee${index}`}
-				className="marquee-group"
-				onMouseEnter={pauseAnimation}
-				onMouseLeave={startAnimation}
-				onFocus={pauseAnimation}
-				onBlur={startAnimation}
+				id={`marquee${index}_${group}`}
+				className={`marquee-group${group}`}
+				onMouseEnter={() => pauseAnimation(group)}
+				onMouseLeave={() => startAnimation(group)}
+				onFocus={() => pauseAnimation(group)}
+				onBlur={() => startAnimation(group)}
 			>
-				{data.sponsors.map((sponsor, i) => (
+				{dataGroup.map((sponsor, i) => (
 					<a
 						key={i}
 						href={sponsor.href}
@@ -58,13 +91,17 @@ export default function Sponsors() {
 						rel="noreferrer"
 						className={`sponsor flex aspect-[3/2] justify-center items-center rounded-lg h-40 md:h-24 p-8 md:p-4 transition-all duration-200
 					 ${
-							hovered !== -1 && hovered !== i
+							group === 1
+								? hovered !== -1 && hovered !== i
+									? "opacity-25 translate-x-1 translate-y-1"
+									: "bg-opacity-35 translate-x-0 translate-y-0"
+								: hovered2 !== -1 && hovered2 !== i
 								? "opacity-25 translate-x-1 translate-y-1"
 								: "bg-opacity-35 translate-x-0 translate-y-0"
 						}`}
-						onMouseEnter={() => setHovered(i)}
-						onMouseLeave={() => setHovered(-1)}
-						onBlur={() => setHovered(-1)}
+						onMouseEnter={() => setHoverGroup(i)}
+						onMouseLeave={() => setHoverGroup(-1)}
+						onBlur={() => setHoverGroup(-1)}
 					>
 						<img {...sponsor} alt={`${sponsor.alt} logo`} className="max-w-full max-h-full"></img>
 					</a>
@@ -73,14 +110,14 @@ export default function Sponsors() {
 		);
 	};
 
-	function pauseAnimation() {
-		document.getElementById("marquee1").style.animationPlayState = "paused";
-		document.getElementById("marquee2").style.animationPlayState = "paused";
+	function pauseAnimation(group) {
+		document.getElementById(`marquee1_${group}`).style.animationPlayState = "paused";
+		document.getElementById(`marquee2_${group}`).style.animationPlayState = "paused";
 	}
 
-	function startAnimation() {
-		document.getElementById("marquee1").style.animationPlayState = "running";
-		document.getElementById("marquee2").style.animationPlayState = "running";
+	function startAnimation(group) {
+		document.getElementById(`marquee1_${group}`).style.animationPlayState = "running";
+		document.getElementById(`marquee2_${group}`).style.animationPlayState = "running";
 	}
 
 	return (
@@ -88,9 +125,24 @@ export default function Sponsors() {
 			<h2>{t("sponsors.title")}</h2>
 			<div className="w-full flex justify-center items-center relative bg-theme-gradient">
 				<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-28 text-left max-w-2xl z-[2]">
-					<div className="carousel-track  z-[2]">
-						{marqueeGroup(data, 1, pauseAnimation, startAnimation)}
-						{marqueeGroup(data, 2, pauseAnimation, startAnimation)}
+					<div className="carousel-track z-[2]">
+						{marqueeGroup(data.sponsors, 1, 1, pauseAnimation, startAnimation, setHovered)}
+						{marqueeGroup(data.sponsors, 2, 1, pauseAnimation, startAnimation, setHovered)}
+					</div>
+				</div>
+				<img src={waves.src} className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]" alt="waves"></img>
+				<img
+					src={waves.src}
+					className="absolute bottom-0 w-full h-20 z-[1] -scale-y-100 -scale-x-100 translate-y-[1px]"
+					alt="waves"
+				></img>
+			</div>
+			<h2 className="mt-32">{t("collaborators.title")}</h2>
+			<div className="w-full flex justify-center items-center relative bg-theme-gradient">
+				<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-28 text-left max-w-2xl z-[2]">
+					<div className="carousel-track z-[2]">
+						{marqueeGroup(data.collaborators, 1, 2, pauseAnimation, startAnimation, setHovered2)}
+						{marqueeGroup(data.collaborators, 2, 2, pauseAnimation, startAnimation, setHovered2)}
 					</div>
 				</div>
 				<img src={waves.src} className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]" alt="waves"></img>

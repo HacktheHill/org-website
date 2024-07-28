@@ -6,8 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import shape from "../../assets/patterns/ssshape.svg";
 
-export default function EventsPage() {
-	const events = t("schedule.events");
+export default function EventsPage({ events }) {
 	useEffect(() => {
 		AOS.init({ once: false, duration: 700 });
 	}, []);
@@ -18,7 +17,7 @@ export default function EventsPage() {
 				<div className="flex flex-col text-left w-full" data-aos="fade-up">
 					<h1>{t("events.title")}</h1>
 				</div>
-				<Calendar />
+				<Calendar events={events} />
 			</div>
 			<img
 				src={shape.src}

@@ -11,7 +11,7 @@ const { SANITY_PROJECT_ID, SANITY_DATASET } = loadEnv(process.env.NODE_ENV, proc
 // https://astro.build/config
 export default defineConfig({
 	outDir: "build",
-	site: DEV ? "http://localhost:4321" : "https://hackthehill.com",
+	site: DEV ? "http://localhost:4321" : "https://hackthehill.org",
 	integrations: [
 		react(),
 		sitemap(),
