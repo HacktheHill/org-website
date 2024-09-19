@@ -101,7 +101,7 @@ export default function Gallery() {
 	};
 
 	return (
-		<div className="w-full flex bg-background justify-center items-cente">
+		<div className="w-full flex bg-background justify-center items-center">
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl md:w-11/12">
 				<div className="flex flex-col text-left w-full" data-aos="fade-up">
 					<h1>{t("gallery.title")}</h1>
@@ -147,7 +147,7 @@ export default function Gallery() {
 					<div
 						className="aspect-[5/3] grid grid-rows-12 grid-cols-12 gap-4 xl:basis-full xs:flex xs:flex-col aos-frame xl:flex xl:flex-col"
 						data-aos="zoom-in"
-						data-aos-offset="-100"
+						data-aos-offset="-200"
 					>
 						<div className="rounded-3xl bg-blur-svg gap-4 flex flex-col justify-between col-start-1 col-end-7 row-start-1 row-end-8 p-8">
 							<div className="flex flex-col justify-start items-start gap-8">
@@ -175,7 +175,7 @@ export default function Gallery() {
 						<div
 							className="rounded-3xl bg-dark row-start-8 col-start-1 row-end-13 col-end-9 p-4 md:p-2 xs:h-36 aos-frame"
 							data-aos="zoom-in"
-							data-aos-offset="-100"
+							data-aos-offset="-200"
 						>
 							<img
 								src={albums?.find(album => album.tag === selectedAlbum)?.img2.src}
@@ -186,7 +186,7 @@ export default function Gallery() {
 						<div
 							className="rounded-3xl bg-dark row-start-1 col-start-7 row-end-8 col-end-13 p-4 md:p-2 xs:h-36 z-10 aos-frame"
 							data-aos="zoom-in"
-							data-aos-offset="-100"
+							data-aos-offset="-200"
 						>
 							<img
 								src={albums?.find(album => album.tag === selectedAlbum)?.img1.src}

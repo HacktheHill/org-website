@@ -145,7 +145,10 @@ export default function Calendar({ events }) {
 					className="h-24 hidden absolute -top-16 right-0 -scale-x-100 lg:scale-x-100 lg:block"
 				/>
 			</div>
-			<div className="rounded-3xl bg-black w-full col-start-3 col-end-6 h-[35rem] scale-100" data-aos="fade-left">
+			<div
+				className="rounded-3xl bg-black w-full col-start-3 col-end-6 h-[40rem] xl:h-[35rem] scale-100"
+				data-aos="fade-left"
+			>
 				<div className="overflow-hidden p-8">
 					<div className="flex flex-col gap-8">
 						<div className="flex items-center justify-between gap-4 flex-wrap">
@@ -192,7 +195,7 @@ export default function Calendar({ events }) {
 							</div>
 						</div>
 						<hr className="border-shade-7" />
-						<div className=" h-[25rem] overflow-auto w-full pr-4">
+						<div className="h-[30rem] xl:h-[25rem] overflow-auto w-full pr-4">
 							<ol className="flex flex-col gap-2">
 								{showUpcomingEvents === -1 &&
 								events?.filter(event => parseISO(event?.start) < today).length > 0 ? (

@@ -34,7 +34,7 @@ export default function BlogPage({ posts }) {
 						{posts?.map((post, i) => (
 							<li
 								key={i}
-								className="basis-1/2 lg:basis-full p-3 mb-4 md:border md:border-primary md:rounded-3xl md:p-0 hover:cursor-pointer transition-all duration-300"
+								className="basis-1/2 lg:basis-full p-3 md:mb-4 md:border md:border-primary md:rounded-3xl md:p-0 hover:cursor-pointer transition-all duration-300"
 								onClick={() => (window.location.href = `/blog/${post.slug.current}`)}
 								data-aos="fade-up"
 								data-aos-offset={i >= 2 ? "-100" : "0"}
