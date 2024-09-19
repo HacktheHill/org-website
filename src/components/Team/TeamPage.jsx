@@ -29,17 +29,16 @@ export default function TeamPage({ teams }) {
 		AOS.init({ once: false, duration: 700 });
 	}, []);
 
+	const specialRoleCases = ["president", "execVP", "directorAtLarge", "secretary"];
+
 	useEffect(() => {
 		setSubTeams({});
 		teams
 			?.filter(currTeam => currTeam?.year?.toString() === selectedYear)?.[0]
 			?.members.map(member => {
-				const subTeam =
-					member.position?.[suf] === "president" ||
-					member.position?.[suf] === "secretary" ||
-					member.position?.[suf] === "director"
-						? "executive"
-						: member.teamName?.[suf] || "other";
+				const subTeam = specialRoleCases.includes(member.position?.[suf])
+					? "executive"
+					: member.teamName?.[suf] || "other";
 
 				setSubTeams(prevState => {
 					const newState = { ...prevState };
@@ -56,10 +55,16 @@ export default function TeamPage({ teams }) {
 				newState[subTeam] = newState[subTeam].sort((a, b) => {
 					if (a.position?.[suf] === "president") return -1;
 					if (b.position?.[suf] === "president") return 1;
+					if (a.position?.[suf] === "execVP") return -1;
+					if (b.position?.[suf] === "execVP") return 1;
+					if (a.position?.[suf] === "directorAtLarge") return -1;
+					if (b.position?.[suf] === "directorAtLarge") return 1;
 					if (a.position?.[suf] === "secretary") return -1;
 					if (b.position?.[suf] === "secretary") return 1;
 					if (a.position?.[suf] === "director") return -1;
 					if (b.position?.[suf] === "director") return 1;
+					if (a.position?.[suf] === "VP") return -1;
+					if (b.position?.[suf] === "VP") return 1;
 					if (a.position?.[suf] === "manager") return -1;
 					if (b.position?.[suf] === "manager") return 1;
 					if (a.position?.[suf] === "coordinator") return -1;
