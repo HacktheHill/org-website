@@ -21,8 +21,8 @@ export default function BlogPost({ data }) {
 
 	return (
 		<div id="post" className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
-			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
-				<div className="flex flex-col items-start justify-between gap-4 px-32 py-16 lg:px-4 rounded-3xl relative overflow-hidden bg-dark w-full">
+			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 md:pt-16 md:pb-0 text-left max-w-2xl z-[1] md:w-full">
+				<div className="flex flex-col items-start justify-between gap-4 px-32 py-16 lg:px-4 rounded-3xl md:rounded-none relative overflow-hidden bg-dark w-full">
 					<div className="absolute top-0 left-0 p-6">
 						<Button onClick={() => (window.location.href = "/blog")} fill={false} flip={true}>
 							{t("blog.back")}
