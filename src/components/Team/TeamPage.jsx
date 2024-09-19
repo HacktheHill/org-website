@@ -36,9 +36,10 @@ export default function TeamPage({ teams }) {
 		teams
 			?.filter(currTeam => currTeam?.year?.toString() === selectedYear)?.[0]
 			?.members.map(member => {
-				const subTeam = specialRoleCases.includes(member.position?.[suf])
-					? "executive"
-					: member.teamName?.[suf] || "other";
+				const subTeam =
+					member.teamName === "executive" || specialRoleCases.includes(member.position?.[suf])
+						? "executive"
+						: member.teamName?.[suf] || "other";
 
 				setSubTeams(prevState => {
 					const newState = { ...prevState };
