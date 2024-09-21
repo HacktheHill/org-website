@@ -27,6 +27,7 @@ export default function TeamPage({ teams }) {
 
 	useEffect(() => {
 		AOS.init({ once: false, duration: 700 });
+		console.log(teams);
 	}, []);
 
 	const specialRoleCases = ["President", "ExecutiveVP", "CoDirector", "DirectorAtLarge", "Secretary"];
@@ -37,8 +38,8 @@ export default function TeamPage({ teams }) {
 			?.filter(currTeam => currTeam?.year?.toString() === selectedYear)?.[0]
 			?.members.map(member => {
 				const subTeam =
-					member.teamName === "executive" || specialRoleCases.includes(member.position?.[suf])
-						? "executive"
+					member.teamName === "Executive" || specialRoleCases.includes(member.position?.[suf])
+						? "Executive"
 						: member.teamName?.[suf] || "other";
 
 				setSubTeams(prevState => {
@@ -54,24 +55,26 @@ export default function TeamPage({ teams }) {
 			const newState = { ...prevState };
 			Object.keys(newState).forEach(subTeam => {
 				newState[subTeam] = newState[subTeam].sort((a, b) => {
-					if (a.position?.[suf] === "president") return -1;
-					if (b.position?.[suf] === "president") return 1;
-					if (a.position?.[suf] === "execVP") return -1;
-					if (b.position?.[suf] === "execVP") return 1;
-					if (a.position?.[suf] === "directorAtLarge") return -1;
-					if (b.position?.[suf] === "directorAtLarge") return 1;
-					if (a.position?.[suf] === "secretary") return -1;
-					if (b.position?.[suf] === "secretary") return 1;
-					if (a.position?.[suf] === "director") return -1;
-					if (b.position?.[suf] === "director") return 1;
+					if (a.position?.[suf] === "President") return -1;
+					if (b.position?.[suf] === "President") return 1;
+					if (a.position?.[suf] === "ExecutiveVP") return -1;
+					if (b.position?.[suf] === "ExecutiveVP") return 1;
+					if (a.position?.[suf] === "DirectorAtLarge") return -1;
+					if (b.position?.[suf] === "DirectorAtLarge") return 1;
+					if (a.position?.[suf] === "Secretary") return -1;
+					if (b.position?.[suf] === "Secretary") return 1;
+					if (a.position?.[suf] === "Director") return -1;
+					if (b.position?.[suf] === "Director") return 1;
+					if (a.position?.[suf] === "CoDirector") return -1;
+					if (b.position?.[suf] === "CoDirector") return 1;
 					if (a.position?.[suf] === "VP") return -1;
 					if (b.position?.[suf] === "VP") return 1;
-					if (a.position?.[suf] === "manager") return -1;
-					if (b.position?.[suf] === "manager") return 1;
-					if (a.position?.[suf] === "coordinator") return -1;
-					if (b.position?.[suf] === "coordinator") return 1;
-					if (a.position?.[suf] === "advisor") return -1;
-					if (b.position?.[suf] === "advisor") return 1;
+					if (a.position?.[suf] === "Manager") return -1;
+					if (b.position?.[suf] === "Manager") return 1;
+					if (a.position?.[suf] === "Coordinator") return -1;
+					if (b.position?.[suf] === "Coordinator") return 1;
+					if (a.position?.[suf] === "Advisor") return -1;
+					if (b.position?.[suf] === "Advisor") return 1;
 					if (a.name < b.name) return -1;
 					if (a.name > b.name) return 1;
 					return 0;
@@ -82,10 +85,19 @@ export default function TeamPage({ teams }) {
 	}, [selectedYear]);
 
 	const memberCard = (member, i) => (
-		<li key={i} className="basis-1/5 xl:basis-1/3 md:basis-1/2 p-4" data-aos="fade-up">
+		<li
+			key={i}
+			className="basis-1/4 xl:basis-1/3 md:basis-1/2 p-4 min-h-[22rem] md:min-h-[18rem]"
+			data-aos="fade-up"
+		>
 			<div
-				className={`flex flex-col text-center gap-2 p-4 rounded-3xl overflow-hidden  border border-theme-red ${
-					i % 2 === 0 ? "bg-blur-svg" : "bg-dark"
+				className={`flex justify-between flex-col h-full text-center gap-2 p-4 rounded-3xl overflow-hidden border border-theme-red ${
+					member?.position?.[suf] == "VP" ||
+					member?.position?.[suf] == "Director" ||
+					member?.position?.[suf] == "Manager" ||
+					member?.position?.[suf] == "President"
+						? "bg-blur-svg"
+						: "bg-dark"
 				}`}
 			>
 				<img
@@ -97,12 +109,12 @@ export default function TeamPage({ teams }) {
 										?.fallbackPhoto?.asset,
 							  ).url()
 					}
-					className="w-full h-full object-cover rounded-[50%] shadow-small-glow"
+					className="aspect-square object-cover rounded-[50%] shadow-small-glow"
 				/>
 
-				<h6>{member.name}</h6>
+				<h6 className="mt-2">{member.name}</h6>
 
-				{member?.position?.[suf] && member?.teamName?.[suf] && member?.teamName.[suf] !== "executive" ? (
+				{member?.position?.[suf] && member?.teamName?.[suf] && member?.teamName?.[suf] !== "Executive" ? (
 					$locale === "en" ? (
 						<h5>{`${t_teamNames[member?.teamName?.[suf]]} ${t_positions[member?.position?.[suf]]}`}</h5>
 					) : (
@@ -113,7 +125,7 @@ export default function TeamPage({ teams }) {
 				) : (
 					<h5>{t("team.member")}</h5>
 				)}
-				<div className="w-full flex flex-row justify-center items-center gap-4 text-xl">
+				<div className="w-full flex flex-row justify-center items-center gap-4 text-xl h-8">
 					{member?.linkedin && (
 						<a
 							href={member?.linkedin}
@@ -125,7 +137,6 @@ export default function TeamPage({ teams }) {
 							<Icon icon={faLinkedin} />
 						</a>
 					)}
-
 					{member?.github && (
 						<a
 							href={member?.github}
@@ -138,7 +149,6 @@ export default function TeamPage({ teams }) {
 							<Icon icon={faGithub} />
 						</a>
 					)}
-
 					{member?.website && (
 						<a
 							href={member?.website}
@@ -156,8 +166,6 @@ export default function TeamPage({ teams }) {
 	);
 
 	return (
-		<Construction />
-		/*
 		<div className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
 				<div className="flex flex-row justify-between items-center text-left w-full" data-aos="fade-up">
@@ -178,14 +186,16 @@ export default function TeamPage({ teams }) {
 				</div>
 				<ul className="flex flex-wrap justify-evenly w-10/12 max-w-2xl gap-16">
 					{subTeams &&
-						Object.keys(subTeams).map((subTeam, i) => (
-							<li key={i} className="w-full">
-								<h2>{$locale === "en" ? subTeam : t_teamNames[subTeam].split(" ").slice(-1)[0]}</h2>
-								<ul className="flex flex-wrap justify-between w-full mt-2">
-									{subTeams[subTeam].map((member, i) => memberCard(member, i))}
-								</ul>
-							</li>
-						))}
+						Object.keys(subTeams)
+							.sort((a, b) => (a === "Executive" ? -1 : b === "Executive" ? 1 : a.localeCompare(b)))
+							.map((subTeam, i) => (
+								<li key={i} className="w-full">
+									<h2>{$locale === "en" ? subTeam : t_teamNames[subTeam].split(" ").slice(-1)[0]}</h2>
+									<ul className="flex flex-wrap justify-start w-full mt-2">
+										{subTeams[subTeam].map((member, i) => memberCard(member, i))}
+									</ul>
+								</li>
+							))}
 				</ul>
 			</div>
 			<img
@@ -199,6 +209,5 @@ export default function TeamPage({ teams }) {
 				className="w-full max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
 			/>
 		</div>
-		*/
 	);
 }
