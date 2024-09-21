@@ -29,7 +29,7 @@ export default function TeamPage({ teams }) {
 		AOS.init({ once: false, duration: 700 });
 	}, []);
 
-	const specialRoleCases = ["president", "execVP", "directorAtLarge", "secretary"];
+	const specialRoleCases = ["President", "ExecutiveVP", "CoDirector", "DirectorAtLarge", "Secretary"];
 
 	useEffect(() => {
 		setSubTeams({});
@@ -102,7 +102,7 @@ export default function TeamPage({ teams }) {
 
 				<h6>{member.name}</h6>
 
-				{member?.position?.[suf] && member?.teamName?.[suf] ? (
+				{member?.position?.[suf] && member?.teamName?.[suf] && member?.teamName.[suf] !== "executive" ? (
 					$locale === "en" ? (
 						<h5>{`${t_teamNames[member?.teamName?.[suf]]} ${t_positions[member?.position?.[suf]]}`}</h5>
 					) : (
