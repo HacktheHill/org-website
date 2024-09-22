@@ -13,7 +13,7 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import Construction from "../Construction/Construction";
 
 export default function TeamPage({ teams }) {
-	const [selectedYear, setSelectedYear] = useState(teams?.sort((a, b) => b.year - a.year)?.[0]?.year.toString());
+	const [selectedYear, setSelectedYear] = useState(teams?.sort((a, b) => b.year - a.year)?.[0]?.year?.toString());
 	const $locale = useStore(locale);
 	const builder = imageUrlBuilder(sanityClient);
 	const suf = `year_${selectedYear}`;
@@ -27,29 +27,25 @@ export default function TeamPage({ teams }) {
 
 	useEffect(() => {
 		AOS.init({ once: false, duration: 700 });
-		console.log(teams);
 	}, []);
 
 	const specialRoleCases = ["President", "ExecutiveVP", "CoDirector", "DirectorAtLarge", "Secretary"];
 
 	useEffect(() => {
-		setSubTeams({});
+		const newSubTeams = {};
 		teams
 			?.filter(currTeam => currTeam?.year?.toString() === selectedYear)?.[0]
-			?.members.map(member => {
-				const subTeam =
-					member.teamName === "Executive" || specialRoleCases.includes(member.position?.[suf])
-						? "Executive"
-						: member.teamName?.[suf] || "other";
+			?.members?.forEach(member => {
+				const subTeam = specialRoleCases?.includes(member?.position?.[suf])
+					? "Executive"
+					: member.teamName?.[suf] || "other";
 
-				setSubTeams(prevState => {
-					const newState = { ...prevState };
-					newState[subTeam] = [...(prevState[subTeam] || []), member];
-					return newState;
-				});
-
-				return null;
+				if (!newSubTeams[subTeam]) {
+					newSubTeams[subTeam] = [];
+				}
+				newSubTeams[subTeam].push(member);
 			});
+		setSubTeams(newSubTeams);
 
 		setSubTeams(prevState => {
 			const newState = { ...prevState };
@@ -87,11 +83,11 @@ export default function TeamPage({ teams }) {
 	const memberCard = (member, i) => (
 		<li
 			key={i}
-			className="basis-1/4 xl:basis-1/3 md:basis-1/2 p-4 min-h-[22rem] md:min-h-[18rem]"
+			className="basis-1/4 xl:basis-1/3 md:basis-1/2 p-4 md:p-1 min-h-[22rem] md:min-h-[14rem]"
 			data-aos="fade-up"
 		>
 			<div
-				className={`flex justify-between flex-col h-full text-center gap-2 p-4 rounded-3xl overflow-hidden border border-theme-red ${
+				className={`flex justify-between flex-col h-full text-center gap-2 md:gap-1 p-4 md:p-2 rounded-3xl overflow-hidden border border-theme-red ${
 					member?.position?.[suf] == "VP" ||
 					member?.position?.[suf] == "Director" ||
 					member?.position?.[suf] == "Manager" ||
@@ -111,7 +107,6 @@ export default function TeamPage({ teams }) {
 					}
 					className="aspect-square object-cover rounded-[50%] shadow-small-glow"
 				/>
-
 				<h6 className="mt-2">{member.name}</h6>
 
 				{member?.position?.[suf] && member?.teamName?.[suf] && member?.teamName?.[suf] !== "Executive" ? (
@@ -170,6 +165,7 @@ export default function TeamPage({ teams }) {
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
 				<div className="flex flex-row justify-between items-center text-left w-full" data-aos="fade-up">
 					<h1 data-aos="fade-up">{t("team.title")}</h1>
+					{/* 
 					<select
 						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer"
 						onChange={e => setSelectedYear(e.target.value)}
@@ -183,6 +179,7 @@ export default function TeamPage({ teams }) {
 								</option>
 							))}
 					</select>
+					*/}
 				</div>
 				<ul className="flex flex-wrap justify-evenly w-10/12 max-w-2xl gap-16">
 					{subTeams &&
@@ -190,7 +187,9 @@ export default function TeamPage({ teams }) {
 							.sort((a, b) => (a === "Executive" ? -1 : b === "Executive" ? 1 : a.localeCompare(b)))
 							.map((subTeam, i) => (
 								<li key={i} className="w-full">
-									<h2>{$locale === "en" ? subTeam : t_teamNames[subTeam].split(" ").slice(-1)[0]}</h2>
+									<h2>
+										{$locale === "en" ? subTeam : t_teamNames?.[subTeam]?.split(" ").slice(-1)[0]}
+									</h2>
 									<ul className="flex flex-wrap justify-start w-full mt-2">
 										{subTeams[subTeam].map((member, i) => memberCard(member, i))}
 									</ul>
@@ -201,12 +200,12 @@ export default function TeamPage({ teams }) {
 			<img
 				src={shape.src}
 				alt="shape"
-				className="w-full max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
+				className="w-full md:w-[200%] md:translate-x-0 md:-translate-y-1/3 top-0 max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 			/>
 			<img
 				src={shape.src}
 				alt="shape"
-				className="w-full max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
+				className="w-full md:w-[200%] md:translate-x-0 md:translate-y-1/3 top-0 max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
 			/>
 		</div>
 	);
