@@ -93,7 +93,7 @@ export default function TeamPage({ teams }) {
 			data-aos="fade-up"
 		>
 			<div
-				className={`flex justify-between flex-col h-full text-center gap-2 md:gap-1 p-4 md:p-2 rounded-3xl overflow-hidden border border-theme-red ${
+				className={`flex justify-between flex-col h-full text-center gap-2 md:gap-1 p-4 md:p-2 rounded-3xl overflow-hidden border border-theme-red transition-all ease-in-out duration-300 hover:-translate-y-2 hover:border-primary ${
 					redCardRoles.includes(member?.position?.[suf]) ? "bg-blur-svg" : "bg-dark"
 				}`}
 			>
