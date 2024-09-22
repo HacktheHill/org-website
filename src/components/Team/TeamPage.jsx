@@ -16,9 +16,9 @@ export default function TeamPage({ teams }) {
 	const [selectedYear, setSelectedYear] = useState(teams?.sort((a, b) => b.year - a.year)?.[0]?.year?.toString());
 	const $locale = useStore(locale);
 	const builder = imageUrlBuilder(sanityClient);
-	const suf = `year_${selectedYear}`;
 	const t_teamNames = t("team.teams");
 	const t_positions = t("team.positions");
+	let suf = `year_${selectedYear}`;
 	const [subTeams, setSubTeams] = useState({});
 
 	function urlFor(source) {
@@ -29,56 +29,53 @@ export default function TeamPage({ teams }) {
 		AOS.init({ once: false, duration: 700 });
 	}, []);
 
-	const specialRoleCases = ["President", "ExecutiveVP", "CoDirector", "DirectorAtLarge", "Secretary"];
+	const executiveRoles = ["President", "ExecutiveVP", "CoDirector", "DirectorAtLarge", "Secretary"];
 
 	useEffect(() => {
 		const newSubTeams = {};
+
 		teams
 			?.filter(currTeam => currTeam?.year?.toString() === selectedYear)?.[0]
 			?.members?.forEach(member => {
-				const subTeam = specialRoleCases?.includes(member?.position?.[suf])
+				const subTeam = executiveRoles?.includes(member?.position?.[suf])
 					? "Executive"
-					: member.teamName?.[suf] || "other";
+					: member.teamName?.[suf] || "Member";
 
 				if (!newSubTeams[subTeam]) {
 					newSubTeams[subTeam] = [];
 				}
 				newSubTeams[subTeam].push(member);
 			});
-		setSubTeams(newSubTeams);
 
-		setSubTeams(prevState => {
-			const newState = { ...prevState };
-			Object.keys(newState).forEach(subTeam => {
-				newState[subTeam] = newState[subTeam].sort((a, b) => {
-					if (a.position?.[suf] === "President") return -1;
-					if (b.position?.[suf] === "President") return 1;
-					if (a.position?.[suf] === "ExecutiveVP") return -1;
-					if (b.position?.[suf] === "ExecutiveVP") return 1;
-					if (a.position?.[suf] === "DirectorAtLarge") return -1;
-					if (b.position?.[suf] === "DirectorAtLarge") return 1;
-					if (a.position?.[suf] === "Secretary") return -1;
-					if (b.position?.[suf] === "Secretary") return 1;
-					if (a.position?.[suf] === "Director") return -1;
-					if (b.position?.[suf] === "Director") return 1;
-					if (a.position?.[suf] === "CoDirector") return -1;
-					if (b.position?.[suf] === "CoDirector") return 1;
-					if (a.position?.[suf] === "VP") return -1;
-					if (b.position?.[suf] === "VP") return 1;
-					if (a.position?.[suf] === "Manager") return -1;
-					if (b.position?.[suf] === "Manager") return 1;
-					if (a.position?.[suf] === "Coordinator") return -1;
-					if (b.position?.[suf] === "Coordinator") return 1;
-					if (a.position?.[suf] === "Advisor") return -1;
-					if (b.position?.[suf] === "Advisor") return 1;
-					if (a.name < b.name) return -1;
-					if (a.name > b.name) return 1;
-					return 0;
-				});
+		Object.keys(newSubTeams).forEach(subTeam => {
+			newSubTeams[subTeam] = newSubTeams[subTeam].sort((a, b) => {
+				const rankOrder = [
+					"President",
+					"ExecutiveVP",
+					"DirectorAtLarge",
+					"Secretary",
+					"Director",
+					"CoDirector",
+					"VP",
+					"Manager",
+					"Coordinator",
+					"Advisor",
+				];
+
+				const rankA =
+					rankOrder.indexOf(a.position?.[suf]) !== -1 ? rankOrder.indexOf(a.position?.[suf]) : Infinity;
+				const rankB =
+					rankOrder.indexOf(b.position?.[suf]) !== -1 ? rankOrder.indexOf(b.position?.[suf]) : Infinity;
+
+				if (rankA !== rankB) return rankA - rankB;
+				return a.name.localeCompare(b.name);
 			});
-			return newState;
 		});
-	}, [selectedYear]);
+
+		setSubTeams(newSubTeams);
+	}, [selectedYear, teams]);
+
+	const redCardRoles = ["President", "ExecutiveVP", "Director", "VP", "CoDirector", "DirectorAtLarge", "Secretary"];
 
 	const memberCard = (member, i) => (
 		<li
@@ -88,12 +85,7 @@ export default function TeamPage({ teams }) {
 		>
 			<div
 				className={`flex justify-between flex-col h-full text-center gap-2 md:gap-1 p-4 md:p-2 rounded-3xl overflow-hidden border border-theme-red ${
-					member?.position?.[suf] == "VP" ||
-					member?.position?.[suf] == "Director" ||
-					member?.position?.[suf] == "Manager" ||
-					member?.position?.[suf] == "President"
-						? "bg-blur-svg"
-						: "bg-dark"
+					redCardRoles.includes(member?.position?.[suf]) ? "bg-blur-svg" : "bg-dark"
 				}`}
 			>
 				<img
@@ -118,7 +110,7 @@ export default function TeamPage({ teams }) {
 				) : member?.position?.[suf] ? (
 					<h5>{t_positions[member?.position?.[suf]]}</h5>
 				) : (
-					<h5>{t("team.member")}</h5>
+					<h5>{t_positions?.member}</h5>
 				)}
 				<div className="w-full flex flex-row justify-center items-center gap-4 text-xl h-8">
 					{member?.linkedin && (
@@ -165,7 +157,7 @@ export default function TeamPage({ teams }) {
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
 				<div className="flex flex-row justify-between items-center text-left w-full" data-aos="fade-up">
 					<h1 data-aos="fade-up">{t("team.title")}</h1>
-					{/* 
+
 					<select
 						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer"
 						onChange={e => setSelectedYear(e.target.value)}
@@ -179,7 +171,6 @@ export default function TeamPage({ teams }) {
 								</option>
 							))}
 					</select>
-					*/}
 				</div>
 				<ul className="flex flex-wrap justify-evenly w-10/12 max-w-2xl gap-16">
 					{subTeams &&
