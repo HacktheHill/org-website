@@ -64,6 +64,12 @@ module.exports = {
 
 					"100%": { transform: "translate(0, 0)" },
 				},
+				glowAnimation: {
+					"0%, 100%": { boxShadow: "0 0 35px 8px rgba(255, 153, 153, 0.7)" },
+					"25%": { boxShadow: "0 0 40px 10px rgba(153, 255, 153, 0.7)" },
+					"50%": { boxShadow: "0 0 45px 12px rgba(153, 153, 255, 0.7)" },
+					"75%": { boxShadow: "0 0 40px 10px rgba(255, 255, 153, 0.7)" },
+				},
 			},
 			animation: {
 				"shake-rotate": "shake-start 0.5s ease-in-out 0s, shake-repeat 0.5s ease-in-out 0.5s infinite",
@@ -72,6 +78,7 @@ module.exports = {
 				"sponsor-card": "sponsor-card 5.0s ease-in-out infinite",
 				"sponsor-card-2": "sponsor-card 5.0s ease-in-out 1.5s infinite",
 				beaver: "beaver 6.0s ease forwards",
+				glow: "glowAnimation 0.75s infinite",
 			},
 			boxShadow: {
 				"grid-card": "0 0 1.5rem 0.5rem rgba(255, 53, 53, 0.5), 0 0 1.5rem 0.5rem rgba(255, 53, 53, 0.5) inset",

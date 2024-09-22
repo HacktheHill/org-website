@@ -33,7 +33,6 @@ export default function TeamPage({ teams }) {
 
 	useEffect(() => {
 		const newSubTeams = {};
-
 		teams
 			?.filter(currTeam => currTeam?.year?.toString() === selectedYear)?.[0]
 			?.members?.forEach(member => {
@@ -71,7 +70,6 @@ export default function TeamPage({ teams }) {
 				return a.name.localeCompare(b.name);
 			});
 		});
-
 		setSubTeams(newSubTeams);
 	}, [selectedYear, teams]);
 
@@ -95,7 +93,7 @@ export default function TeamPage({ teams }) {
 			<div
 				className={`flex justify-between flex-col h-full text-center gap-2 md:gap-1 p-4 md:p-2 rounded-3xl overflow-hidden border border-theme-red transition-all ease-in-out duration-300 hover:-translate-y-2 hover:border-primary ${
 					redCardRoles.includes(member?.position?.[suf]) ? "bg-blur-svg" : "bg-dark"
-				}`}
+				} ${(member?.name === "Sacha Arseneault" || member?.name === "Erik Ang") && "hover:animate-glow"}`}
 			>
 				<img
 					src={
@@ -111,7 +109,7 @@ export default function TeamPage({ teams }) {
 				<h6 className="mt-2">{member.name}</h6>
 
 				{member?.position?.[suf] && member?.teamName?.[suf] && member?.teamName?.[suf] !== "Executive" ? (
-					member?.position?.[suf] == "VP" ? (
+					member?.position?.[suf] === "VP" ? (
 						<h5>{`${t_positions[member?.position?.[suf]]} ${t_teamNames[member?.teamName?.[suf]]} `}</h5>
 					) : $locale === "en" ? (
 						<h5>{`${t_teamNames[member?.teamName?.[suf]]} ${t_positions[member?.position?.[suf]]}`}</h5>
@@ -168,7 +166,6 @@ export default function TeamPage({ teams }) {
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
 				<div className="flex flex-row justify-between items-center text-left w-full" data-aos="fade-up">
 					<h1 data-aos="fade-up">{t("team.title")}</h1>
-
 					<select
 						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer"
 						onChange={e => setSelectedYear(e.target.value)}
