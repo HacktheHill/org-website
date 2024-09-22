@@ -75,7 +75,16 @@ export default function TeamPage({ teams }) {
 		setSubTeams(newSubTeams);
 	}, [selectedYear, teams]);
 
-	const redCardRoles = ["President", "ExecutiveVP", "Director", "VP", "CoDirector", "DirectorAtLarge", "Secretary"];
+	const redCardRoles = [
+		"President",
+		"ExecutiveVP",
+		"Director",
+		"VP",
+		"Manager",
+		"CoDirector",
+		"DirectorAtLarge",
+		"Secretary",
+	];
 
 	const memberCard = (member, i) => (
 		<li
@@ -102,7 +111,9 @@ export default function TeamPage({ teams }) {
 				<h6 className="mt-2">{member.name}</h6>
 
 				{member?.position?.[suf] && member?.teamName?.[suf] && member?.teamName?.[suf] !== "Executive" ? (
-					$locale === "en" ? (
+					member?.position?.[suf] == "VP" ? (
+						<h5>{`${t_positions[member?.position?.[suf]]} ${t_teamNames[member?.teamName?.[suf]]} `}</h5>
+					) : $locale === "en" ? (
 						<h5>{`${t_teamNames[member?.teamName?.[suf]]} ${t_positions[member?.position?.[suf]]}`}</h5>
 					) : (
 						<h5>{`${t_positions[member?.position?.[suf]]} ${t_teamNames[member?.teamName?.[suf]]} `}</h5>
@@ -179,7 +190,9 @@ export default function TeamPage({ teams }) {
 							.map((subTeam, i) => (
 								<li key={i} className="w-full">
 									<h2>
-										{$locale === "en" ? subTeam : t_teamNames?.[subTeam]?.split(" ").slice(-1)[0]}
+										{$locale === "en"
+											? t_teamNames?.[subTeam]
+											: t_teamNames?.[subTeam]?.split(" ").slice(-1)[0]}
 									</h2>
 									<ul className="flex flex-wrap justify-start w-full mt-2">
 										{subTeams[subTeam].map((member, i) => memberCard(member, i))}

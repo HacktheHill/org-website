@@ -171,7 +171,7 @@ export default {
 			Advisor: "Advisor",
 		},
 		teams: {
-			Executive: "Executive",
+			Executive: "Board",
 			Community: "Community",
 			Design: "Design",
 			Development: "Development",

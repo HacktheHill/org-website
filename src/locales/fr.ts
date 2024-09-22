@@ -171,7 +171,7 @@ export default {
 			Advisor: "Conseiller",
 		},
 		teams: {
-			Executive: "Exécutif",
+			Executive: "Conseil",
 			Community: "de Communauté",
 			Design: "du Design",
 			Development: "du Développement",
