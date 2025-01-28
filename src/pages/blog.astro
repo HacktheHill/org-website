@@ -1,7 +1,7 @@
 ---
 import BlogPage from "../components/Blog/BlogPage";
 import Layout from "../layouts/Layout.astro";
-const title = "Hack The Hill - Blog";
+const title = "Capital Technology Network - Blog";
 const pathName = "/blog";
 import { sanityClient } from "sanity:client";
 const query = `*[_type == "blog" && defined(slug)] | order(publishedAt desc)`;
