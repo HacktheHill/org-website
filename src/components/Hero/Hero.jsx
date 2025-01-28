@@ -28,8 +28,18 @@ export default function Hero() {
 		<div className="flex justify-center items-center h-screen w-full bg-square-svg bg-center bg-cover bg-no-repeat bg-fixed relative md:bg-scroll">
 			<div className="flex flex-col justify-center items-center gap-12 translate-y-8 z-10 md:gap-6 max-w-2xl">
 				<div id="title" className="flex items-center justify-center" data-aos="fade-up">
-					<img id="hth-logo-outline" {...HtHoutline} alt="Capital Technology Network Logo" className="absolute w-3/4" />
-					<img id="hth-logo-solid" {...HtHSolid} alt="Capital Technology Network Logo" className="relative w-3/4" />
+					<img
+						id="hth-logo-outline"
+						{...HtHoutline}
+						alt="Capital Technology Network Logo"
+						className="absolute w-3/4"
+					/>
+					<img
+						id="hth-logo-solid"
+						{...HtHSolid}
+						alt="Capital Technology Network Logo"
+						className="relative w-3/4"
+					/>
 				</div>
 				<div id="content" className="flex flex-col w-full justify-center items-center gap-8 px-4 md:gap-4">
 					<h3 className="font-medium text-3xl text-center md:text-lg" data-aos="fade-up" data-aos-delay="100">
