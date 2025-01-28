@@ -7,7 +7,7 @@ export default {
 	about: {
 		title: "It's more than just a hackathon",
 		subtitle: "It's a community of passionate students who are dedicated to learning, growing, and creating.",
-		p1_prefix: "Hack the Hill",
+		p1_prefix: "Capital Technology Network",
 		p1: "is a student-run organization that aims to foster a culture of innovation and creativity in the Ottawa community.",
 		p1_btn: "Explore our journey and story",
 		p2_prefix: "Our goal",
@@ -139,10 +139,10 @@ export default {
 	},
 	documents: {
 		title: "Documents",
-		subtitle: "Discover the official documents of Hack the Hill.",
+		subtitle: "Discover the official documents of Capital Technology Network.",
 		constitution: "Constitution",
 		constitution_desc:
-			"The official constitution of Hack the Hill, outlining the organization's structure and purpose.",
+			"The official constitution of Capital Technology Network, outlining the organization's structure and purpose.",
 		constitution_btn: "Read the Constitution",
 		privacy: "Privacy Policy",
 		privacy_desc: "Our privacy policy outlines how we collect, use, and store your personal information.",
