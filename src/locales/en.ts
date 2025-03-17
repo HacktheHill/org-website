@@ -139,10 +139,10 @@ export default {
 	},
 	documents: {
 		title: "Documents",
-		subtitle: "Discover the official documents of The Capital Technology Network.",
+		subtitle: "Discover the official documents of the Capital Technology Network.",
 		constitution: "Constitution",
 		constitution_desc:
-			"The official constitution of The Capital Technology Network, outlining the organization's structure and purpose.",
+			"The official constitution of the Capital Technology Network, outlining the organization's structure and purpose.",
 		constitution_btn: "Read the Constitution",
 		privacy: "Privacy Policy",
 		privacy_desc: "Our privacy policy outlines how we collect, use, and store your personal information.",

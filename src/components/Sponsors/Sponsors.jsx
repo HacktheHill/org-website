@@ -130,7 +130,7 @@ export default function Sponsors() {
 
 	return (
 		<div className="w-full flex flex-col gap-8 items-center justify-center">
-			<h2>{t("sponsors.title")}</h2>
+			<h2 className="mb-12">{t("sponsors.title")}</h2>
 			<div className="w-full flex justify-center items-center relative bg-theme-gradient">
 				<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-28 text-left max-w-2xl z-[2]">
 					<div className="carousel-track z-[2]">
@@ -145,7 +145,7 @@ export default function Sponsors() {
 					alt="waves"
 				></img>
 			</div>
-			<h2 className="mt-32">{t("collaborators.title")}</h2>
+			<h2 className="my-8">{t("collaborators.title")}</h2>
 			<div className="w-full flex justify-center items-center relative bg-theme-gradient">
 				<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-28 text-left max-w-2xl z-[2]">
 					<div className="carousel-track z-[2]">
