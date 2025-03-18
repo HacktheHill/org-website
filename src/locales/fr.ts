@@ -3,7 +3,11 @@ export default {
 		links: { events: "Événements", blog: "Blog", documents: "Documents", team: "Équipe" },
 		aria_label: "Barre de Navigation",
 	},
-	hero: { title: "L'Organisation du Hackathon de la Capitale Canadienne", alt: "Parlement" },
+	hero: {
+		title: "Réseau technologique de la capitale",
+		subtitle: "L'Organisation du Hackathon de la Capitale Canadienne",
+		alt: "Parlement",
+	},
 	about: {
 		title: "C'est plus qu'un seul hackathon",
 		subtitle: "C'est une communauté d'étudiants passionnés qui sont dédiés à apprendre, grandir et créer.",
