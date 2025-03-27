@@ -38,7 +38,7 @@ export default function Stats() {
 							alt={"Hacker"}
 						/>
 						<div className="md:text-end md:self-center">
-							<h2>600+</h2>
+							<h2>800+</h2>
 							<p>Hackers</p>
 						</div>
 					</div>
@@ -83,7 +83,7 @@ export default function Stats() {
 							alt={"Cash"}
 						/>
 						<div className="md:text-end md:self-center">
-							<h2>$35k+</h2>
+							<h2>$12+</h2>
 							<p>{t("stats.prizes")}</p>
 						</div>
 					</div>

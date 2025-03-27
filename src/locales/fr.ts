@@ -144,21 +144,34 @@ export default {
 	},
 	documents: {
 		title: "Documents",
-		subtitle: "Découvrez nos documents officiels.",
+		subtitle: "Découvrez les documents officiels du Réseau technologique de la capitale.",
 		constitution: "Constitution",
-		constitution_desc: "Notre constitution définit les règles et les procédures qui régissent notre organisation.",
+		constitution_desc: "Notre constitution définit la structure, l'objectif et les règles de notre organisation.",
 		constitution_btn: "Lire la Constitution",
+		policies: "Manuel des Politiques",
+		policies_desc:
+			"Notre manuel des politiques décrit notre structure interne, nos règlements et nos procédures pour nos membres.",
+		financials: "Finances",
+		financials_desc:
+			"Consultez notre rapport de profits et pertes pour voir d'où provient notre argent et comment il est dépensé.",
+		financials_btn: "Voir le Rapport de Profits et Pertes",
+		ledger: "Grand Livre",
+		ledger_desc:
+			"Le grand livre est un enregistrement complet de toutes les transactions financières de l'organisation.",
+		ledger_btn: "Voir le Grand Livre",
+		policies_btn: "Lire le Manuel des Politiques",
 		privacy: "Politique de Confidentialité",
 		privacy_desc:
-			"Notre politique de confidentialité explique comment nous collectons, utilisons et partageons vos informations.",
+			"Notre politique de confidentialité explique comment nous collectons, utilisons et stockons vos informations personnelles.",
 		privacy_btn: "Lire la Politique de Confidentialité",
 		conduct: "Code de Conduite",
 		conduct_desc:
-			"Notre code de conduite établit les normes de comportement que nous attendons de tous les membres de notre communauté.",
+			"Notre code de conduite définit les attentes et les directives pour tous les participants à nos événements.",
 		conduct_btn: "Lire le Code de Conduite",
-		service: "Conditions de Service",
-		service_desc: "Nos conditions de service définissent les conditions d'utilisation de notre site Web.",
-		service_btn: "Lire les Conditions de Service",
+		service: "Conditions d'Utilisation",
+		service_desc:
+			"Nos conditions d'utilisation définissent les règles et règlements pour l'utilisation de notre site web et la participation à nos événements.",
+		service_btn: "Lire les Conditions d'Utilisation",
 	},
 	team: {
 		title: "Équipe",
