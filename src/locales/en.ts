@@ -3,11 +3,15 @@ export default {
 		links: { events: "Events", blog: "Blog", documents: "Documents", team: "Team" },
 		aria_label: "Navigation Bar",
 	},
-	hero: { title: "Canada's Capital Hackathon Organization", alt: "Parliament" },
+	hero: {
+		title: "Capital Technology Network",
+		subtitle: "Canada's Capital Hackathon Organization",
+		alt: "Parliament",
+	},
 	about: {
 		title: "It's more than just a hackathon",
 		subtitle: "It's a community of passionate students who are dedicated to learning, growing, and creating.",
-		p1_prefix: "Hack the Hill",
+		p1_prefix: "The Capital Technology Network",
 		p1: "is a student-run organization that aims to foster a culture of innovation and creativity in the Ottawa community.",
 		p1_btn: "Explore our journey and story",
 		p2_prefix: "Our goal",
@@ -128,7 +132,7 @@ export default {
 	footer: {
 		constitution: "Constitution",
 		privacy: "Privacy Policy",
-		message: "by HtH Dev team",
+		message: "by CTN Dev team",
 	},
 	blog: {
 		title: "Blog",
@@ -139,9 +143,10 @@ export default {
 	},
 	documents: {
 		title: "Documents",
-		subtitle: "Discover the Capital Technology Network's official documents.",
+		subtitle: "Discover the official documents of the Capital Technology Network.",
 		constitution: "Constitution",
-		constitution_desc: "Our constitution outlines the structure, purpose, and rules of our organization.",
+		constitution_desc:
+			"The official constitution of the Capital Technology Network, outlining the organization's structure and purpose.",
 		constitution_btn: "Read the Constitution",
 		policies: "Policies Manual",
 		policies_desc:

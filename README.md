@@ -1,6 +1,6 @@
-# Hack the Hill Website
+# Capital Technology Network Website
 
-Welcome to the Hack the Hill Organization Website repository. This static marketing website serves to provide information about the Hack the Hill hackathon.
+Welcome to the Capital Technology Network Organization Website repository. This static marketing website serves to provide information about the Hack the Hill hackathon.
 
 ## Getting Started
 

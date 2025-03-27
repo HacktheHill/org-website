@@ -49,7 +49,7 @@ export default function Footer() {
 			</div>
 			<div className="flex flex-row w-full justify-between items-center gap-8 pl-64 pr-16 py-4 flex-wrap lg:px-8 md:justify-center bg-background-light ">
 				<div className="flex flex-row gap-8 justify-start items-center flex-wrap lg:justify-center">
-					<p className="text-white text-xs whitespace-nowrap">© Hack the Hill 2024</p>
+					<p className="text-white text-xs whitespace-nowrap">© Capital Technology Network 2025</p>
 					<div className="flex gap-4 text-xl">
 						<a
 							href="https://www.facebook.com/canadascapitalhackathon"
