@@ -152,12 +152,10 @@ export default {
 		policies_desc:
 			"Our policies manual outlines our internal structure, regulations, and procedures for our members.",
 		financials: "Financials",
-		financials_desc:
-			"View our profit & loss report to see where our money comes from and where it goes.",
+		financials_desc: "View our profit & loss report to see where our money comes from and where it goes.",
 		financials_btn: "View the Profit & Loss Report",
 		ledger: "Ledger",
-		ledger_desc:
-			"View our ledger to see a detailed record of all our financial transactions.",
+		ledger_desc: "View our ledger to see a detailed record of all our financial transactions.",
 		ledger_btn: "View the General Ledger",
 		policies_btn: "Read the Policies Manual",
 		privacy: "Privacy Policy",
@@ -176,6 +174,7 @@ export default {
 		title: "Team",
 		positions: {
 			President: "President",
+			VPOperations: "VP Operations",
 			CoDirector: "Co-Director",
 			ExecutiveVP: "Executive Vice President",
 			Secretary: "Secretary",
@@ -187,8 +186,9 @@ export default {
 			Advisor: "Advisor",
 		},
 		teams: {
-			Executive: "Board",
+			Executive: "Board of Directors",
 			Community: "Community",
+			Communications: "Communications",
 			Design: "Design",
 			Development: "Development",
 			Finance: "Finance",
