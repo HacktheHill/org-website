@@ -177,6 +177,7 @@ export default {
 		title: "Équipe",
 		positions: {
 			President: "Président",
+			VPOperations: "VP des Opérations",
 			CoDirector: "Co-Directeur",
 			ExecutiveVP: "Vice-Président Exécutif",
 			Secretary: "Secrétaire",
@@ -188,8 +189,9 @@ export default {
 			Advisor: "Conseiller",
 		},
 		teams: {
-			Executive: "Conseil",
+			Executive: "Conseil d'Administration",
 			Community: "de Communauté",
+			Communications: "de Communication",
 			Design: "du Design",
 			Development: "du Développement",
 			Finance: "de Finance",

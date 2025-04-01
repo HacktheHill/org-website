@@ -29,27 +29,55 @@ export default function TeamPage({ teams }) {
 		AOS.init({ once: false, duration: 700 });
 	}, []);
 
-	const executiveRoles = ["President", "ExecutiveVP", "CoDirector", "DirectorAtLarge", "Secretary"];
+	const executiveRoles = [
+		"President",
+		"ExecutiveVP",
+		"VPOperations",
+		"VP",
+		"CoDirector",
+		"DirectorAtLarge",
+		"Secretary",
+	];
 
 	useEffect(() => {
 		const newSubTeams = {};
-		teams
-			?.filter(currTeam => currTeam?.year?.toString() === selectedYear)?.[0]
-			?.members?.forEach(member => {
-				const subTeam = executiveRoles?.includes(member?.position?.[suf])
-					? "Executive"
-					: member.teamName?.[suf] || "Member";
-
-				if (!newSubTeams[subTeam]) {
-					newSubTeams[subTeam] = [];
+		const teamObj = teams?.find(currTeam => currTeam?.year?.toString() === selectedYear);
+		teamObj?.members?.forEach(member => {
+			const assignmentsForYear = member.assignments?.[suf] || [];
+			const hasExecutive = assignmentsForYear.some(a => executiveRoles.includes(a.position));
+			if (hasExecutive) {
+				// For board of directors, determine the effective assignment:
+				// Use the assignment whose position is in executiveRoles
+				let effectiveExec = assignmentsForYear.find(a => executiveRoles.includes(a.position));
+				if (!effectiveExec) {
+					const alternative = assignmentsForYear.find(
+						a => !executiveRoles.includes(a.position) && a.position,
+					);
+					effectiveExec = alternative || assignmentsForYear.find(a => executiveRoles.includes(a.position));
 				}
-				newSubTeams[subTeam].push(member);
+				if (!newSubTeams["Executive"]) {
+					newSubTeams["Executive"] = [];
+				}
+				// Force grouping under 'Executive' for board of directors
+				newSubTeams["Executive"].push({ ...member, assignment: effectiveExec });
+			}
+			// For assignments that are not part of the Executive grouping, add them normally
+			assignmentsForYear.forEach(assignment => {
+				if (assignment.teamName !== "Executive") {
+					const group = assignment.teamName || "Member";
+					if (!newSubTeams[group]) {
+						newSubTeams[group] = [];
+					}
+					newSubTeams[group].push({ ...member, assignment });
+				}
 			});
+		});
 
 		Object.keys(newSubTeams).forEach(subTeam => {
 			newSubTeams[subTeam] = newSubTeams[subTeam].sort((a, b) => {
 				const rankOrder = [
 					"President",
+					"VPOperations",
 					"ExecutiveVP",
 					"DirectorAtLarge",
 					"Secretary",
@@ -60,21 +88,25 @@ export default function TeamPage({ teams }) {
 					"Coordinator",
 					"Advisor",
 				];
-
 				const rankA =
-					rankOrder.indexOf(a.position?.[suf]) !== -1 ? rankOrder.indexOf(a.position?.[suf]) : Infinity;
+					rankOrder.indexOf(a.assignment.position) !== -1
+						? rankOrder.indexOf(a.assignment.position)
+						: Infinity;
 				const rankB =
-					rankOrder.indexOf(b.position?.[suf]) !== -1 ? rankOrder.indexOf(b.position?.[suf]) : Infinity;
-
+					rankOrder.indexOf(b.assignment.position) !== -1
+						? rankOrder.indexOf(b.assignment.position)
+						: Infinity;
 				if (rankA !== rankB) return rankA - rankB;
 				return a.name.localeCompare(b.name);
 			});
 		});
+
 		setSubTeams(newSubTeams);
 	}, [selectedYear, teams]);
 
 	const redCardRoles = [
 		"President",
+		"VPOperations",
 		"ExecutiveVP",
 		"Director",
 		"VP",
@@ -92,35 +124,46 @@ export default function TeamPage({ teams }) {
 		>
 			<div
 				className={`flex justify-between flex-col h-full text-center gap-2 md:gap-1 p-4 md:p-2 rounded-3xl overflow-hidden border border-theme-red transition-all ease-in-out duration-300 hover:-translate-y-2 hover:border-primary ${
-					redCardRoles.includes(member?.position?.[suf]) ? "bg-blur-svg" : "bg-dark"
-				} ${(member?.name === "Sacha Arseneault" || member?.name === "Erik Ang") && "hover:animate-glow"}`}
+					redCardRoles.includes(member.assignment.position) ? "bg-blur-svg" : "bg-dark"
+				} ${(member.name === "Sacha Arseneault" || member.name === "Erik Ang") && "hover:animate-glow"}`}
 			>
 				<img
 					src={
 						member?.photo?.[suf]
 							? urlFor(member?.photo?.[suf].asset).url()
 							: urlFor(
-									teams?.filter(currTeam => currTeam?.year?.toString() === selectedYear)[0]
-										?.fallbackPhoto?.asset,
+									teams?.find(currTeam => currTeam?.year?.toString() === selectedYear)?.fallbackPhoto
+										?.asset,
 							  ).url()
 					}
+					loading="lazy"
+					alt={member.name}
 					className="aspect-square object-cover rounded-[50%] shadow-small-glow"
 				/>
 				<h6 className="mt-2">{member.name}</h6>
 
-				{member?.position?.[suf] && member?.teamName?.[suf] && member?.teamName?.[suf] !== "Executive" ? (
-					member?.position?.[suf] === "VP" ? (
-						<h5>{`${t_positions[member?.position?.[suf]]} ${t_teamNames[member?.teamName?.[suf]]} `}</h5>
+				{member.assignment && member.assignment.teamName && member.assignment.position ? (
+					member.assignment.teamName === "Executive" ? (
+						<h5>{t_positions[member.assignment.position]}</h5>
+					) : member.assignment.position === "VP" ? (
+						<h5>{`${t_positions[member.assignment.position]} of ${
+							t_teamNames[member.assignment.teamName]
+						}`}</h5>
 					) : $locale === "en" ? (
-						<h5>{`${t_teamNames[member?.teamName?.[suf]]} ${t_positions[member?.position?.[suf]]}`}</h5>
+						<h5>{`${t_teamNames[member.assignment.teamName]} ${
+							t_positions[member.assignment.position]
+						}`}</h5>
 					) : (
-						<h5>{`${t_positions[member?.position?.[suf]]} ${t_teamNames[member?.teamName?.[suf]]} `}</h5>
+						<h5>{`${t_positions[member.assignment.position]} ${
+							t_teamNames[member.assignment.teamName]
+						}`}</h5>
 					)
-				) : member?.position?.[suf] ? (
-					<h5>{t_positions[member?.position?.[suf]]}</h5>
+				) : member.assignment && member.assignment.position ? (
+					<h5>{t_positions[member.assignment.position]}</h5>
 				) : (
 					<h5>{t_positions?.member}</h5>
 				)}
+
 				<div className="w-full flex flex-row justify-center items-center gap-4 text-xl h-8">
 					{member?.linkedin && (
 						<a
@@ -139,8 +182,7 @@ export default function TeamPage({ teams }) {
 							target="_blank"
 							rel="noreferrer"
 							aria-label="LinkedIn"
-							className="transition-all duration-300 text-white
-							hover:opacity-100 opacity-80"
+							className="transition-all duration-300 text-white hover:opacity-100 opacity-80"
 						>
 							<Icon icon={faGithub} />
 						</a>
@@ -187,7 +229,9 @@ export default function TeamPage({ teams }) {
 							.map((subTeam, i) => (
 								<li key={i} className="w-full">
 									<h2>
-										{$locale === "en"
+										{subTeam === "Executive"
+											? t_teamNames?.[subTeam]
+											: $locale === "en"
 											? t_teamNames?.[subTeam]
 											: t_teamNames?.[subTeam]?.split(" ").slice(-1)[0]}
 									</h2>
