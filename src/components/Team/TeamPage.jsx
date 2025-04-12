@@ -29,22 +29,16 @@ export default function TeamPage({ teams }) {
 		AOS.init({ once: false, duration: 700 });
 	}, []);
 
-	const executiveRoles = [
-		"President",
-		"ExecutiveVP",
-		"VPOperations",
-		"VP",
-		"CoDirector",
-		"DirectorAtLarge",
-		"Secretary",
-	];
+	const executiveRoles = ["President", "ExecutiveVP", "VPOperations", "CoDirector", "DirectorAtLarge", "Secretary"];
 
 	useEffect(() => {
 		const newSubTeams = {};
 		const teamObj = teams?.find(currTeam => currTeam?.year?.toString() === selectedYear);
 		teamObj?.members?.forEach(member => {
 			const assignmentsForYear = member.assignments?.[suf] || [];
-			const hasExecutive = assignmentsForYear.some(a => executiveRoles.includes(a.position));
+			const hasExecutive = assignmentsForYear.some(
+				a => executiveRoles.includes(a.position) || a.teamName === "Executive",
+			);
 			if (hasExecutive) {
 				// For board of directors, determine the effective assignment:
 				// Use the assignment whose position is in executiveRoles
@@ -83,6 +77,7 @@ export default function TeamPage({ teams }) {
 					"Secretary",
 					"Director",
 					"CoDirector",
+					"Co-VP",
 					"VP",
 					"Manager",
 					"Coordinator",
@@ -110,6 +105,7 @@ export default function TeamPage({ teams }) {
 		"ExecutiveVP",
 		"Director",
 		"VP",
+		"Co-VP",
 		"Manager",
 		"CoDirector",
 		"DirectorAtLarge",
@@ -145,7 +141,7 @@ export default function TeamPage({ teams }) {
 				{member.assignment && member.assignment.teamName && member.assignment.position ? (
 					member.assignment.teamName === "Executive" ? (
 						<h5>{t_positions[member.assignment.position]}</h5>
-					) : member.assignment.position === "VP" ? (
+					) : member.assignment.position === "VP" || member.assignment.position === "CoVP" ? (
 						<h5>{`${t_positions[member.assignment.position]} of ${
 							t_teamNames[member.assignment.teamName]
 						}`}</h5>
