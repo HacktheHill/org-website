@@ -208,6 +208,8 @@ export default {
 			Sponsorship: "de Partenariats",
 		},
 		member: "Membre",
+		selectYear: "Sélectionner l'année de l'équipe",
+		fallbackPhotoAlt: "Photo du membre de l'équipe",
 	},
 	events: {
 		title: "Événements",

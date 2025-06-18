@@ -1,17 +1,20 @@
 ---
 import TeamPage from "../components/Team/TeamPage";
 import Layout from "../layouts/Layout.astro";
+import { sanityClient } from "sanity:client";
+
 const title = "Capital Technology Network - Team";
 const pathName = "/team";
-import { sanityClient } from "sanity:client";
+
 const query = `*[_type == "newTeam"] {
   year,
   fallbackPhoto,
   members[]->
 }`;
-const teams = await sanityClient.fetch(query);
+type Team = { year: number; fallbackPhoto: any; members: any[] };
+const teams = (await sanityClient.fetch(query)).sort((a: Team, b: Team) => b.year - a.year);
 ---
 
 <Layout title={title} pathName={pathName}>
-	<TeamPage teams={teams} client:load />
+	<TeamPage client:load teams={teams} />
 </Layout>

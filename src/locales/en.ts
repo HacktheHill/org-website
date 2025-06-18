@@ -205,6 +205,8 @@ export default {
 			Sponsorship: "Sponsorship",
 		},
 		member: "Member",
+		selectYear: "Select team year",
+		fallbackPhotoAlt: "Team member photo",
 	},
 	events: {
 		title: "Events",
