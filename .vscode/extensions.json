@@ -3,7 +3,6 @@
 		"astro-build.astro-vscode",
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
-		"GitHub.copilot",
 		"bradlc.vscode-tailwindcss",
 		"stivo.tailwind-fold"
 	],
