@@ -18,12 +18,28 @@ import cv from "/src/assets/icons/cv.svg";
 import cube from "/src/assets/icons/cube.svg";
 import handshake from "/src/assets/icons/handshake.svg";
 import beaver3 from "/src/assets/beavar/Beaver3.svg";
+import HTH24 from "/src/assets/gallery/HTH24.jpg";
+import HTH241 from "/src/assets/gallery/HTH241.jpg";
+
 
 export default function Gallery() {
 	const [activeFolder, setActiveFolder] = useState("hackhers");
 	const [selectedAlbum, setSelectedAlbum] = useState("hackhers");
 
 	const albums = [
+		{
+			tag: "2024",
+			card_title: t("gallery.albums.twentytwentyfour.card_title"),
+			title: t("gallery.albums.twentytwentyfour.title"),
+			description: t("gallery.albums.twentytwentyfour.description"),
+			img1: HTH24,
+			img2: HTH241,
+			link: "https://2024.hackthehill.com",
+			statNumber: "800+",
+			statDescription: t("gallery.albums.twentytwentyfour.stat"),
+			icon: hacker,
+
+		},
 		{
 			tag: "2023",
 			card_title: t("gallery.albums.twentytwentythree.card_title"),
@@ -119,25 +135,22 @@ export default function Gallery() {
 							>
 								<div>
 									<div
-										className={`w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 ${
-											album.tag === activeFolder
-												? "border-red bg-blur-svg"
-												: "border-white bg-transparent"
-										}`}
+										className={`w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 ${album.tag === activeFolder
+											? "border-red bg-blur-svg"
+											: "border-white bg-transparent"
+											}`}
 									>
 										<div
-											className={`absolute w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 transition-all duration-300 ${
-												album.tag === activeFolder
-													? "border-red bg-blur-svg -translate-y-3 -translate-x-3"
-													: "border-white bg-white -translate-y-1.5 -translate-x-1.5 hover:-translate-y-2 hover:-translate-x-2"
-											}`}
+											className={`absolute w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 transition-all duration-300 ${album.tag === activeFolder
+												? "border-red bg-blur-svg -translate-y-3 -translate-x-3"
+												: "border-white bg-white -translate-y-1.5 -translate-x-1.5 hover:-translate-y-2 hover:-translate-x-2"
+												}`}
 										></div>
 									</div>
 								</div>
 								<p
-									className={`cursor-pointer text-sm text-center ${
-										album.tag === activeFolder && "text-white font-bold"
-									}`}
+									className={`cursor-pointer text-sm text-center ${album.tag === activeFolder && "text-white font-bold"
+										}`}
 								>
 									{album.card_title}
 								</p>
