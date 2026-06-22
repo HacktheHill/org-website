@@ -24,7 +24,7 @@
 		"@nanostores/react": "^0.7.2",
 		"@portabletext/react": "^3.1.0",
 		"@portabletext/types": "^2.0.13",
-		"@sanity/astro": "^3.2.10",
+		"@sanity/astro": "^3.4.1",
 		"@sanity/client": "^7.8.0",
 		"@sanity/types": "^3.45.0",
 		"aos": "^2.3.4",
@@ -36,7 +36,7 @@
 		"react-device-detect": "^2.2.3",
 		"react-dom": "^18.3.1",
 		"react-scroll": "^1.8.9",
-		"sanity": "^4.21.1",
+		"sanity": "^6.1.0",
 		"tailwindcss": "^3.4.1"
 	},
 	"devDependencies": {
