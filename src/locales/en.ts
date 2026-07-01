@@ -36,6 +36,12 @@ export default {
 		subtitle: "Check out our favourite moments from some of our past events!",
 		button_text: "Learn More",
 		albums: {
+			twentytwentyfour: {
+				card_title: "2024",
+				title: "2024 Main Event",
+				description: "Hack the Hill II proved to be even more successful than the initial event, attracting 826 attendees and receiving 113 project submissions.",
+				stat: "Hackers",
+			},
 			twentytwentythree: {
 				card_title: "2023",
 				title: "2023 Main Event",

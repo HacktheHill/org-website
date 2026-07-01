@@ -36,6 +36,12 @@ export default {
 		subtitle: "Revoyez certains des moments les plus mémorables de Hack the Hill !",
 		button_text: "Plus d'info",
 		albums: {
+			twentytwentyfour: {
+				card_title: "2024",
+				title: "Événement Principal 2024",
+				description: "Hack the Hill II s’est révélé encore plus réussi que le premier événement, attirant 826 participants et recevant 113 soumissions de projets.",
+				stat: "Hackers",
+			},
 			twentytwentythree: {
 				card_title: "2023",
 				title: "Événement Principal 2023",
