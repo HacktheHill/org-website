@@ -37,7 +37,7 @@ export default function About() {
 									className="row-start-1 col-start-1 row-end-1 col-end-2 bg-blur-svg overflow-visible rounded-3xl p-4 md:p-2"
 									data-aos="fade-right"
 								>
-									<img {...team1} className="w-full h-full object-cover rounded-2xl" alt="about3" />
+									<img {...team1} className="w-full h-full object-cover rounded-2xl" alt={t("about.image_alt_1")} />
 								</div>
 							</div>
 
@@ -98,7 +98,7 @@ export default function About() {
 									className="col-start-2 col-end-3  bg-blur-svg overflow-visible rounded-3xl p-4  md:p-2"
 									data-aos="fade-left"
 								>
-									<img {...team3} className="w-full h-full object-cover rounded-2xl" alt="about3" />
+									<img {...team3} className="w-full h-full object-cover rounded-2xl" alt={t("about.image_alt_2")} />
 								</div>
 							</div>
 							<div
@@ -158,24 +158,27 @@ export default function About() {
 									className="row-start-7 col-start-1 row-end-9 col-end-2 bg-blur-svg overflow-visible rounded-3xl p-4  md:p-2"
 									data-aos="fade-right"
 								>
-									<img {...about3} className="w-full h-full object-cover rounded-2xl" alt="about3" />
+									<img {...about3} className="w-full h-full object-cover rounded-2xl" alt={t("about.image_alt_3")} />
 								</div>
 							</div>
 						</div>
 					</div>
 					<img
 						src={shape.src}
-						alt="shape"
+						alt=""
+				aria-hidden="true"
 						className="w-full max-w-bg-deco md:w-[200%] md:translate-x-0 md:-translate-y-1/2 opacity-35 absolute z-[0] translate-x-1/2"
 					/>
 					<img
 						src={shape.src}
-						alt="shape"
+						alt=""
+				aria-hidden="true"
 						className="w-full max-w-bg-deco md:w-[200%] md:translate-x-0 md:translate-y-full opacity-35 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 					/>
 					<img
 						src={shape.src}
-						alt="shape"
+						alt=""
+				aria-hidden="true"
 						className="w-full max-w-bg-deco md:w-[200%] md:translate-x-0 md:translate-y-[20rem] opacity-35 absolute z-[0] -translate-x-1/2 translate-y-3/4 -scale-y-100"
 					/>
 				</div>

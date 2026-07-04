@@ -21,18 +21,20 @@ export default function Construction({ pageNotFound = false }) {
 						</Button>
 					</div>
 					<div className="absolute -top-[8.5rem] right-1/2 h-48">
-						<img src={beaver_construction.src} alt="Beaver" className="h-full" />
+						<img src={beaver_construction.src} alt="" aria-hidden="true" className="h-full" />
 					</div>
 				</div>
 			</div>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+			aria-hidden="true"
 				className="w-full max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 			/>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+			aria-hidden="true"
 				className="w-full max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
 			/>
 		</div>

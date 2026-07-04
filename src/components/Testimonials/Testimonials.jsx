@@ -68,16 +68,17 @@ export default function Testimonials() {
 							</div>
 						</div>
 						<div className="flex flex-row gap-6">
-							<img {...quote} alt="quote" className="w-6 aspect-square self-start opacity-85 md:w-3" />
+							<img {...quote} alt="" aria-hidden="true" className="w-6 aspect-square self-start opacity-85 md:w-3" />
 							<p>{testimonialData[2].content}</p>
 							<img
 								{...quote}
-								alt="quote"
+								alt=""
+								aria-hidden="true"
 								className="-scale-100 w-6 aspect-square self-end opacity-85 md:w-3"
 							/>
 						</div>
 						<div className="absolute -top-16 right-0 h-24">
-							<img src={beaver4.src} alt="Beaver" className="h-full" />
+							<img src={beaver4.src} alt="" aria-hidden="true" className="h-full" />
 						</div>
 					</div>
 					<div
@@ -96,11 +97,12 @@ export default function Testimonials() {
 							</div>
 						</div>
 						<div className="flex flex-row gap-6">
-							<img {...quote} alt="quote" className="w-6 aspect-square self-start opacity-85 md:w-3" />
+							<img {...quote} alt="" aria-hidden="true" className="w-6 aspect-square self-start opacity-85 md:w-3" />
 							<p>{testimonialData[0].content}</p>
 							<img
 								{...quote}
-								alt="quote"
+								alt=""
+								aria-hidden="true"
 								className="-scale-100 w-6 aspect-square self-end opacity-85 md:w-3"
 							/>
 						</div>
@@ -121,11 +123,12 @@ export default function Testimonials() {
 							</div>
 						</div>
 						<div className="flex flex-row gap-6">
-							<img {...quote} alt="quote" className="w-6 aspect-square self-start opacity-85 md:w-3" />
+							<img {...quote} alt="" aria-hidden="true" className="w-6 aspect-square self-start opacity-85 md:w-3" />
 							<p>{testimonialData[1].content}</p>
 							<img
 								{...quote}
-								alt="quote"
+								alt=""
+								aria-hidden="true"
 								className="-scale-100 w-6 aspect-square self-end opacity-85 md:w-3"
 							/>
 						</div>
@@ -143,7 +146,8 @@ export default function Testimonials() {
 				</div>
 				<img
 					src={blob.src}
-					alt="blob"
+					alt=""
+					aria-hidden="true"
 					className="w-full max-w-bg-deco opacity-35 absolute translate-y-24 scale-[1.25] pointer-events-none md:hidden"
 				/>
 			</div>
