@@ -64,6 +64,7 @@ export default function BlogPost({ data }) {
 						<img
 							src={data?.coverImage ? urlFor(data?.coverImage?.asset).url() : hth_fall_theme.src}
 							className="w-full h-full object-cover"
+							alt={data?.title?.[`${$locale}`] ?? t("blog.title")}
 						/>
 						<div className="absolute z-10 bg-black bg-opacity-20 w-full h-full"></div>
 					</div>
@@ -79,12 +80,14 @@ export default function BlogPost({ data }) {
 			</div>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+				aria-hidden="true"
 				className="w-full max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 			/>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+				aria-hidden="true"
 				className="w-full max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
 			/>
 		</div>
