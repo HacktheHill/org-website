@@ -178,7 +178,7 @@ export default function Gallery() {
 								</Button>
 							</div>
 							<div className="absolute -top-16 left-0 h-24">
-								<img src={beaver3.src} alt="Beaver" className="h-full -scale-x-100" />
+								<img src={beaver3.src} alt="" aria-hidden="true" className="h-full -scale-x-100" />
 							</div>
 						</div>
 						<div
@@ -188,7 +188,7 @@ export default function Gallery() {
 						>
 							<img
 								src={albums?.find(album => album.tag === selectedAlbum)?.img2.src}
-								alt="gallery"
+								alt={albums?.find(album => album.tag === selectedAlbum)?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
 							/>
 						</div>
@@ -199,7 +199,7 @@ export default function Gallery() {
 						>
 							<img
 								src={albums?.find(album => album.tag === selectedAlbum)?.img1.src}
-								alt="gallery"
+								alt={albums?.find(album => album.tag === selectedAlbum)?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
 							/>
 						</div>
@@ -207,7 +207,8 @@ export default function Gallery() {
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 								src={albums?.find(album => album.tag === selectedAlbum)?.icon.src}
-								alt={"Hacker"}
+								alt=""
+								aria-hidden="true"
 							/>
 							<div className="md:text-end md:self-center ">
 								<h2>{albums?.find(album => album.tag === selectedAlbum)?.statNumber}</h2>
