@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { sanityClient } from "sanity:client";
 import calendar from "../../assets/icons/calendar.svg";
 import shape from "../../assets/patterns/ssshape.svg";
-import hth_fall_theme from "../../assets/SVGs/hth_fall_theme.svg";
+import HtH_fall_theme from "../../assets/SVGs/HtH_fall_theme.svg";
 import "../../global.css";
 import { locale, t } from "../../i18n";
 import Button from "../Button/Button";
@@ -48,7 +48,7 @@ export default function BlogPage({ posts }) {
 												src={
 													post?.coverImage
 														? urlFor(post?.coverImage?.asset).url()
-														: hth_fall_theme.src
+														: HtH_fall_theme.src
 												}
 												className="w-full h-full object-cover"
 												alt={post.title?.[`${$locale}`] ?? t("blog.title")}

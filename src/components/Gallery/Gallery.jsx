@@ -5,10 +5,10 @@ import ciena1 from "../../assets/gallery/ciena1.webp";
 import ciena2 from "../../assets/gallery/ciena2.webp";
 import hackhers1 from "../../assets/gallery/hackhers1.webp";
 import hackhers2 from "../../assets/gallery/hackhers2.webp";
-import hth1 from "../../assets/gallery/hth1.webp";
-import hth2 from "../../assets/gallery/hth2.webp";
-import HTH24 from "../../assets/gallery/HTH24.jpg";
-import HTH241 from "../../assets/gallery/HTH241.jpg";
+import HtH1 from "../../assets/gallery/HtH1.webp";
+import HtH2 from "../../assets/gallery/HtH2.webp";
+import HtH24 from "../../assets/gallery/HtH24.jpg";
+import HtH241 from "../../assets/gallery/HtH241.jpg";
 import panel1 from "../../assets/gallery/panel1.webp";
 import panel2 from "../../assets/gallery/panel2.webp";
 import roast1 from "../../assets/gallery/roast1.webp";
@@ -31,8 +31,8 @@ export default function Gallery() {
 			card_title: t("gallery.albums.twentytwentyfour.card_title"),
 			title: t("gallery.albums.twentytwentyfour.title"),
 			description: t("gallery.albums.twentytwentyfour.description"),
-			img1: HTH24,
-			img2: HTH241,
+			img1: HtH24,
+			img2: HtH241,
 			link: "https://2024.hackthehill.com",
 			statNumber: "800+",
 			statDescription: t("gallery.albums.twentytwentyfour.stat"),
@@ -43,8 +43,8 @@ export default function Gallery() {
 			card_title: t("gallery.albums.twentytwentythree.card_title"),
 			title: t("gallery.albums.twentytwentythree.title"),
 			description: t("gallery.albums.twentytwentythree.description"),
-			img1: hth1,
-			img2: hth2,
+			img1: HtH1,
+			img2: HtH2,
 			link: "https://2023.hackthehill.com",
 			statNumber: "600+",
 			statDescription: t("gallery.albums.twentytwentythree.stat"),

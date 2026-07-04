@@ -1,7 +1,7 @@
 import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
 import { locale, t } from "../../i18n";
-import logo from "../../assets/Logos/HTH/Hth_red_glow.svg";
+import logo from "../../assets/Logos/HtH/HtH_red_glow.svg";
 
 export default function Navigation(props) {
 	const $locale = useStore(locale);

@@ -3,7 +3,7 @@ import { PortableText } from "@portabletext/react";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import { sanityClient } from "sanity:client";
 import shape from "../../assets/patterns/ssshape.svg";
-import hth_fall_theme from "../../assets/SVGs/hth_fall_theme.svg";
+import HtH_fall_theme from "../../assets/SVGs/HtH_fall_theme.svg";
 import "../../global.css";
 import { locale, t } from "../../i18n";
 import Button from "../Button/Button";
@@ -61,7 +61,7 @@ export default function BlogPost({ data }) {
 					</div>
 					<div className="rounded-xl w-full overflow-hidden flex items-center justify-center bg-shade-9 relative shadow-small-glow aspect-[2/1]">
 						<img
-							src={data?.coverImage ? urlFor(data?.coverImage?.asset).url() : hth_fall_theme.src}
+							src={data?.coverImage ? urlFor(data?.coverImage?.asset).url() : HtH_fall_theme.src}
 							className="w-full h-full object-cover"
 							alt={data?.title?.[`${$locale}`] ?? t("blog.title")}
 						/>

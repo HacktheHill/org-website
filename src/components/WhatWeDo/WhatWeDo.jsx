@@ -11,13 +11,13 @@ export default function WhatWeDo() {
 				<div className="grid grid-cols-3 gap-6 w-full lg:grid-cols-1">
 					{t("what_we_do.pillars").map((pillar, index) => (
 						<div
-							className="flex flex-col gap-4 bg-blur-svg rounded-3xl p-8"
+							className="flex flex-col gap-4 bg-blur-svg rounded-3xl p-8 border border-shade-7 hover:border-primary transition-colors duration-300"
 							data-aos="fade-up"
 							data-aos-delay={index * 100}
 							key={pillar.title}
 						>
-							<h3>{pillar.title}</h3>
-							<p>{pillar.description}</p>
+							<h3 className="font-bold">{pillar.title}</h3>
+							<p className="text-shade-4">{pillar.description}</p>
 						</div>
 					))}
 				</div>
