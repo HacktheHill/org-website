@@ -101,7 +101,7 @@ export default {
 		projects: "Projects submitted",
 		partners: "Sponsors and partners",
 		revenue: "Lifetime revenue",
-		programs: "Workshops and events",
+		programs: "Events hosted",
 		caffeinated: "Caffeinated drinks served",
 	},
 	gallery: {

@@ -102,7 +102,7 @@ export default {
 		projects: "Projets soumis",
 		partners: "Commanditaires et partenaires",
 		revenue: "Revenus cumulés",
-		programs: "Ateliers et événements",
+		programs: "Événements organisés",
 		caffeinated: "Boissons caféinées servies",
 	},
 	gallery: {
