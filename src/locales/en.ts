@@ -1,7 +1,8 @@
 export default {
 	seo: {
 		site_name: "Capital Technology Network",
-		description: "Capital Technology Network is Canada's capital hackathon organization.",
+		description:
+			"Capital Technology Network is a student-led not-for-profit creating inclusive opportunities for technology education, innovation, and professional development through hackathons, workshops, and community programming in Canada's capital.",
 		keywords:
 			"Ottawa Hackathon, Hackathon, Hack the Hill, Capital Technology Network, Hackathon Ottawa, Hackathon Ontario, Hackathon Canada, University of Ottawa, uOttawa, Capital Hackathon, Canada's Capital Hackathon, International Hackathon, In-person Hackathon, Carleton, Carleton University",
 		locale: "en_CA",
@@ -47,36 +48,61 @@ export default {
 	},
 	hero: {
 		title: "Capital Technology Network",
-		subtitle: "Canada's Capital Hackathon Organization",
-		cta_label: "Visit",
+		subtitle: "Empowering students through technology education, innovation, and professional development.",
+		cta_label: "Visit Hack the Hill",
 		cta_url: "https://hackthehill.com/",
 		alt: "Parliament",
 	},
 	about: {
-		title: "It's more than just a hackathon",
-		subtitle: "It's a community of passionate students who are dedicated to learning, growing, and creating.",
-		p1_prefix: "The Capital Technology Network",
-		p1: "is a student-run organization that aims to foster a culture of innovation and creativity in the Ottawa community.",
+		title: "Building Canada's capital technology community",
+		subtitle:
+			"We create spaces where students can learn by building, grow their professional networks, and explore technology in a collaborative, inclusive environment.",
+		p1_prefix: "Capital Technology Network",
+		p1: "is a student-led not-for-profit creating opportunities for technology education, innovation, and professional development.",
 		p1_btn: "Explore our journey and story",
 		p2_prefix: "Our goal",
-		p2: "is to provide students with the resources and opportunities they need to succeed in the tech industry.",
+		p2: "is to equip students with practical skills, encourage creativity, and promote diversity across the technology sector.",
 		p2_btn: "Take a look at some of our upcoming events",
-		p3_prefix: "There's a place for you",
-		p3: "; whether you're a beginner or an experienced hacker, there's something for everyone",
+		p3_prefix: "Hack the Hill is our flagship hackathon",
+		p3: "; alongside workshops and community events, it helps the next generation of tech leaders bring new ideas to life",
 		p3_btn: "Join us and be a part of something amazing",
-		image_alt_1: "Team photo",
-		image_alt_2: "Team photo",
-		image_alt_3: "Team photo",
+		image_alt_1: "Students and organizers at a CTN event",
+		image_alt_2: "CTN team members collaborating at an event",
+		image_alt_3: "CTN community members gathering together",
+	},
+	what_we_do: {
+		title: "What We Do",
+		subtitle:
+			"Our programs help students learn, build, connect, and grow into the next generation of technology leaders.",
+		pillars: [
+			{
+				title: "Hackathons",
+				description:
+					"We create collaborative spaces where students turn ideas into projects, including Hack the Hill, our flagship hackathon.",
+			},
+			{
+				title: "Workshops and Learning",
+				description:
+					"We support practical technology education through hands-on sessions, speaker events, and skill-building opportunities.",
+			},
+			{
+				title: "Community and Careers",
+				description:
+					"We help students grow their networks, discover professional pathways, and contribute to a more inclusive tech community.",
+			},
+		],
 	},
 	stats: {
 		title: "Our Impact",
-		subtitle: "Here's a look at some of the numbers that define who we are.",
-		description: "Every year, we have:",
-		sponsors: "Sponsors",
-		volunteers: "Volunteers",
-		prizes: "In Prizes",
-		workshops: "Workshops",
-		redbulls: "Caffeinated Drinks Consumed",
+		subtitle:
+			"Since 2022, we've helped students learn, build, and connect through hackathons, workshops, and community programs across Canada's capital region.",
+		description: "A snapshot of the community we've built so far:",
+		participants: "Participants welcomed",
+		projects: "Projects submitted",
+		partners: "Sponsors and partners",
+		revenue: "Lifetime revenue",
+		programs: "Workshops and events",
+		reinvested: "Reinvested into programs",
 	},
 	gallery: {
 		title: "Where Memories are Made",
@@ -85,17 +111,17 @@ export default {
 		albums: {
 			twentytwentyfour: {
 				card_title: "2024",
-				title: "2024 Main Event",
+				title: "Hack the Hill II",
 				description:
-					"Hack the Hill II proved to be even more successful than the initial event, attracting 826 attendees and receiving 113 project submissions.",
-				stat: "Hackers",
+					"With 826 attendees and 113 project submissions, this hackathon was an even greater success than the year before.",
+				stat: "Participants",
 			},
 			twentytwentythree: {
 				card_title: "2023",
-				title: "2023 Main Event",
+				title: "Hack the Hill I",
 				description:
-					"The spotlight of 2023, our main hackathon event was a blast! 600+ hackers, 10+ sponsors and 36 hours of hacking combined to create an unforgettable experience. For a first edition, it was a huge success!",
-				stat: "Hackers",
+					"600+ hackers, 10+ sponsors and 36 hours of hacking combined to create an unforgettable experience. For a first edition, it was a huge success!",
+				stat: "Participants",
 			},
 			hackhers: {
 				card_title: "HackHers",
@@ -181,7 +207,7 @@ export default {
 		},
 		aria_label_next: "Next Slide",
 		aria_label_prev: "Previous Slide",
-		aria_label_dot: "Testimonial Dot",
+		aria_label_dot: "Testimonial Navigation",
 	},
 	footer: {
 		copyright: "© Capital Technology Network 2025",
