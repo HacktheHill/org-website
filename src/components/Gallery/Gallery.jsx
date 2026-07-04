@@ -126,12 +126,13 @@ export default function Gallery() {
 				<div className="flex h-4/6 flex-row justify-between items-center gap-16 2xl:flex-wrap">
 					<div className="flex px-16 justify-start items-center flex-wrap gap-8 md:gap-3 2xl:justify-center 2xl:w-full md:px-2">
 						{albums.map(album => (
-							<div
+							<button
+								type="button"
 								key={album.tag}
 								onClick={() => {
 									handleCardClick(album.tag);
 								}}
-								className="flex flex-col justify-start items-center gap-2 w-24 h-24 cursor-pointer"
+								className="flex flex-col justify-start items-center gap-2 w-24 h-24 cursor-pointer bg-transparent border-none p-0"
 							>
 								<div>
 									<div
@@ -154,7 +155,7 @@ export default function Gallery() {
 								>
 									{album.card_title}
 								</p>
-							</div>
+							</button>
 						))}
 					</div>
 					<div
@@ -172,12 +173,7 @@ export default function Gallery() {
 								</p>
 							</div>
 							<div className="flex justify-end">
-								<Button
-									onClick={() =>
-										window.open(albums?.find(album => album.tag === selectedAlbum)?.link, "_blank")
-									}
-									fill={false}
-								>
+								<Button href={albums?.find(album => album.tag === selectedAlbum)?.link} fill={false}>
 									{t("gallery.button_text")}
 								</Button>
 							</div>

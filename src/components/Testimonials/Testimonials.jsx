@@ -135,10 +135,7 @@ export default function Testimonials() {
 						data-aos="fade-up"
 					>
 						<div className="self-end">
-							<Button
-								onClick={() => window.open("https://www.instagram.com/hackthehill", "_blank")}
-								fill={false}
-							>
+							<Button href="https://www.instagram.com/hackthehill" fill={false}>
 								<h4>{t("testimonials.button_text")}</h4>
 							</Button>
 						</div>

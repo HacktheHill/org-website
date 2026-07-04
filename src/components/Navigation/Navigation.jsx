@@ -63,16 +63,19 @@ export default function Navigation(props) {
 					>
 						{`${$locale === "en" ? "fr" : "en"}`.toUpperCase()}
 					</button>
-					<div
+					<a
+						href="https://2024.hackthehill.com"
+						target="_blank"
+						rel="noreferrer"
 						className="flex h-8 w-24 justify-center items-center bg-2024-bg bg-cover bg-top border-none rounded-xl p-4 text-bg-2024 cursor-pointer font-bold transition-all duration-100 opacity-85 hover:opacity-100"
-						onClick={() => window.open("https://2024.hackthehill.com", "_blank")}
 					>
 						2024
-					</div>
+					</a>
 				</div>
 				<div>
-					<div
+					<button
 						id="menu"
+						type="button"
 						className="hidden h-full bg-transparent border-none cursor-pointer p-2 md:block"
 						onClick={() => {
 							setSidebarOpen(!sidebarOpen);
@@ -85,7 +88,7 @@ export default function Navigation(props) {
 								className="w-7 h-1 bg-shade-3 my-1 mx-0 transition-all duration-500 rounded-md"
 							></div>
 						))}
-					</div>
+					</button>
 					<div
 						id="sidebar"
 						className={

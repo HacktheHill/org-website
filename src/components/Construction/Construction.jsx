@@ -16,7 +16,7 @@ export default function Construction({ pageNotFound = false }) {
 					<p>{pageNotFound ? t("fourofour.subtitle") : t("construction.subtitle")}</p>
 
 					<div className="self-end">
-						<Button fill={false} onClick={() => window.location.replace("/")}>
+						<Button fill={false} href="/">
 							{t("construction.home_btn")}
 						</Button>
 					</div>

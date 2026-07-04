@@ -28,14 +28,9 @@ export default function About() {
 										<span className="text-shadow_text"> {t("about.p1")}</span>
 									</h2>
 									<div className="self-start">
-										<Button
-											onClick={() =>
-												window.open("https://www.instagram.com/hackthehill", "_blank")
-											}
-											fill={false}
-										>
-											<h4>{t("about.p1_btn")}</h4>
-										</Button>
+									<Button href="https://www.instagram.com/hackthehill" fill={false}>
+										<h4>{t("about.p1_btn")}</h4>
+									</Button>
 									</div>
 								</div>
 								<div
@@ -94,11 +89,9 @@ export default function About() {
 										<span className="text-shadow_text"> {t("about.p2")}</span>
 									</h2>
 									<div className="self-start">
-										<Button fill={false}>
-											<a href={"/events"} target="_blank" rel="noreferrer">
-												<h4>{t("about.p2_btn")}</h4>
-											</a>
-										</Button>
+									<Button href="/events" fill={false}>
+										<h4>{t("about.p2_btn")}</h4>
+									</Button>
 									</div>
 								</div>
 								<div
@@ -156,12 +149,9 @@ export default function About() {
 										<span className="text-shadow_text"> {t("about.p3")}</span>
 									</h2>
 									<div className="self-start">
-										<Button
-											onClick={() => window.open("https://linktr.ee/hackthehill", "_blank")}
-											fill={false}
-										>
-											<h4>{t("about.p3_btn")}</h4>
-										</Button>
+									<Button href="https://linktr.ee/hackthehill" fill={false}>
+										<h4>{t("about.p3_btn")}</h4>
+									</Button>
 									</div>
 								</div>
 								<div
