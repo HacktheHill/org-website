@@ -1,26 +1,25 @@
-import React, { useState } from "react";
-import Button from "../Button/Button";
-import { t } from "../../i18n";
-import hth1 from "/src/assets/gallery/hth1.webp";
-import hth2 from "/src/assets/gallery/hth2.webp";
-import hackhers1 from "/src/assets/gallery/hackhers1.webp";
-import hackhers2 from "/src/assets/gallery/hackhers2.webp";
-import panel1 from "/src/assets/gallery/panel1.webp";
-import panel2 from "/src/assets/gallery/panel2.webp";
-import roast1 from "/src/assets/gallery/roast1.webp";
-import roast2 from "/src/assets/gallery/roast2.webp";
-import ciena1 from "/src/assets/gallery/ciena1.webp";
-import ciena2 from "/src/assets/gallery/ciena2.webp";
+import { useState } from "react";
 import "../../global.css";
-import hacker from "/src/assets/icons/hacker.svg";
-import team from "/src/assets/icons/team.svg";
-import cv from "/src/assets/icons/cv.svg";
-import cube from "/src/assets/icons/cube.svg";
-import handshake from "/src/assets/icons/handshake.svg";
-import beaver3 from "/src/assets/beavar/Beaver3.svg";
-import HTH24 from "/src/assets/gallery/HTH24.jpg";
-import HTH241 from "/src/assets/gallery/HTH241.jpg";
-
+import beaver3 from "../../assets/beavar/Beaver3.svg";
+import ciena1 from "../../assets/gallery/ciena1.webp";
+import ciena2 from "../../assets/gallery/ciena2.webp";
+import hackhers1 from "../../assets/gallery/hackhers1.webp";
+import hackhers2 from "../../assets/gallery/hackhers2.webp";
+import hth1 from "../../assets/gallery/hth1.webp";
+import hth2 from "../../assets/gallery/hth2.webp";
+import HTH24 from "../../assets/gallery/HTH24.jpg";
+import HTH241 from "../../assets/gallery/HTH241.jpg";
+import panel1 from "../../assets/gallery/panel1.webp";
+import panel2 from "../../assets/gallery/panel2.webp";
+import roast1 from "../../assets/gallery/roast1.webp";
+import roast2 from "../../assets/gallery/roast2.webp";
+import cube from "../../assets/icons/cube.svg";
+import cv from "../../assets/icons/cv.svg";
+import hacker from "../../assets/icons/hacker.svg";
+import handshake from "../../assets/icons/handshake.svg";
+import team from "../../assets/icons/team.svg";
+import { t } from "../../i18n";
+import Button from "../Button/Button";
 
 export default function Gallery() {
 	const [activeFolder, setActiveFolder] = useState("hackhers");
@@ -38,7 +37,6 @@ export default function Gallery() {
 			statNumber: "800+",
 			statDescription: t("gallery.albums.twentytwentyfour.stat"),
 			icon: hacker,
-
 		},
 		{
 			tag: "2023",
@@ -102,13 +100,13 @@ export default function Gallery() {
 		},
 	];
 
-	const handleCardClick = async tag => {
+	const handleCardClick = tag => {
 		setActiveFolder(tag);
 		const frames = document.querySelectorAll(".aos-frame");
 		frames.forEach(frame => {
 			frame.classList.remove("aos-animate");
 		});
-		await setTimeout(() => {
+		setTimeout(() => {
 			frames.forEach(frame => {
 				frame.classList.add("aos-animate");
 			});
@@ -136,22 +134,25 @@ export default function Gallery() {
 							>
 								<div>
 									<div
-										className={`w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 ${album.tag === activeFolder
-											? "border-red bg-blur-svg"
-											: "border-white bg-transparent"
-											}`}
+										className={`w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 ${
+											album.tag === activeFolder
+												? "border-red bg-blur-svg"
+												: "border-white bg-transparent"
+										}`}
 									>
 										<div
-											className={`absolute w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 transition-all duration-300 ${album.tag === activeFolder
-												? "border-red bg-blur-svg -translate-y-3 -translate-x-3"
-												: "border-white bg-white -translate-y-1.5 -translate-x-1.5 hover:-translate-y-2 hover:-translate-x-2"
-												}`}
+											className={`absolute w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 transition-all duration-300 ${
+												album.tag === activeFolder
+													? "border-red bg-blur-svg -translate-y-3 -translate-x-3"
+													: "border-white bg-white -translate-y-1.5 -translate-x-1.5 hover:-translate-y-2 hover:-translate-x-2"
+											}`}
 										></div>
 									</div>
 								</div>
 								<p
-									className={`cursor-pointer text-sm text-center ${album.tag === activeFolder && "text-white font-bold"
-										}`}
+									className={`cursor-pointer text-sm text-center ${
+										album.tag === activeFolder && "text-white font-bold"
+									}`}
 								>
 									{album.card_title}
 								</p>
