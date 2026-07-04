@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import Hero from "../Hero/Hero";
-import About from "../About/About";
-import Stats from "../Stats/Stats";
-import Gallery from "../Gallery/Gallery";
-import Sponsors from "../Sponsors/Sponsors";
-import Testimonials from "../Testimonials/Testimonials";
-import Contact from "../Contact/Contact";
-import "../../global.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useEffect } from "react";
+import "../../global.css";
+import About from "../About/About";
+import Gallery from "../Gallery/Gallery";
+import Hero from "../Hero/Hero";
+import Sponsors from "../Sponsors/Sponsors";
+import Stats from "../Stats/Stats";
+import Testimonials from "../Testimonials/Testimonials";
+import WhatWeDo from "../WhatWeDo/WhatWeDo";
 
 export default function HomePage() {
 	useEffect(() => {
@@ -18,6 +18,7 @@ export default function HomePage() {
 		<div className="w-full flex flex-col items-center justify-center overflow-x-hidden relative">
 			<Hero />
 			<About />
+			<WhatWeDo />
 			<Stats />
 			<Sponsors />
 			<Gallery />
