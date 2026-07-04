@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-import "../../global.css";
+import { useStore } from "@nanostores/react";
+import { PortableText } from "@portabletext/react";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import { sanityClient } from "sanity:client";
 import shape from "../../assets/patterns/ssshape.svg";
 import hth_fall_theme from "../../assets/SVGs/hth_fall_theme.svg";
-import { sanityClient } from "sanity:client";
-import imageUrlBuilder from "@sanity/image-url";
-import { PortableText } from "@portabletext/react";
-import { useStore } from "@nanostores/react";
+import "../../global.css";
 import { locale, t } from "../../i18n";
-import calendar from "../../assets/icons/calendar.svg";
 import Button from "../Button/Button";
 import "./BlogStyle.css";
 
 export default function BlogPost({ data }) {
 	const $locale = useStore(locale);
-	const builder = imageUrlBuilder(sanityClient);
+	const builder = createImageUrlBuilder(sanityClient);
+	const authorName = data?.author?.toUpperCase();
 
 	function urlFor(source) {
 		return builder.image(source);
@@ -43,10 +42,10 @@ export default function BlogPost({ data }) {
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									{data?.author?.toUpperCase()}&nbsp;
+									{authorName}&nbsp;
 								</a>
 							) : (
-								<span className="text-primary">{data?.author?.toUpperCase()}&nbsp;</span>
+								<span className="text-primary">{authorName}&nbsp;</span>
 							)}
 							<span>{"•"}</span>
 							<span>
