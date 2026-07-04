@@ -1,9 +1,7 @@
-import { Link } from "react-scroll";
-import { locale, t } from "../../i18n";
-import React, { useState, useEffect } from "react";
-import logo from "/src/assets/Logos/HTH/Hth_red_glow.svg";
-import bg_2024 from "/src/assets/SVGs/2024.svg";
 import { useStore } from "@nanostores/react";
+import { useEffect, useState } from "react";
+import { locale, t } from "../../i18n";
+import logo from "../../assets/Logos/HTH/Hth_red_glow.svg";
 
 export default function Navigation(props) {
 	const $locale = useStore(locale);
@@ -57,7 +55,7 @@ export default function Navigation(props) {
 					</a>
 					<button
 						className="flex h-full w-16 items-center bg-transparent border-none p-4 cursor-pointer font-bold transition-all duration-100 hover:text-shade-1"
-						type="submit"
+						type="button"
 						onClick={() => {
 							locale.set($locale === "en" ? "fr" : "en");
 						}}
@@ -86,7 +84,7 @@ export default function Navigation(props) {
 							handleSidebarUI();
 						}}
 					>
-						{[...Array(3)].map((_, i) => (
+						{Array.from({ length: 3 }).map((_, i) => (
 							<div
 								key={i}
 								className="w-7 h-1 bg-shade-3 my-1 mx-0 transition-all duration-500 rounded-md"
