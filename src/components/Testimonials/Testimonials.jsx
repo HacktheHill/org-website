@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import { t } from "../../i18n";
-import quote from "../../assets/icons/quote.svg";
-import Button from "../Button/Button";
 import beaver4 from "../../assets/beavar/Beaver4.svg";
+import quote from "../../assets/icons/quote.svg";
 import blob from "../../assets/patterns/blob.svg";
+import { t } from "../../i18n";
+import Button from "../Button/Button";
 
 export default function Testimonials() {
 	const testimonialData = [
@@ -68,7 +67,12 @@ export default function Testimonials() {
 							</div>
 						</div>
 						<div className="flex flex-row gap-6">
-							<img {...quote} alt="" aria-hidden="true" className="w-6 aspect-square self-start opacity-85 md:w-3" />
+							<img
+								{...quote}
+								alt=""
+								aria-hidden="true"
+								className="w-6 aspect-square self-start opacity-85 md:w-3"
+							/>
 							<p>{testimonialData[2].content}</p>
 							<img
 								{...quote}
@@ -97,7 +101,12 @@ export default function Testimonials() {
 							</div>
 						</div>
 						<div className="flex flex-row gap-6">
-							<img {...quote} alt="" aria-hidden="true" className="w-6 aspect-square self-start opacity-85 md:w-3" />
+							<img
+								{...quote}
+								alt=""
+								aria-hidden="true"
+								className="w-6 aspect-square self-start opacity-85 md:w-3"
+							/>
 							<p>{testimonialData[0].content}</p>
 							<img
 								{...quote}
@@ -123,7 +132,12 @@ export default function Testimonials() {
 							</div>
 						</div>
 						<div className="flex flex-row gap-6">
-							<img {...quote} alt="" aria-hidden="true" className="w-6 aspect-square self-start opacity-85 md:w-3" />
+							<img
+								{...quote}
+								alt=""
+								aria-hidden="true"
+								className="w-6 aspect-square self-start opacity-85 md:w-3"
+							/>
 							<p>{testimonialData[1].content}</p>
 							<img
 								{...quote}

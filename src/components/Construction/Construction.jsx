@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../Button/Button";
 import { t } from "../../i18n";
 import beaver_construction from "../../assets/beavar/beaver_construction.svg";
@@ -28,13 +27,13 @@ export default function Construction({ pageNotFound = false }) {
 			<img
 				src={shape.src}
 				alt=""
-			aria-hidden="true"
+				aria-hidden="true"
 				className="w-full max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 			/>
 			<img
 				src={shape.src}
 				alt=""
-			aria-hidden="true"
+				aria-hidden="true"
 				className="w-full max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
 			/>
 		</div>
