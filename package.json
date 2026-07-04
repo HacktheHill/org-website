@@ -22,7 +22,7 @@
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"@nanostores/react": "^0.7.2",
 		"@portabletext/react": "^3.1.0",
-		"@sanity/astro": "^3.2.10",
+		"@sanity/astro": "^3.4.2",
 		"@sanity/client": "^7.8.0",
 		"aos": "^2.3.4",
 		"astro": ">=5.16.5 <7.0.0",
