@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
-import hacker from "../../assets/icons/hacker.svg";
-import team from "../../assets/icons/team.svg";
+import beaver2 from "../../assets/beavar/Beaver2.svg";
 import cash from "../../assets/icons/cash.svg";
 import drink from "../../assets/icons/drink.svg";
+import hacker from "../../assets/icons/hacker.svg";
+import team from "../../assets/icons/team.svg";
 import tool from "../../assets/icons/tool.svg";
-import { t } from "../../i18n";
 import whirl from "../../assets/patterns/wwwhirl.svg";
-import beaver2 from "../../assets/beavar/Beaver2.svg";
+import { t } from "../../i18n";
 
 export default function Stats() {
 	return (
@@ -39,8 +38,8 @@ export default function Stats() {
 							aria-hidden="true"
 						/>
 						<div className="md:text-end md:self-center">
-							<h2>800+</h2>
-							<p>Hackers</p>
+							<h2>1,400+</h2>
+							<p>{t("stats.participants")}</p>
 						</div>
 					</div>
 					<div
@@ -55,8 +54,8 @@ export default function Stats() {
 							aria-hidden="true"
 						/>
 						<div className="md:text-end md:self-center">
-							<h2>15+</h2>
-							<p>{t("stats.sponsors")}</p>
+							<h2>166</h2>
+							<p>{t("stats.projects")}</p>
 						</div>
 					</div>
 					<div
@@ -71,8 +70,8 @@ export default function Stats() {
 							aria-hidden="true"
 						/>
 						<div className="md:text-end md:self-center">
-							<h2>100+</h2>
-							<p>{t("stats.volunteers")}</p>
+							<h2>40+</h2>
+							<p>{t("stats.partners")}</p>
 						</div>
 					</div>
 					<div
@@ -87,8 +86,8 @@ export default function Stats() {
 							aria-hidden="true"
 						/>
 						<div className="md:text-end md:self-center">
-							<h2>$12+</h2>
-							<p>{t("stats.prizes")}</p>
+							<h2>$179.5K</h2>
+							<p>{t("stats.revenue")}</p>
 						</div>
 					</div>
 					<div
@@ -103,8 +102,8 @@ export default function Stats() {
 							aria-hidden="true"
 						/>
 						<div className="text-end self-center">
-							<h2>5+</h2>
-							<p>{t("stats.workshops")}</p>
+							<h2>20+</h2>
+							<p>{t("stats.programs")}</p>
 						</div>
 					</div>
 					<div
@@ -119,8 +118,8 @@ export default function Stats() {
 							aria-hidden="true"
 						/>
 						<div className="text-end self-center">
-							<h2>1000+</h2>
-							<p>{t("stats.redbulls")}</p>
+							<h2>$162.8K</h2>
+							<p>{t("stats.reinvested")}</p>
 						</div>
 					</div>
 				</div>

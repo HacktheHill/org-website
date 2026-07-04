@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { t } from "../../i18n";
 //Sponsors
 import Blackberry from "/src/assets/Logos/Partners/Blackberry.svg";
@@ -138,7 +138,12 @@ export default function Sponsors() {
 						{marqueeGroup(data.sponsors, 2, 1, pauseAnimation, startAnimation, setHovered)}
 					</div>
 				</div>
-				<img src={waves.src} className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]" alt="" aria-hidden="true"></img>
+				<img
+				src={waves.src}
+				className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]"
+				alt=""
+				aria-hidden="true"
+			></img>
 				<img
 					src={waves.src}
 					className="absolute bottom-0 w-full h-20 z-[1] -scale-y-100 -scale-x-100 translate-y-[1px]"
@@ -154,7 +159,12 @@ export default function Sponsors() {
 						{marqueeGroup(data.collaborators, 2, 2, pauseAnimation, startAnimation, setHovered2)}
 					</div>
 				</div>
-				<img src={waves.src} className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]" alt="" aria-hidden="true"></img>
+				<img
+				src={waves.src}
+				className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]"
+				alt=""
+				aria-hidden="true"
+			></img>
 				<img
 					src={waves.src}
 					className="absolute bottom-0 w-full h-20 z-[1] -scale-y-100 -scale-x-100 translate-y-[1px]"

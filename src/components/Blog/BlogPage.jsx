@@ -1,23 +1,21 @@
-import React, { useState, useEffect } from "react";
-import "../../global.css";
+import { useStore } from "@nanostores/react";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import shape from "../../assets/patterns/ssshape.svg";
+import { useEffect } from "react";
 import { sanityClient } from "sanity:client";
-import { useStore } from "@nanostores/react";
-import { locale, t } from "../../i18n";
-import imageUrlBuilder from "@sanity/image-url";
+import calendar from "../../assets/icons/calendar.svg";
+import shape from "../../assets/patterns/ssshape.svg";
 import hth_fall_theme from "../../assets/SVGs/hth_fall_theme.svg";
-import calendar from "/src/assets/icons/calendar.svg";
+import "../../global.css";
+import { locale, t } from "../../i18n";
 import Button from "../Button/Button";
+
+const builder = createImageUrlBuilder(sanityClient);
+const urlFor = source => builder.image(source);
 
 export default function BlogPage({ posts }) {
 	const $locale = useStore(locale);
-	const builder = imageUrlBuilder(sanityClient);
-
-	function urlFor(source) {
-		return builder.image(source);
-	}
 
 	useEffect(() => {
 		AOS.init({ once: false, duration: 700 });
@@ -27,7 +25,7 @@ export default function BlogPage({ posts }) {
 		<div className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
 				<div className="flex flex-col text-left w-full" data-aos="fade-up">
-					<h1 data-aos="fade-up">Blog</h1>
+					<h1 data-aos="fade-up">{t("blog.title")}</h1>
 				</div>
 				{posts?.length !== 0 && (
 					<ul className="grid grid-cols-2 lg:flex lg:flex-wrap justify-between w-full max-w-2xl auto-rows-[1fr]">
@@ -35,7 +33,7 @@ export default function BlogPage({ posts }) {
 							<li
 								key={i}
 								className="basis-1/2 lg:basis-full p-3 md:mb-4 md:border md:border-primary md:rounded-3xl md:p-0 hover:cursor-pointer transition-all duration-300"
-								onClick={() => (window.location.href = `/blog/${post.slug.current}`)}
+								onClick={() => (globalThis.location.href = `/blog/${post.slug.current}`)}
 								data-aos="fade-up"
 								data-aos-offset={i >= 2 ? "-100" : "0"}
 							>
@@ -53,6 +51,7 @@ export default function BlogPage({ posts }) {
 														: hth_fall_theme.src
 												}
 												className="w-full h-full object-cover"
+												alt={post.title?.[`${$locale}`] ?? t("blog.title")}
 											/>
 											<div className="absolute z-10 bg-black bg-opacity-20 w-full h-full"></div>
 										</div>
@@ -68,12 +67,12 @@ export default function BlogPage({ posts }) {
 										}`}</p>
 										<div className="w-full flex justify-between items-center mt-4">
 											<div className="text-base lg:text-sm font-bold flex flex-row gap-2 items-center">
-																								<img
-												src={calendar.src}
-												alt=""
-												aria-hidden="true"
-												className="w-4 h-4 mr-2"
-											/>
+												<img
+													src={calendar.src}
+													alt=""
+													aria-hidden="true"
+													className="w-4 h-4 mr-2"
+												/>
 												{new Date(post.publishedAt).toLocaleDateString(
 													$locale === "en" ? "en-US" : "fr-CA",
 													{
@@ -83,10 +82,7 @@ export default function BlogPage({ posts }) {
 													},
 												)}
 											</div>
-											<Button
-												onClick={() => (window.location.href = `/blog/${post.slug.current}`)}
-												fill={true}
-											>
+											<Button href={`/blog/${post.slug.current}`} fill={true}>
 												{t("blog.read")}
 											</Button>
 										</div>

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { t } from "../../i18n";
-import Calendar from "../Calendar/Calendar";
-import "../../global.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useEffect } from "react";
 import shape from "../../assets/patterns/ssshape.svg";
+import "../../global.css";
+import { t } from "../../i18n";
+import Calendar from "../Calendar/Calendar";
 
 export default function EventsPage({ events }) {
 	useEffect(() => {
 		AOS.init({ once: false, duration: 700 });
+		globalThis.requestAnimationFrame(() => AOS.refreshHard());
 	}, []);
 
 	return (

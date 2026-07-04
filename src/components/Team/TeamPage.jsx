@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
+import { useStore } from "@nanostores/react";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useStore } from "@nanostores/react";
-import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import imageUrlBuilder from "@sanity/image-url";
+import { useEffect, useState } from "react";
 
-import "../../global.css";
 import shape from "../../assets/patterns/ssshape.svg";
+import "../../global.css";
 
 import { sanityClient } from "sanity:client";
 import { locale, t } from "../../i18n";
 
 const executiveRoles = ["President", "ExecutiveVP", "VPOperations", "CoDirector", "DirectorAtLarge", "Secretary"];
 
-const redCardRoles = [
+const redCardRoles = new Set([
 	"President",
 	"VPOperations",
 	"ExecutiveVP",
@@ -26,7 +26,7 @@ const redCardRoles = [
 	"CoDirector",
 	"DirectorAtLarge",
 	"Secretary",
-];
+]);
 
 const rankOrder = [
 	"President",
@@ -43,12 +43,22 @@ const rankOrder = [
 	"Advisor",
 ];
 
-const contributors = ["Sacha Arseneault", "Erik Ang", "Daniel Thorp", "Surendar Pala Danasekaran"];
+const contributors = new Set(["Sacha Arseneault", "Erik Ang", "Daniel Thorp", "Surendar Pala Danasekaran"]);
 
 const normalize = str => str?.trim().toLowerCase() ?? "";
 const isExecutivePosition = pos => executiveRoles.map(normalize).includes(normalize(pos));
 const isExecutiveTeam = team => normalize(team) === "executive";
 const getKey = m => m._id ?? `${m.name}-${m.assignment?.position ?? ""}-${m.assignment?.teamName ?? ""}`;
+const stripFrenchTeamPrefix = teamName => teamName?.replace(/^(de la|des|du|de l'|de)\s+/i, "") ?? teamName;
+const compareTeamGroups = (a, b) => {
+	if (a === "Executive") return -1;
+	if (b === "Executive") return 1;
+	return a.localeCompare(b);
+};
+const sortRank = rank => {
+	if (rank === -1) return Infinity;
+	return rank;
+};
 
 function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) {
 	const fallbackAsset = teams.find(t => t.year.toString() === selectedYear)?.fallbackPhoto?.asset;
@@ -62,8 +72,8 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 		>
 			<div
 				className={`flex justify-between flex-col h-full text-center gap-2 md:gap-1 p-4 md:p-2 rounded-3xl overflow-hidden border border-theme-red transition-all ease-in-out duration-300 hover:-translate-y-2 hover:border-primary ${
-					redCardRoles.includes(member.assignment?.position) ? "bg-blur-svg" : "bg-dark"
-				} ${contributors.includes(member.name) ? "hover:animate-glow" : ""}`}
+					redCardRoles.has(member.assignment?.position) ? "bg-blur-svg" : "bg-dark"
+				} ${contributors.has(member.name) ? "hover:animate-glow" : ""}`}
 			>
 				<img
 					src={photoUrl}
@@ -79,7 +89,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							href={member.linkedin}
 							target="_blank"
 							rel="noreferrer"
-							aria-label="LinkedIn"
+							aria-label={t("accessibility.linkedin")}
 							className="transition-all duration-300 text-white hover:opacity-100 opacity-80"
 						>
 							<Icon icon={faLinkedin} />
@@ -90,7 +100,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							href={member.github}
 							target="_blank"
 							rel="noreferrer"
-							aria-label="GitHub"
+							aria-label={t("accessibility.github")}
 							className="transition-all duration-300 text-white hover:opacity-100 opacity-80"
 						>
 							<Icon icon={faGithub} />
@@ -101,7 +111,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							href={member.website}
 							target="_blank"
 							rel="noreferrer"
-							aria-label="Website"
+							aria-label={t("accessibility.website")}
 							className="transition-all duration-300 text-white hover:opacity-100 opacity-80"
 						>
 							<Icon icon={faGlobe} />
@@ -117,14 +127,15 @@ export default function TeamPage({ teams }) {
 	const $locale = useStore(locale);
 	const t_teamNames = t("team.teams");
 	const t_positions = t("team.positions");
+	const memberLabel = t("team.member");
 
-	const builder = imageUrlBuilder(sanityClient);
+	const builder = createImageUrlBuilder(sanityClient);
 	const urlFor = source => builder.image(source);
 
 	const defaultYear = teams[0]?.year.toString() ?? "";
 	const [selectedYear, setSelectedYear] = useState(() => {
-		if (typeof window !== "undefined") {
-			const param = new URLSearchParams(window.location.search).get("year");
+		if (typeof globalThis.window !== "undefined") {
+			const param = new URLSearchParams(globalThis.location.search).get("year");
 			const validYears = teams.map(t => t.year.toString());
 			return validYears.includes(param) ? param : defaultYear;
 		}
@@ -136,14 +147,15 @@ export default function TeamPage({ teams }) {
 
 	// Sync year param in URL
 	useEffect(() => {
-		const params = new URLSearchParams(window.location.search);
+		const params = new URLSearchParams(globalThis.location.search);
 		if (selectedYear === defaultYear) {
 			params.delete("year");
 		} else {
 			params.set("year", selectedYear);
 		}
-		const newUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
-		window.history.replaceState({}, "", newUrl);
+		const queryString = params.toString();
+		const newUrl = queryString ? `${globalThis.location.pathname}?${queryString}` : globalThis.location.pathname;
+		globalThis.history.replaceState({}, "", newUrl);
 	}, [selectedYear, defaultYear]);
 
 	// Init AOS
@@ -169,15 +181,20 @@ export default function TeamPage({ teams }) {
 					assignments.find(a => a?.position) ||
 					assignments[0];
 				if (effectiveExec) {
-					(newSubTeams["Executive"] ??= []).push({ ...member, assignment: effectiveExec });
+					if (!newSubTeams["Executive"]) {
+						newSubTeams["Executive"] = [];
+					}
+					newSubTeams["Executive"].push({ ...member, assignment: effectiveExec });
 				}
 			}
 
 			for (const a of assignments) {
 				const teamName = a?.teamName?.trim();
 				if (teamName && !isExecutiveTeam(teamName)) {
-					const group = teamName || "Member";
-					(newSubTeams[group] ??= []).push({ ...member, assignment: a });
+					if (!newSubTeams[teamName]) {
+						newSubTeams[teamName] = [];
+					}
+					newSubTeams[teamName].push({ ...member, assignment: a });
 				}
 			}
 		}
@@ -186,7 +203,7 @@ export default function TeamPage({ teams }) {
 			newSubTeams[key] = members.sort((a, b) => {
 				const rankA = rankOrder.indexOf(a.assignment?.position?.trim() ?? "");
 				const rankB = rankOrder.indexOf(b.assignment?.position?.trim() ?? "");
-				return (rankA === -1 ? Infinity : rankA) - (rankB === -1 ? Infinity : rankB);
+				return sortRank(rankA) - sortRank(rankB);
 			});
 		});
 
@@ -195,19 +212,23 @@ export default function TeamPage({ teams }) {
 
 	const getTitle = member => {
 		const a = member.assignment;
-		if (!a) return t_positions?.member;
+		if (!a) return memberLabel;
 
 		const team = a.teamName?.trim();
 		const pos = a.position?.trim();
-		if (!pos) return t_positions?.member;
+		if (!pos) return memberLabel;
 
 		const teamLabel = t_teamNames?.[team] ?? team ?? "";
 		const positionLabel = t_positions?.[pos] ?? pos ?? "";
 
 		if (isExecutiveTeam(team)) return positionLabel;
-		if (["vp", "co-vp"].includes(normalize(pos))) return `${positionLabel} of ${teamLabel}`;
+		if (["vp", "co-vp"].includes(normalize(pos))) {
+			if ($locale === "en") return `${positionLabel} of ${teamLabel}`;
+			return `${positionLabel} ${teamLabel}`;
+		}
 
-		return $locale === "en" ? `${teamLabel} ${positionLabel}` : `${positionLabel} ${teamLabel}`;
+		if ($locale === "en") return `${teamLabel} ${positionLabel}`;
+		return `${positionLabel} ${teamLabel}`;
 	};
 
 	return (
@@ -231,15 +252,13 @@ export default function TeamPage({ teams }) {
 
 				<ul className="flex flex-wrap justify-evenly w-10/12 max-w-2xl gap-16">
 					{Object.keys(subTeams)
-						.sort((a, b) => (a === "Executive" ? -1 : b === "Executive" ? 1 : a.localeCompare(b)))
+						.sort(compareTeamGroups)
 						.map(subTeam => (
 							<li key={subTeam} className="w-full">
 								<h2>
-									{subTeam === "Executive"
+									{$locale === "en"
 										? t_teamNames[subTeam]
-										: $locale === "en"
-										? t_teamNames[subTeam]
-										: t_teamNames[subTeam]?.split(" ").slice(-1)[0]}
+										: stripFrenchTeamPrefix(t_teamNames[subTeam])}
 								</h2>
 								<ul className="flex flex-wrap justify-start w-full mt-2">
 									{subTeams[subTeam].map(member => (

@@ -1,43 +1,54 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import tower from "../../assets/SVGs/stats_tower.svg?raw";
 import { t } from "../../i18n";
 import "./Tower.css";
 
+const setPathTransition = paths => {
+	paths.forEach(path => {
+		path.style.transition = "fill 0.3s";
+	});
+};
+
+const darkenOtherGroups = (groups, currentIndex) => {
+	groups.forEach((group, index) => {
+		if (index !== currentIndex) {
+			group.querySelectorAll("path").forEach(path => {
+				path.style.fill = "#70211c";
+			});
+		}
+	});
+};
+
+const resetGroupColors = (groups, currentIndex, originalColor) => {
+	groups.forEach((group, index) => {
+		if (index !== currentIndex) {
+			group.querySelectorAll("path").forEach(path => {
+				path.style.fill = originalColor;
+			});
+		}
+	});
+};
+
+const setupGroupListeners = (group, index, groups, originalColor) => {
+	group.addEventListener("mouseenter", () => {
+		darkenOtherGroups(groups, index);
+	});
+	group.addEventListener("mouseleave", () => {
+		group.querySelectorAll("path").forEach(path => {
+			path.style.fill = originalColor;
+		});
+		resetGroupColors(groups, index, originalColor);
+	});
+};
+
 export default function Tower() {
 	useEffect(() => {
-		//get groups with id containing the string `panel`, darken the children of the group, on hover lighten the children of the group
 		const groups = document.querySelectorAll("g[id*='panel']");
-		//foreach doesnt work
 		for (let i = 0; i < groups.length; i++) {
 			const originalColor = groups[i].querySelector("path").style.fill;
-			groups[i].querySelectorAll("path").forEach(path => {
-				path.style.transition = "fill 0.3s";
-			});
-			groups[i].addEventListener("mouseenter", () => {
-				groups[i].querySelectorAll("path").forEach(path => {
-					//darken all other groups
-					groups.forEach((group, index) => {
-						if (index !== i) {
-							group.querySelectorAll("path").forEach(path => {
-								path.style.fill = "#70211c";
-							});
-						}
-					});
-				});
-			});
-			groups[i].addEventListener("mouseleave", () => {
-				groups[i].querySelectorAll("path").forEach(path => {
-					path.style.fill = originalColor;
-				});
-				//reset all other groups
-				groups.forEach((group, index) => {
-					if (index !== i) {
-						group.querySelectorAll("path").forEach(path => {
-							path.style.fill = originalColor;
-						});
-					}
-				});
-			});
+			const paths = groups[i].querySelectorAll("path");
+			setPathTransition(paths);
+			setupGroupListeners(groups[i], i, groups, originalColor);
 		}
 	}, []);
 
