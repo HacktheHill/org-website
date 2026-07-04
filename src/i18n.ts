@@ -4,14 +4,15 @@ import fr from "./locales/fr";
 
 import { atom } from "nanostores";
 
-const i18n = atom({
+const translations = {
 	en,
 	fr,
-} as const);
-type I18n = ReturnType<typeof i18n.get>;
+} as const;
+
+type I18n = typeof translations;
 type Locale = keyof I18n;
 
-const defaultLocale: Locale = "en" as const;
+export const defaultLocale: Locale = "en" as const;
 export const locale = atom(defaultLocale);
 
 /**
@@ -19,7 +20,10 @@ export const locale = atom(defaultLocale);
  * @param path A dot notation path to the value
  * @returns The value at the path
  */
-export const t = <P extends Path<I18n[typeof defaultLocale]>>(path: P) => get(useStore(i18n)[useStore(locale)], path);
+const useT = <P extends Path<I18n[typeof defaultLocale]>>(path: P) => get(translations[useStore(locale)], path);
+export const t = useT;
+export const staticT = <P extends Path<I18n[typeof defaultLocale]>>(path: P, selectedLocale = defaultLocale) =>
+	get(translations[selectedLocale], path);
 
 // https://stackoverflow.com/questions/68411508/typescript-type-safe-string-with-dot-notation-for-query-nested-object
 type PathImpl<T, K extends keyof T> = K extends string

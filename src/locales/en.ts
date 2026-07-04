@@ -1,4 +1,22 @@
 export default {
+	seo: {
+		site_name: "Capital Technology Network",
+		description: "Capital Technology Network is Canada's capital hackathon organization.",
+		keywords:
+			"Ottawa Hackathon, Hackathon, Hack the Hill, Capital Technology Network, Hackathon Ottawa, Hackathon Ontario, Hackathon Canada, University of Ottawa, uOttawa, Capital Hackathon, Canada's Capital Hackathon, International Hackathon, In-person Hackathon, Carleton, Carleton University",
+		locale: "en_CA",
+		twitter_image_alt: "Hack the Hill logo",
+		sitemap_title: "Sitemap",
+		robots_title: "Robots",
+		pages: {
+			home: "Capital Technology Network",
+			events: "Events",
+			documents: "Documents",
+			blog: "Blog",
+			team: "Team",
+			not_found: "404 Page Not Found",
+		},
+	},
 	navbar: {
 		links: { events: "Events", blog: "Blog", documents: "Documents", team: "Team" },
 		aria_label: "Navigation Bar",
@@ -39,7 +57,8 @@ export default {
 			twentytwentyfour: {
 				card_title: "2024",
 				title: "2024 Main Event",
-				description: "Hack the Hill II proved to be even more successful than the initial event, attracting 826 attendees and receiving 113 project submissions.",
+				description:
+					"Hack the Hill II proved to be even more successful than the initial event, attracting 826 attendees and receiving 113 project submissions.",
 				stat: "Hackers",
 			},
 			twentytwentythree: {

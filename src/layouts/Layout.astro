@@ -1,18 +1,20 @@
 ---
 import fs from "fs/promises";
 import path from "path";
-import Navigation from "../components/Navigation/Navigation.jsx";
 import Footer from "../components/Footer/Footer.jsx";
+import Navigation from "../components/Navigation/Navigation.jsx";
+import { defaultLocale, staticT } from "../i18n";
 
 const { title, pathName } = Astro.props;
 
-const description =
-	"The Capital Technology Network, the organization behind Hack the Hill, Canada's Capital premier flagship hackathon event & more. This Fall 2024, come prepared to network and compete with the best at Canada's Capital's largest hackathon!";
-
-const keywords =
-	"Ottawa Hackathon, Hackathon, Hack the Hill, Capital Technology Network, Hackathon Ottawa, Hackathon Ontario, Hackathon Canada, Hackathon 2024, University of Ottawa, uOttawa, CSSA, IEEE uOttawa, SESA, ESS, Capital Hackathon, Canada's Capital Hackathon, International Hackathon, Hybrid Hackathon, Carleton, Carleton University";
+const siteName = staticT("seo.site_name");
+const fullTitle = title === siteName ? siteName : `${title} - ${siteName}`;
+const description = staticT("seo.description");
+const keywords = staticT("seo.keywords");
 
 const color = "#d70909";
+const url = import.meta.env.SITE.replace(/\/$/, "");
+const pageUrl = new URL(pathName ?? "/", `${url}/`).toString();
 
 let structuredData = {} as any;
 try {
@@ -25,19 +27,17 @@ try {
 	console.error(error);
 }
 const structuredDataString = JSON.stringify(structuredData);
-
-const url = import.meta.env.SITE.replace(/\/$/, "");
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang={defaultLocale}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content={color} />
 		<meta name="msapplication-TileColor" content={color} />
 		<link rel="manifest" href={`${url}/site.webmanifest`} />
-		<title>{title}</title>
+		<title>{fullTitle}</title>
 
 		<!--- Google analytics tags  -->
 
@@ -54,20 +54,20 @@ const url = import.meta.env.SITE.replace(/\/$/, "");
 		<!-- Meta tags for SEO and social media -->
 		<meta property="og:description" name="description" content={description} />
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content={title} />
-		<meta property="og:url" content={url} />
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:url" content={pageUrl} />
 		<meta property="og:image" content={`${url}/favicon.ico`} />
-		<meta property="og:site_name" content="Capital Technology Network" />
-		<meta property="og:locale" content="en_US" />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:locale" content={staticT("seo.locale")} />
 
 		<!-- TWITTER SEO -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@hackthehill_" />
 		<meta name="twitter:creator" content="@hackthehill_" />
-		<meta name="twitter:title" content={title} />
+		<meta name="twitter:title" content={fullTitle} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={`${url}/favicon.ico`} />
-		<meta name="twitter:image:alt" content="Hack the Hill logo" />
+		<meta name="twitter:image:alt" content={staticT("seo.twitter_image_alt")} />
 
 		<!-- KEYWORDS -->
 		<meta name="keywords" content={keywords} />
@@ -76,13 +76,13 @@ const url = import.meta.env.SITE.replace(/\/$/, "");
 		<link type="text/plain" rel="author" href={`${url}/humans.md`} />
 
 		<!-- canonical -->
-		<link rel="canonical" href={url} />
+		<link rel="canonical" href={pageUrl} />
 
 		<!-- sitemap -->
-		<link rel="sitemap" type="application/xml" title="Sitemap" href={`${url}/sitemap-index.xml`} />
+		<link rel="sitemap" type="application/xml" title={staticT("seo.sitemap_title")} href={`${url}/sitemap-index.xml`} />
 
 		<!-- robots.txt -->
-		<link rel="robots" type="text/plain" title="Robots" href={`${url}/robots.txt`} />
+		<link rel="robots" type="text/plain" title={staticT("seo.robots_title")} href={`${url}/robots.txt`} />
 
 		<!-- favicons for all devices -->
 		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
@@ -94,7 +94,7 @@ const url = import.meta.env.SITE.replace(/\/$/, "");
 		<meta name="msapplication-config" content="/browserconfig.xml" />
 		<meta name="theme-color" content={color} />
 
-		<script type="application/ld+json" set:html={structuredDataString}></script>
+		<script type="application/ld+json" set:html={structuredDataString} />
 	</head>
 	<body>
 		<Navigation pathName={pathName} client:load />
@@ -124,7 +124,8 @@ const url = import.meta.env.SITE.replace(/\/$/, "");
 			html,
 			body {
 				margin: 0;
-				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+				font-family:
+					-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
 					"Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;

@@ -2,8 +2,9 @@
 import TeamPage from "../components/Team/TeamPage";
 import Layout from "../layouts/Layout.astro";
 import { sanityClient } from "sanity:client";
+import { staticT } from "../i18n";
 
-const title = "Capital Technology Network - Team";
+const title = staticT("seo.pages.team");
 const pathName = "/team";
 
 const query = `*[_type == "newTeam"] {

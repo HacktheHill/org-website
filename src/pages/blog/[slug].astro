@@ -1,38 +1,35 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import BlogPost from "../../components/Blog/BlogPost.jsx";
+import { defaultLocale } from "../../i18n";
 import { sanityClient } from "sanity:client";
 
+export const getStaticPaths = async () => {
+	const query = `*[_type == "blog" && defined(slug)] | order(publishedAt desc)`;
+	const posts = await sanityClient.fetch(query);
 
-
-export const getStaticPaths = (async () => {
-  const query = `*[_type == "blog" && defined(slug)] | order(publishedAt desc)`;
-  const posts = await sanityClient.fetch(query);
-
-  return posts.map((post : any) => {
-    return {
-      params: {
-        slug: post.slug.current,
-      },
-      props : {
-        post,
-      },
-    };
-  });
-});
+	return posts.map((post: any) => {
+		return {
+			params: {
+				slug: post.slug.current,
+			},
+			props: {
+				post,
+			},
+		};
+	});
+};
 interface Post {
-  title: {
-    en: string;
-    fr: string;
-  };
-  slug: { current: string };
+	title: {
+		en: string;
+		fr: string;
+	};
+	slug: { current: string };
 }
 
 const { post }: { post: Post } = Astro.props;
 ---
 
-<Layout  title={post.title.en} pathName={`/blog/${post.slug.current}`}
->
-  <BlogPost data={post} client:load />
+<Layout title={post.title[defaultLocale]} pathName={`/blog/${post.slug.current}`}>
+	<BlogPost data={post} client:load />
 </Layout>
-

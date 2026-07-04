@@ -1,7 +1,8 @@
 ---
 import EventsPage from "../components/Events/EventsPage";
+import { staticT } from "../i18n";
 import Layout from "../layouts/Layout.astro";
-const title = "Capital Technology Network - Events";
+const title = staticT("seo.pages.events");
 const pathName = "/events";
 import { sanityClient } from "sanity:client";
 const query = `*[_type == "event"] | order(start desc)`;

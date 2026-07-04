@@ -1,10 +1,11 @@
 ---
 import FourOFour from "../components/FourOFour/FourOFour";
+import { staticT } from "../i18n";
 import Layout from "../layouts/Layout.astro";
-const title = "404 Page Not Found";
+const title = staticT("seo.pages.not_found");
 const pathName = "/404";
 ---
 
 <Layout title={title} pathName={pathName}>
-	<FourOFour client:load/>
+	<FourOFour client:load />
 </Layout>

@@ -1,4 +1,23 @@
 export default {
+	seo: {
+		site_name: "Réseau technologique de la capitale",
+		description:
+			"Le Réseau technologique de la capitale est l'organisation du hackathon de la capitale canadienne.",
+		keywords:
+			"Hackathon Ottawa, Hackathon, Hack the Hill, Réseau technologique de la capitale, Hackathon Ontario, Hackathon Canada, Université d'Ottawa, uOttawa, Hackathon de la capitale, Hackathon de la capitale canadienne, Hackathon international, Hackathon en présentiel, Carleton, Université Carleton",
+		locale: "fr_CA",
+		twitter_image_alt: "Logo de Hack the Hill",
+		sitemap_title: "Plan du site",
+		robots_title: "Robots",
+		pages: {
+			home: "Réseau technologique de la capitale",
+			events: "Événements",
+			documents: "Documents",
+			blog: "Blogue",
+			team: "Équipe",
+			not_found: "404 Page introuvable",
+		},
+	},
 	navbar: {
 		links: { events: "Événements", blog: "Blog", documents: "Documents", team: "Équipe" },
 		aria_label: "Barre de Navigation",
@@ -39,7 +58,8 @@ export default {
 			twentytwentyfour: {
 				card_title: "2024",
 				title: "Événement Principal 2024",
-				description: "Hack the Hill II s’est révélé encore plus réussi que le premier événement, attirant 826 participants et recevant 113 soumissions de projets.",
+				description:
+					"Hack the Hill II s’est révélé encore plus réussi que le premier événement, attirant 826 participants et recevant 113 soumissions de projets.",
 				stat: "Hackers",
 			},
 			twentytwentythree: {
