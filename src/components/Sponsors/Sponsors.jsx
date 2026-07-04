@@ -138,11 +138,12 @@ export default function Sponsors() {
 						{marqueeGroup(data.sponsors, 2, 1, pauseAnimation, startAnimation, setHovered)}
 					</div>
 				</div>
-				<img src={waves.src} className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]" alt="waves"></img>
+				<img src={waves.src} className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]" alt="" aria-hidden="true"></img>
 				<img
 					src={waves.src}
 					className="absolute bottom-0 w-full h-20 z-[1] -scale-y-100 -scale-x-100 translate-y-[1px]"
-					alt="waves"
+					alt=""
+					aria-hidden="true"
 				></img>
 			</div>
 			<h2 className="mt-32">{t("collaborators.title")}</h2>
@@ -153,11 +154,12 @@ export default function Sponsors() {
 						{marqueeGroup(data.collaborators, 2, 2, pauseAnimation, startAnimation, setHovered2)}
 					</div>
 				</div>
-				<img src={waves.src} className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]" alt="waves"></img>
+				<img src={waves.src} className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]" alt="" aria-hidden="true"></img>
 				<img
 					src={waves.src}
 					className="absolute bottom-0 w-full h-20 z-[1] -scale-y-100 -scale-x-100 translate-y-[1px]"
-					alt="waves"
+					alt=""
+					aria-hidden="true"
 				></img>
 			</div>
 		</div>

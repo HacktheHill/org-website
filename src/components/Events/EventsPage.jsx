@@ -21,12 +21,14 @@ export default function EventsPage({ events }) {
 			</div>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+				aria-hidden="true"
 				className="w-full md:w-[200%] md:translate-x-0 md:-translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 			/>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+				aria-hidden="true"
 				className="w-full md:w-[200%] md:translate-x-0 md:translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
 			/>
 		</div>

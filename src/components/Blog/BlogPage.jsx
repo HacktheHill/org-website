@@ -68,7 +68,12 @@ export default function BlogPage({ posts }) {
 										}`}</p>
 										<div className="w-full flex justify-between items-center mt-4">
 											<div className="text-base lg:text-sm font-bold flex flex-row gap-2 items-center">
-												<img src={calendar.src} alt="calendar" className="w-4 h-4 mr-2" />
+																								<img
+												src={calendar.src}
+												alt=""
+												aria-hidden="true"
+												className="w-4 h-4 mr-2"
+											/>
 												{new Date(post.publishedAt).toLocaleDateString(
 													$locale === "en" ? "en-US" : "fr-CA",
 													{
@@ -94,12 +99,14 @@ export default function BlogPage({ posts }) {
 			</div>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+				aria-hidden="true"
 				className="w-full md:w-[200%] md:translate-x-0 md:-translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 			/>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+				aria-hidden="true"
 				className="w-full md:w-[200%] md:translate-x-0 md:translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
 			/>
 		</div>

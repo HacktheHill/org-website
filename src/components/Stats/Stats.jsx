@@ -24,7 +24,7 @@ export default function Stats() {
 					>
 						<h2>{t("stats.description")}</h2>
 						<div className="absolute -top-16 right-0 h-24">
-							<img src={beaver2.src} alt="Beaver" className="h-full" />
+							<img src={beaver2.src} alt="" aria-hidden="true" className="h-full" />
 						</div>
 					</div>
 					<div
@@ -35,7 +35,8 @@ export default function Stats() {
 						<img
 							className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 							src={hacker.src}
-							alt={"Hacker"}
+							alt=""
+							aria-hidden="true"
 						/>
 						<div className="md:text-end md:self-center">
 							<h2>800+</h2>
@@ -50,7 +51,8 @@ export default function Stats() {
 						<img
 							className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 							src={team.src}
-							alt={"Team"}
+							alt=""
+							aria-hidden="true"
 						/>
 						<div className="md:text-end md:self-center">
 							<h2>15+</h2>
@@ -65,7 +67,8 @@ export default function Stats() {
 						<img
 							className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 							src={team.src}
-							alt={"Team"}
+							alt=""
+							aria-hidden="true"
 						/>
 						<div className="md:text-end md:self-center">
 							<h2>100+</h2>
@@ -80,7 +83,8 @@ export default function Stats() {
 						<img
 							className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 							src={cash.src}
-							alt={"Cash"}
+							alt=""
+							aria-hidden="true"
 						/>
 						<div className="md:text-end md:self-center">
 							<h2>$12+</h2>
@@ -95,7 +99,8 @@ export default function Stats() {
 						<img
 							className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 							src={tool.src}
-							alt={"Tool"}
+							alt=""
+							aria-hidden="true"
 						/>
 						<div className="text-end self-center">
 							<h2>5+</h2>
@@ -110,7 +115,8 @@ export default function Stats() {
 						<img
 							className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 							src={drink.src}
-							alt={"Drink"}
+							alt=""
+							aria-hidden="true"
 						/>
 						<div className="text-end self-center">
 							<h2>1000+</h2>
@@ -122,7 +128,8 @@ export default function Stats() {
 			<img
 				src={whirl.src}
 				className="absolute z-[3] h-full w-full object-cover opacity-35 -scale-y-100 max-w-[3500px] translate-y-[15%]"
-				alt="Quad"
+				alt=""
+				aria-hidden="true"
 			/>
 		</div>
 	);

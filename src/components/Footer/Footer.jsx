@@ -45,7 +45,7 @@ export default function Footer() {
 				}`}
 				onClick={toggleBeaver}
 			>
-				<img src={beaver.src} alt="Beaver" className="h-full" />
+				<img src={beaver.src} alt="" aria-hidden="true" className="h-full" />
 			</div>
 			<div className="flex flex-row w-full justify-between items-center gap-8 pl-64 pr-16 py-4 flex-wrap lg:px-8 md:justify-center bg-background-light ">
 				<div className="flex flex-row gap-8 justify-start items-center flex-wrap lg:justify-center">

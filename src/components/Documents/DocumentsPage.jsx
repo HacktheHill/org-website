@@ -29,7 +29,8 @@ export default function DocumentsPage() {
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
-								alt="Document"
+								alt=""
+								aria-hidden="true"
 							/>
 						</div>
 						<div>
@@ -45,7 +46,7 @@ export default function DocumentsPage() {
 							</div>
 						</div>
 						<div className="absolute -top-16 right-0 h-24">
-							<img src={beaver5.src} alt="Beaver" className="h-full" />
+							<img src={beaver5.src} alt="" aria-hidden="true" className="h-full" />
 						</div>
 					</div>
 					<div
@@ -57,7 +58,8 @@ export default function DocumentsPage() {
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
-								alt="Document"
+								alt=""
+								aria-hidden="true"
 							/>
 						</div>
 						<div>
@@ -82,7 +84,8 @@ export default function DocumentsPage() {
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
-								alt="Document"
+								alt=""
+								aria-hidden="true"
 							/>
 						</div>
 						<div>
@@ -107,7 +110,8 @@ export default function DocumentsPage() {
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
-								alt="Document"
+								alt=""
+								aria-hidden="true"
 							/>
 						</div>
 						<div>
@@ -132,7 +136,8 @@ export default function DocumentsPage() {
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
-								alt="Document"
+								alt=""
+								aria-hidden="true"
 							/>
 						</div>
 						<div>
@@ -157,7 +162,8 @@ export default function DocumentsPage() {
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
-								alt="Document"
+								alt=""
+								aria-hidden="true"
 							/>
 						</div>
 						<div>
@@ -182,7 +188,8 @@ export default function DocumentsPage() {
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow md:h-12 md:w-12"
 								src={cv.src}
-								alt="Document"
+								alt=""
+								aria-hidden="true"
 							/>
 						</div>
 						<div>
@@ -202,12 +209,14 @@ export default function DocumentsPage() {
 			</div>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+				aria-hidden="true"
 				className="w-full md:w-[200%] md:translate-x-0 md:-translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 			/>
 			<img
 				src={shape.src}
-				alt="shape"
+				alt=""
+				aria-hidden="true"
 				className="w-full md:w-[200%] md:translate-x-0 md:translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
 			/>
 		</div>

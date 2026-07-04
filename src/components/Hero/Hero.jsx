@@ -54,7 +54,7 @@ export default function Hero() {
 				</div>
 			</div>
 			<div id="parliament" className="absolute bottom-0 left-0 pointer-events-none w-full">
-				<img className="w-full bottom-0" {...parliament} alt={t("hero.alt")}></img>
+				<img className="w-full bottom-0" {...parliament} alt="" aria-hidden="true"></img>
 			</div>
 		</div>
 	);
