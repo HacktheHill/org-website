@@ -50,9 +50,10 @@ export default function Navigation(props) {
 				<div className="flex flex-row gap-4 items-center xs:gap-0">
 					<a
 						href="/"
+						aria-label={t("seo.site_name")}
 						className="flex h-full items-center bg-transparent border-none p-4 cursor-pointer transition-all duration-100 opacity-85 hover:opacity-100"
 					>
-						<img {...logo} alt="Logo" width="75px" />
+						<img {...logo} alt="" aria-hidden="true" width="75px" />
 					</a>
 					<button
 						className="flex h-full w-16 items-center bg-transparent border-none p-4 cursor-pointer font-bold transition-all duration-100 hover:text-shade-1"
@@ -76,6 +77,9 @@ export default function Navigation(props) {
 					<button
 						id="menu"
 						type="button"
+						aria-label={t("navbar.aria_label")}
+						aria-expanded={sidebarOpen}
+						aria-controls="sidebar"
 						className="hidden h-full bg-transparent border-none cursor-pointer p-2 md:block"
 						onClick={() => {
 							setSidebarOpen(!sidebarOpen);
