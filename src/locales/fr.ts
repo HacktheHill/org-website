@@ -103,7 +103,7 @@ export default {
 		partners: "Commanditaires et partenaires",
 		revenue: "Revenus cumulés",
 		programs: "Ateliers et événements",
-		reinvested: "Réinvestis dans nos programmes",
+		caffeinated: "Boissons caféinées servies",
 	},
 	gallery: {
 		title: "Là où naissent les souvenirs",

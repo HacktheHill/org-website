@@ -102,7 +102,7 @@ export default {
 		partners: "Sponsors and partners",
 		revenue: "Lifetime revenue",
 		programs: "Workshops and events",
-		reinvested: "Reinvested into programs",
+		caffeinated: "Caffeinated drinks served",
 	},
 	gallery: {
 		title: "Where Memories are Made",

@@ -1,8 +1,9 @@
 import beaver2 from "../../assets/beavar/Beaver2.svg";
-import cash from "../../assets/icons/cash.svg";
 import drink from "../../assets/icons/drink.svg";
+import cash from "../../assets/icons/cash.svg";
+import cube from "../../assets/icons/cube.svg";
 import hacker from "../../assets/icons/hacker.svg";
-import team from "../../assets/icons/team.svg";
+import handshake from "../../assets/icons/handshake.svg";
 import tool from "../../assets/icons/tool.svg";
 import whirl from "../../assets/patterns/wwwhirl.svg";
 import { t } from "../../i18n";
@@ -49,7 +50,7 @@ export default function Stats() {
 					>
 						<img
 							className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
-							src={team.src}
+							src={cube.src}
 							alt=""
 							aria-hidden="true"
 						/>
@@ -65,7 +66,7 @@ export default function Stats() {
 					>
 						<img
 							className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
-							src={team.src}
+							src={handshake.src}
 							alt=""
 							aria-hidden="true"
 						/>
@@ -107,7 +108,7 @@ export default function Stats() {
 						</div>
 					</div>
 					<div
-						className="flex flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-11 col-start-1 row-end-13 col-end-13"
+						className="flex flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-11 col-start-1 row-end-13 col-end-13 md:flex-col"
 						data-aos="fade-up"
 						data-aos-offset="-100"
 					>
@@ -118,8 +119,8 @@ export default function Stats() {
 							aria-hidden="true"
 						/>
 						<div className="text-end self-center">
-							<h2>$162.8K</h2>
-							<p>{t("stats.reinvested")}</p>
+							<h2>2,000+</h2>
+							<p>{t("stats.caffeinated")}</p>
 						</div>
 					</div>
 				</div>
