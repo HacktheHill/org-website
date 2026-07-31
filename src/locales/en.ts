@@ -113,7 +113,7 @@ export default {
 				card_title: "2024",
 				title: "Hack the Hill II",
 				description:
-					"With 826 attendees and 113 project submissions, this hackathon was an even greater success than the year before.",
+					"From the recap coverage to the community energy, Hack the Hill II brought together 826 attendees and 113 project submissions in a weekend of innovation and connection.",
 				stat: "Participants",
 			},
 			twentytwentythree: {
@@ -122,13 +122,6 @@ export default {
 				description:
 					"600+ hackers, 10+ sponsors and 36 hours of hacking combined to create an unforgettable experience. For a first edition, it was a huge success!",
 				stat: "Participants",
-			},
-			hackhers: {
-				card_title: "HackHers",
-				title: "HackHers",
-				description:
-					"A one-day hackathon in partnership with IEEE uOttawa and WIE uOttawa, HackHers was a unique experience that defied traditional hackathon expectations. With a wellness room, special workshop, and refreshing beverages, it was a must-attend event!",
-				stat: "Projects Submitted",
 			},
 			panel: {
 				card_title: "Intern Panel",
@@ -154,16 +147,16 @@ export default {
 		},
 	},
 	sponsors: {
-		title: "Our Sponsors ❤️",
-		subtitle: "These are the companies that make Hack the Hill possible year after year.",
+		title: "Past Sponsors ❤️",
+		subtitle: "These are the past sponsors that helped make Hack the Hill possible year after year.",
 	},
 	collaborators: {
-		title: "and Collaborators 🤝",
-		subtitle: "We couldn't do it without the help of these amazing organizations.",
+		title: "Past Collaborators 🤝",
+		subtitle: "These are the past collaborators that supported Hack the Hill across past editions.",
 	},
 	testimonials: {
 		title: "Making Moments Matter",
-		subtitle: "Here's what some of our community partners have to share.",
+		subtitle: "Here's what some of our community partners and sponsors have shared so far.",
 		button_text: "Let us know what you think",
 		t1: {
 			name: "Maddie Whibbs",

@@ -3,8 +3,6 @@ import "../../global.css";
 import beaver3 from "../../assets/beavar/Beaver3.svg";
 import ciena1 from "../../assets/gallery/ciena1.webp";
 import ciena2 from "../../assets/gallery/ciena2.webp";
-import hackhers1 from "../../assets/gallery/hackhers1.webp";
-import hackhers2 from "../../assets/gallery/hackhers2.webp";
 import HtH1 from "../../assets/gallery/HtH1.webp";
 import HtH2 from "../../assets/gallery/HtH2.webp";
 import HtH24 from "../../assets/gallery/HtH24.jpg";
@@ -50,18 +48,7 @@ export default function Gallery() {
 			statDescription: t("gallery.albums.twentytwentythree.stat"),
 			icon: hacker,
 		},
-		{
-			tag: "hackhers",
-			card_title: t("gallery.albums.hackhers.card_title"),
-			title: t("gallery.albums.hackhers.title"),
-			description: t("gallery.albums.hackhers.description"),
-			img1: hackhers1,
-			img2: hackhers2,
-			link: "https://hackhers24.hackthehill.com",
-			statNumber: "15+",
-			statDescription: t("gallery.albums.hackhers.stat"),
-			icon: cube,
-		},
+
 		{
 			tag: "panel",
 			card_title: t("gallery.albums.panel.card_title"),
@@ -134,25 +121,22 @@ export default function Gallery() {
 							>
 								<div>
 									<div
-										className={`w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 ${
-											album.tag === activeFolder
-												? "border-red bg-blur-svg"
-												: "border-white bg-transparent"
-										}`}
+										className={`w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 ${album.tag === activeFolder
+											? "border-red bg-blur-svg"
+											: "border-white bg-transparent"
+											}`}
 									>
 										<div
-											className={`absolute w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 transition-all duration-300 ${
-												album.tag === activeFolder
-													? "border-red bg-blur-svg -translate-y-3 -translate-x-3"
-													: "border-white bg-white -translate-y-1.5 -translate-x-1.5 hover:-translate-y-2 hover:-translate-x-2"
-											}`}
+											className={`absolute w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 transition-all duration-300 ${album.tag === activeFolder
+												? "border-red bg-blur-svg -translate-y-3 -translate-x-3"
+												: "border-white bg-white -translate-y-1.5 -translate-x-1.5 hover:-translate-y-2 hover:-translate-x-2"
+												}`}
 										></div>
 									</div>
 								</div>
 								<p
-									className={`cursor-pointer text-sm text-center ${
-										album.tag === activeFolder && "text-white font-bold"
-									}`}
+									className={`cursor-pointer text-sm text-center ${album.tag === activeFolder && "text-white font-bold"
+										}`}
 								>
 									{album.card_title}
 								</p>

@@ -114,7 +114,7 @@ export default {
 				card_title: "2024",
 				title: "Hack the Hill II",
 				description:
-					"Avec 826 participants et 113 projets soumis, ce hackathon a été un succès encore plus grand que l'année précédente.",
+					"Des vidéos de récapitulatif à l'énergie de la communauté, Hack the Hill II a réuni 826 participants et 113 projets soumis lors d'un weekend d'innovation et de connexion.",
 				stat: "Participants",
 			},
 			twentytwentythree: {
@@ -123,13 +123,6 @@ export default {
 				description:
 					"Plus de 600 hackers, plus de 10 commanditaires et 36 heures de hacking ont créé une expérience inoubliable. Pour une première édition, c'était une immense réussite!",
 				stat: "Participants",
-			},
-			hackhers: {
-				card_title: "HackHers",
-				title: "HackHers",
-				description:
-					"HackHers, un hackathon d'une journée organisé en partenariat avec IEEE uOttawa et WIE uOttawa, a offert une expérience unique qui sortait du cadre traditionnel des hackathons. Avec une salle de bien-être, un atelier spécial et des boissons rafraîchissantes, c'était un événement à ne pas manquer!",
-				stat: "Projets soumis",
 			},
 			panel: {
 				card_title: "Panel de stagiaires",
@@ -155,16 +148,16 @@ export default {
 		},
 	},
 	sponsors: {
-		title: "Nos commanditaires ❤️",
-		subtitle: "Ce sont les entreprises qui rendent Hack the Hill possible année après année.",
+		title: "Anciens commanditaires ❤️",
+		subtitle: "Ce sont les anciens commanditaires qui ont aidé à rendre Hack the Hill possible année après année.",
 	},
 	collaborators: {
-		title: "et nos partenaires 🤝",
-		subtitle: "Nous ne pourrions pas le faire sans l'aide de ces organisations incroyables.",
+		title: "Anciens partenaires 🤝",
+		subtitle: "Ce sont les anciens collaborateurs qui ont soutenu Hack the Hill à travers ses différentes éditions.",
 	},
 	testimonials: {
 		title: "Créons des moments marquants",
-		subtitle: "Voici ce que certains de nos partenaires communautaires ont à partager.",
+		subtitle: "Voici ce que certains de nos partenaires communautaires et commanditaires ont partagé jusqu'à présent.",
 		button_text: "Dites-nous ce que vous en pensez",
 		t1: {
 			name: "Maddie Whibbs",
