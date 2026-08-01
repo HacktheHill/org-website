@@ -7,7 +7,7 @@ const pathName = "/events";
 import { sanityClient } from "sanity:client";
 const query = `*[_type == "event"] | order(start desc)`;
 const shouldShowEvent = (event: Record<string, unknown>) => {
-	const searchableText = JSON.stringify(eventNo i ).toLowerCase();
+	const searchableText = JSON.stringify(event).toLowerCase();
 	return !searchableText.includes("hacker series") && !searchableText.includes("hackerseries");
 };
 const events = (await sanityClient.fetch(query)).filter(shouldShowEvent);
