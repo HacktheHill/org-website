@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { isMobile } from "react-device-detect";
-import parliament from "../../assets/SVGs/parliament.svg";
+import HTHII_Banner from "../../assets/SVGs/HTHII_Banner.svg";
 import { t } from "../../i18n";
 import Button from "../Button/Button";
 
@@ -41,8 +41,8 @@ export default function Hero() {
 					</div>
 				</div>
 			</div>
-			<div id="parliament" className="absolute bottom-0 left-0 pointer-events-none w-full">
-				<img className="w-full bottom-0" {...parliament} alt="" aria-hidden="true"></img>
+			<div id="HTHII_Banner" className="absolute bottom-0 left-0 pointer-events-none w-full">
+				<img className="w-full bottom-0" {...HTHII_Banner} alt="" aria-hidden="true"></img>
 			</div>
 		</div>
 	);

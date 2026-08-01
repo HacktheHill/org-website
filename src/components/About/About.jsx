@@ -1,7 +1,7 @@
 import about3 from "../../assets/about/about3.webp";
 import team1 from "../../assets/about/team1.webp";
 import team3 from "../../assets/about/team3.webp";
-import shape from "../../assets/patterns/ssshape.svg";
+import hthII_design from "../../assets/SVGs/Design1.svg";
 import { t } from "../../i18n";
 import Button from "../Button/Button";
 
@@ -174,19 +174,19 @@ export default function About() {
 					</div>
 				</div>
 				<img
-					src={shape.src}
+					src={hthII_design.src}
 					alt=""
 					aria-hidden="true"
 					className="w-full max-w-bg-deco md:w-[200%] md:translate-x-0 md:-translate-y-1/2 opacity-35 absolute z-[0] translate-x-1/2"
 				/>
 				<img
-					src={shape.src}
+					src={hthII_design.src}
 					alt=""
 					aria-hidden="true"
 					className="w-full max-w-bg-deco md:w-[200%] md:translate-x-0 md:translate-y-full opacity-35 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
 				/>
 				<img
-					src={shape.src}
+					src={hthII_design.src}
 					alt=""
 					aria-hidden="true"
 					className="w-full max-w-bg-deco md:w-[200%] md:translate-x-0 md:translate-y-[20rem] opacity-35 absolute z-[0] -translate-x-1/2 translate-y-3/4 -scale-y-100"
