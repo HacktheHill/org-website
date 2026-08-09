@@ -16,9 +16,9 @@ export default function Stats() {
 					<h1>{t("stats.title")}</h1>
 					<h2 className="text-shadow_text">{t("stats.subtitle")}</h2>
 				</div>
-				<div className="grid gap-4 grid-rows-12 grid-cols-12 w-full max-w-2xl md:flex md:flex-col xl:px-4 md:gap-2">
+				<div className="grid gap-4 grid-rows-12 grid-cols-12 w-full max-w-2xl xl:flex xl:flex-col xl:px-4 xl:gap-2">
 					<div
-						className="flex flex-col md:flex-row justify-start items-between bg-blur-svg rounded-3xl p-8 row-start-1 col-start-6 row-end-5 col-end-13 relative"
+						className="flex flex-col xl:flex-row justify-start items-start bg-blur-svg rounded-3xl p-8 row-start-1 col-start-6 row-end-5 col-end-13 relative"
 						data-aos="fade-left"
 						data-aos-offset="-100"
 					>
@@ -28,7 +28,7 @@ export default function Stats() {
 						</div>
 					</div>
 					<div
-						className="flex flex-col md:flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-1 col-start-1 row-end-6 col-end-6"
+						className="flex flex-col xl:flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-1 col-start-1 row-end-6 col-end-6"
 						data-aos="fade-right"
 						data-aos-offset="-100"
 					>
@@ -38,13 +38,13 @@ export default function Stats() {
 							alt=""
 							aria-hidden="true"
 						/>
-						<div className="md:text-end md:self-center">
+						<div className="xl:text-end xl:self-center">
 							<h2>1,400+</h2>
 							<p>{t("stats.participants")}</p>
 						</div>
 					</div>
 					<div
-						className="flex flex-col md:flex-row justify-between items-start gap-8 bg-blur-svg md:bg-none md:bg-dark overflow-hidden rounded-3xl p-8 row-start-6 col-start-1 row-end-11 col-end-6"
+						className="flex flex-col xl:flex-row justify-between items-start gap-8 bg-blur-svg xl:bg-none xl:bg-dark overflow-hidden rounded-3xl p-8 row-start-6 col-start-1 row-end-11 col-end-6"
 						data-aos="fade-right"
 						data-aos-offset="-100"
 					>
@@ -54,13 +54,13 @@ export default function Stats() {
 							alt=""
 							aria-hidden="true"
 						/>
-						<div className="md:text-end md:self-center">
+						<div className="xl:text-end xl:self-center">
 							<h2>166</h2>
 							<p>{t("stats.projects")}</p>
 						</div>
 					</div>
 					<div
-						className="flex flex-col md:flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-5 col-start-6 row-end-9 col-end-10"
+						className="flex flex-col xl:flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-5 col-start-6 row-end-9 col-end-10"
 						data-aos="fade-up"
 						data-aos-offset="-100"
 					>
@@ -70,13 +70,13 @@ export default function Stats() {
 							alt=""
 							aria-hidden="true"
 						/>
-						<div className="md:text-end md:self-center">
+						<div className="xl:text-end xl:self-center">
 							<h2>40+</h2>
 							<p>{t("stats.partners")}</p>
 						</div>
 					</div>
 					<div
-						className="flex flex-col md:flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-5 col-start-10 row-end-9 col-end-13"
+						className="flex flex-col xl:flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-5 col-start-10 row-end-9 col-end-13"
 						data-aos="fade-left"
 						data-aos-offset="-100"
 					>
@@ -86,7 +86,7 @@ export default function Stats() {
 							alt=""
 							aria-hidden="true"
 						/>
-						<div className="md:text-end md:self-center">
+						<div className="xl:text-end xl:self-center">
 							<h2>$179.5K</h2>
 							<p>{t("stats.revenue")}</p>
 						</div>
@@ -108,7 +108,7 @@ export default function Stats() {
 						</div>
 					</div>
 					<div
-						className="flex flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-11 col-start-1 row-end-13 col-end-13 md:flex-col"
+						className="flex flex-row justify-between items-start gap-8 bg-dark overflow-hidden rounded-3xl p-8 row-start-11 col-start-1 row-end-13 col-end-13"
 						data-aos="fade-up"
 						data-aos-offset="-100"
 					>

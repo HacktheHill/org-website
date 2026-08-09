@@ -100,9 +100,9 @@ export default function Calendar({ events }) {
 		}`;
 
 	return (
-		<div className="grid grid-cols-5 gap-8 lg:flex lg:flex-wrap w-full">
+		<div className="grid grid-cols-5 gap-8 lg:flex lg:flex-col w-full">
 			<div
-				className="rounded-3xl p-8 bg-blur-svg aspect-square h-[28.5rem] w-full col-start-1 col-end-3"
+				className="rounded-3xl p-8 md:p-4 bg-blur-svg min-h-[28.5rem] md:min-h-[25rem] w-full col-start-1 col-end-3"
 				data-aos="fade-right"
 			>
 				<div className="flex items-center">
@@ -113,7 +113,7 @@ export default function Calendar({ events }) {
 						type="button"
 						aria-label={t("accessibility.previous_month")}
 						onClick={previousMonth}
-						className="p-1.5 mr-4 transition-all duration-200 opacity-75 hover:opacity-100"
+						className="p-1.5 mr-4 transition-all duration-200 opacity-75 hover:opacity-100 focus-visible:opacity-100"
 					>
 						<img src={chevron.src} alt="" aria-hidden="true" className="-scale-x-100" width="8px" />
 					</button>
@@ -121,7 +121,7 @@ export default function Calendar({ events }) {
 						onClick={nextMonth}
 						type="button"
 						aria-label={t("accessibility.next_month")}
-						className="p-1.5 transition-all duration-200 opacity-75 hover:opacity-100"
+						className="p-1.5 transition-all duration-200 opacity-75 hover:opacity-100 focus-visible:opacity-100"
 					>
 						<img src={chevron.src} alt="" aria-hidden="true" width="8px" />
 					</button>
@@ -181,14 +181,14 @@ export default function Calendar({ events }) {
 				/>
 			</div>
 			<div
-				className="rounded-3xl bg-black w-full col-start-3 col-end-6 h-[40rem] xl:h-[35rem] scale-100"
+				className="rounded-3xl bg-black flex w-full col-start-3 col-end-6 h-[40rem] xl:h-[35rem] scale-100"
 				data-aos="fade-left"
 			>
-				<div className="overflow-hidden p-8">
-					<div className="flex flex-col gap-8">
+				<div className="relative flex h-full min-h-0 w-full flex-col overflow-hidden p-8 md:p-4">
+					<div className="flex h-full min-h-0 flex-col gap-8">
 						<div className="flex items-center justify-between gap-4 flex-wrap">
 							<h3 className="font-semibold">{eventHeading}</h3>
-							<div className="flex flex-row justify-center items-center shadow-glow">
+							<div className="flex flex-row justify-center items-center shadow-glow text-sm xs:text-xs">
 								<button
 									type="button"
 									onClick={() => setShowUpcomingEvents(-1)}
@@ -213,7 +213,7 @@ export default function Calendar({ events }) {
 							</div>
 						</div>
 						<hr className="border-shade-7" />
-						<div className="h-[30rem] xl:h-[25rem] overflow-auto w-full pr-4">
+						<div className="min-h-0 flex-1 overflow-auto w-full pr-4">
 							<ol className="flex flex-col gap-2">
 								{displayedEvents.length > 0
 									? displayedEvents.map((event, i) => <Event event={event} index={i} key={i} />)
@@ -252,7 +252,7 @@ function Event({ event, index }) {
 				index % 2 === 0 ? "bg-black" : "bg-blur-svg"
 			}`}
 		>
-			<div className="flex-col gap-4 w-full">
+			<div className="flex flex-col gap-4 w-full">
 				<h4 className="font-semibold">{event?.title?.[`${$locale}`]}</h4>
 				<p className="text-sm italic mb-4 items-center flex flex-row flex-wrap">
 					<span>{eventDate}</span>
@@ -270,7 +270,7 @@ function Event({ event, index }) {
 						aria-hidden="true"
 						className="h-4 w-4 mx-2 inline-block not-italic"
 					/>
-					<span className="text-normal">{event?.location}</span>
+					<span className="not-italic">{event?.location}</span>
 				</p>
 				<p className="text-sm">{toPlainText(event?.details?.[`${$locale}`])}</p>
 

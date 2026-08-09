@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../../global.css";
 import beaver3 from "../../assets/beavar/Beaver3.svg";
 import ciena1 from "../../assets/gallery/ciena1.webp";
 import ciena2 from "../../assets/gallery/ciena2.webp";
@@ -115,14 +114,14 @@ export default function Gallery() {
 	};
 
 	return (
-		<div className="w-full flex bg-background justify-center items-center">
+		<div className="w-full flex bg-background-light justify-center items-center">
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl md:w-11/12">
 				<div className="flex flex-col text-left w-full" data-aos="fade-up">
 					<h1>{t("gallery.title")}</h1>
 					<h2 className="text-shadow_text">{t("gallery.subtitle")}</h2>
 				</div>
-				<div className="flex h-4/6 flex-row justify-between items-center gap-16 2xl:flex-wrap">
-					<div className="flex px-16 justify-start items-center flex-wrap gap-8 md:gap-3 2xl:justify-center 2xl:w-full md:px-2">
+				<div className="flex h-4/6 flex-row justify-between items-center gap-16 2xl:flex-wrap xl:flex-col xl:w-full">
+					<div className="flex px-16 justify-start items-start flex-wrap gap-x-8 gap-y-6 md:gap-x-3 2xl:justify-center 2xl:w-full md:px-2">
 						{albums.map(album => (
 							<button
 								type="button"
@@ -130,28 +129,28 @@ export default function Gallery() {
 								onClick={() => {
 									handleCardClick(album.tag);
 								}}
-								className="flex flex-col justify-start items-center gap-2 w-24 h-24 cursor-pointer bg-transparent border-none p-0"
+								className="group flex flex-col justify-start items-center gap-3 w-28 min-h-28 cursor-pointer bg-transparent border-none px-1 pb-2"
 							>
-								<div>
+								<div className="relative mt-3">
 									<div
-										className={`w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 ${
+										className={`relative w-14 h-14 border rounded-xl md:w-12 md:h-12 ${
 											album.tag === activeFolder
-												? "border-red bg-blur-svg"
-												: "border-white bg-transparent"
+												? "border-primary/50 bg-blur-svg"
+												: "border-white/50 bg-transparent"
 										}`}
 									>
 										<div
-											className={`absolute w-14 h-14 border bg-opacity-10 border-opacity-50 rounded-xl md:w-12 md:h-12 transition-all duration-300 ${
+											className={`absolute inset-0 w-14 h-14 border rounded-xl md:w-12 md:h-12 transition-all duration-300 ${
 												album.tag === activeFolder
-													? "border-red bg-blur-svg -translate-y-3 -translate-x-3"
-													: "border-white bg-white -translate-y-1.5 -translate-x-1.5 hover:-translate-y-2 hover:-translate-x-2"
+													? "border-primary/50 bg-blur-svg -translate-y-3 -translate-x-3"
+													: "border-white/50 bg-white/10 -translate-y-1.5 -translate-x-1.5 group-hover:-translate-y-2 group-hover:-translate-x-2 group-focus-visible:-translate-y-2 group-focus-visible:-translate-x-2"
 											}`}
 										></div>
 									</div>
 								</div>
 								<p
-									className={`cursor-pointer text-sm text-center ${
-										album.tag === activeFolder && "text-white font-bold"
+									className={`cursor-pointer text-sm text-center leading-tight ${
+										album.tag === activeFolder ? "text-white font-bold" : ""
 									}`}
 								>
 									{album.card_title}
@@ -160,7 +159,7 @@ export default function Gallery() {
 						))}
 					</div>
 					<div
-						className="aspect-[5/3] grid grid-rows-12 grid-cols-12 gap-4 xl:basis-full xs:flex xs:flex-col aos-frame xl:flex xl:flex-col"
+						className="aspect-[5/3] grid grid-rows-12 grid-cols-12 gap-4 xl:aspect-auto xl:basis-full xl:w-full xl:flex xl:flex-col aos-frame"
 						data-aos="zoom-in"
 						data-aos-offset="-200"
 					>
@@ -183,7 +182,7 @@ export default function Gallery() {
 							</div>
 						</div>
 						<div
-							className="rounded-3xl bg-dark row-start-8 col-start-1 row-end-13 col-end-9 p-4 md:p-2 xs:h-36 aos-frame"
+							className="rounded-3xl bg-dark row-start-8 col-start-1 row-end-13 col-end-9 p-4 md:p-2 xl:aspect-video aos-frame"
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>
@@ -194,7 +193,7 @@ export default function Gallery() {
 							/>
 						</div>
 						<div
-							className="rounded-3xl bg-dark row-start-1 col-start-7 row-end-8 col-end-13 p-4 md:p-2 xs:h-36 z-10 aos-frame"
+							className="rounded-3xl bg-dark row-start-1 col-start-7 row-end-8 col-end-13 p-4 md:p-2 xl:aspect-video z-10 aos-frame"
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>

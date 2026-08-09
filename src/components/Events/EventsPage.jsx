@@ -2,7 +2,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import shape from "../../assets/patterns/ssshape.svg";
-import "../../global.css";
 import { t } from "../../i18n";
 import Calendar from "../Calendar/Calendar";
 

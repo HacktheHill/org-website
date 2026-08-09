@@ -15,7 +15,7 @@ export default function About() {
 				</div>
 				<div className="flex h-4/6 flex-row justify-between items-center flex-wrap lg:gap-8 px-8 md:px-2">
 					<div className="flex flex-col w-6/7 text-pretty text-left z-[1]">
-						<div className="grid grid-rows-1 grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-20 md:gap-y-4 lg:mb-20">
+						<div className="grid grid-rows-1 grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-[clamp(1rem,4vw,5rem)] lg:mb-12">
 							<div
 								className="row-start-1 col-start-2 row-end-1 col-end-3 self-center flex flex-col gap-8"
 								data-aos="fade-up"
@@ -27,7 +27,7 @@ export default function About() {
 								</h2>
 								<div className="self-start">
 									<Button href="https://www.instagram.com/hackthehill" fill={false}>
-										<h4>{t("about.p1_btn")}</h4>
+										{t("about.p1_btn")}
 									</Button>
 								</div>
 							</div>
@@ -80,7 +80,7 @@ export default function About() {
 								/>
 							</svg>
 						</div>
-						<div className="grid grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-20 md:gap-y-4 lg:mb-20">
+						<div className="grid grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-[clamp(1rem,4vw,5rem)] lg:mb-12">
 							<div
 								className="col-start-1 col-end-2 self-center flex flex-col gap-8"
 								data-aos="fade-up"
@@ -92,7 +92,7 @@ export default function About() {
 								</h2>
 								<div className="self-start">
 									<Button href="/events" fill={false}>
-										<h4>{t("about.p2_btn")}</h4>
+										{t("about.p2_btn")}
 									</Button>
 								</div>
 							</div>
@@ -144,7 +144,7 @@ export default function About() {
 								/>
 							</svg>
 						</div>
-						<div className="grid grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-20 md:gap-y-4">
+						<div className="grid grid-cols-2 gap-x-20 lg:flex lg:flex-col lg:gap-y-[clamp(1rem,4vw,5rem)]">
 							<div
 								className=" row-start-7 col-start-2 row-end-9 col-end-3 self-center flex flex-col gap-8"
 								data-aos="fade-up"
@@ -156,7 +156,7 @@ export default function About() {
 								</h2>
 								<div className="self-start">
 									<Button href="https://linktr.ee/hackthehill" fill={false}>
-										<h4>{t("about.p3_btn")}</h4>
+										{t("about.p3_btn")}
 									</Button>
 								</div>
 							</div>

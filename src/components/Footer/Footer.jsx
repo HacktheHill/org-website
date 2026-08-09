@@ -42,14 +42,16 @@ export default function Footer() {
 			</button>
 			<div className="flex flex-row w-full justify-between items-center gap-8 pl-64 pr-16 py-4 flex-wrap lg:px-8 md:justify-center bg-background-light ">
 				<div className="flex flex-row gap-8 justify-start items-center flex-wrap lg:justify-center">
-					<p className="text-white text-xs whitespace-nowrap">{t("footer.copyright")}</p>
+					<p className="text-white text-xs whitespace-nowrap md:whitespace-normal md:text-center">
+						{t("footer.copyright")}
+					</p>
 					<div className="flex gap-4 text-xl">
 						<a
 							href="https://www.facebook.com/canadascapitalhackathon"
 							target="_blank"
 							rel="noreferrer"
 							aria-label={t("accessibility.facebook")}
-							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 opacity-85 ${
+							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 focus-visible:opacity-100 opacity-85 ${
 								isMouseLeaving === "facebook" ? "animate-shake-end" : ""
 							}`}
 							onMouseLeave={() => handleMouseLeave("facebook")}
@@ -61,7 +63,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noreferrer"
 							aria-label={t("accessibility.linkedin")}
-							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 opacity-80 ${
+							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 focus-visible:opacity-100 opacity-80 ${
 								isMouseLeaving === "linkedin" ? "animate-shake-end" : ""
 							}`}
 							onMouseLeave={() => handleMouseLeave("linkedin")}
@@ -73,7 +75,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noreferrer"
 							aria-label={t("accessibility.instagram")}
-							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 opacity-80 ${
+							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 focus-visible:opacity-100 opacity-80 ${
 								isMouseLeaving === "instagram" ? "animate-shake-end" : ""
 							}`}
 							onMouseLeave={() => handleMouseLeave("instagram")}
@@ -85,7 +87,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noreferrer"
 							aria-label={t("accessibility.twitter")}
-							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 opacity-80 ${
+							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 focus-visible:opacity-100 opacity-80 ${
 								isMouseLeaving === "twitter" ? "animate-shake-end" : ""
 							}`}
 							onMouseLeave={() => handleMouseLeave("twitter")}
@@ -97,7 +99,7 @@ export default function Footer() {
 							target="_blank"
 							rel="noreferrer"
 							aria-label={t("accessibility.tiktok")}
-							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 opacity-80 ${
+							className={`transition-all duration-300 hover:animate-shake-rotate text-white hover:opacity-100 focus-visible:opacity-100 opacity-80 ${
 								isMouseLeaving === "tiktok" ? "animate-shake-end" : ""
 							}`}
 							onMouseLeave={() => handleMouseLeave("tiktok")}

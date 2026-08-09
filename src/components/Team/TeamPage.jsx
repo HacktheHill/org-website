@@ -8,8 +8,6 @@ import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 
 import shape from "../../assets/patterns/ssshape.svg";
-import "../../global.css";
-
 import { sanityClient } from "sanity:client";
 import { locale, t } from "../../i18n";
 
@@ -67,11 +65,11 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 
 	return (
 		<li
-			className="basis-1/4 xl:basis-1/3 md:basis-1/2 p-4 md:p-1 min-h-[22rem] md:min-h-[14rem]"
+			className="basis-1/4 xl:basis-1/3 md:!basis-1/2 xs:!basis-full p-4 md:p-1 min-h-[22rem] md:min-h-[14rem] xs:!min-h-[20rem]"
 			data-aos="fade-up"
 		>
 			<div
-				className={`flex justify-between flex-col h-full text-center gap-2 md:gap-1 p-4 md:p-2 rounded-3xl overflow-hidden border border-theme-red transition-all ease-in-out duration-300 hover:-translate-y-2 hover:border-primary ${
+				className={`flex justify-between flex-col h-full text-center gap-2 md:gap-1 p-4 md:p-2 rounded-3xl overflow-hidden border border-theme-red transition-all ease-in-out duration-300 hover:-translate-y-2 hover:border-primary focus-within:-translate-y-2 focus-within:border-primary ${
 					redCardRoles.has(member.assignment?.position) ? "bg-blur-svg" : "bg-dark"
 				} ${contributors.has(member.name) ? "hover:animate-glow" : ""}`}
 			>
@@ -90,7 +88,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							target="_blank"
 							rel="noreferrer"
 							aria-label={t("accessibility.linkedin")}
-							className="transition-all duration-300 text-white hover:opacity-100 opacity-80"
+							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
 							<Icon icon={faLinkedin} />
 						</a>
@@ -101,7 +99,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							target="_blank"
 							rel="noreferrer"
 							aria-label={t("accessibility.github")}
-							className="transition-all duration-300 text-white hover:opacity-100 opacity-80"
+							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
 							<Icon icon={faGithub} />
 						</a>
@@ -112,7 +110,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							target="_blank"
 							rel="noreferrer"
 							aria-label={t("accessibility.website")}
-							className="transition-all duration-300 text-white hover:opacity-100 opacity-80"
+							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
 							<Icon icon={faGlobe} />
 						</a>
@@ -234,7 +232,10 @@ export default function TeamPage({ teams }) {
 	return (
 		<div className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
-				<div className="flex flex-row justify-between items-center text-left w-full" data-aos="fade-up">
+				<div
+					className="flex flex-row justify-between items-center text-left w-full xs:flex-col xs:items-start xs:gap-4"
+					data-aos="fade-up"
+				>
 					<h1>{t("team.title")}</h1>
 					<select
 						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer"
@@ -250,7 +251,7 @@ export default function TeamPage({ teams }) {
 					</select>
 				</div>
 
-				<ul className="flex flex-wrap justify-evenly w-10/12 max-w-2xl gap-16">
+				<ul className="flex flex-wrap justify-evenly w-10/12 md:w-full max-w-2xl gap-16 md:gap-10">
 					{Object.keys(subTeams)
 						.sort(compareTeamGroups)
 						.map(subTeam => (

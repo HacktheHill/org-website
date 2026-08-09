@@ -1,7 +1,6 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import "../../global.css";
 import About from "../About/About";
 import Gallery from "../Gallery/Gallery";
 import Hero from "../Hero/Hero";

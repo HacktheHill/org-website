@@ -1,44 +1,35 @@
-.carousel-track {
+.sponsors-section .carousel-track {
+	display: flex;
+	width: 100%;
 	overflow: hidden;
 	mask-image: linear-gradient(90deg, transparent 0%, black 5% 95%, transparent 100%);
 	-webkit-mask-image: linear-gradient(90deg, transparent 0%, black 5% 95%, transparent 100%);
-	display: flex;
-	width: 100%;
 }
 
-@keyframes marquee1 {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
+@keyframes sponsor-marquee {
+	to {
 		transform: translateX(-100%);
 	}
 }
 
-@keyframes marquee2 {
-	0% {
-		transform: translateX(-100%);
-	}
-	100% {
-		transform: translateX(0);
-	}
-}
-
-.marquee-group1 {
-	animation: marquee1 80s linear infinite;
+.sponsors-section :is(.marquee-group1, .marquee-group2) {
 	display: flex;
+	flex: 0 0 auto;
+	min-width: max-content;
 	gap: 1rem;
-	padding: 0.5rem 0.5rem;
+	padding: 0.5rem;
+	animation: sponsor-marquee 80s linear infinite;
 }
 
-.marquee-group2 {
-	animation: marquee2 60s linear infinite;
-	display: flex;
-	gap: 1rem;
-	padding: 0.5rem 0.5rem;
+.sponsors-section .marquee-group2 {
+	animation-duration: 60s;
 }
 
-.sponsor {
+.sponsors-section .carousel-track:is(:hover, :focus-within) :is(.marquee-group1, .marquee-group2) {
+	animation-play-state: paused;
+}
+
+.sponsors-section .sponsor {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -48,10 +39,31 @@
 }
 
 @media (max-width: 768px) {
-	.marquee-group1 {
-		animation: marquee1 60s linear infinite;
+	.sponsors-section .marquee-group1 {
+		animation-duration: 60s;
 	}
-	.marquee-group2 {
-		animation: marquee2 45s linear infinite;
+
+	.sponsors-section .marquee-group2 {
+		animation-duration: 45s;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sponsors-section .carousel-track {
+		overflow: visible;
+		mask-image: none;
+		-webkit-mask-image: none;
+	}
+
+	.sponsors-section :is(.marquee-group1, .marquee-group2) {
+		width: 100%;
+		min-width: 0;
+		flex-wrap: wrap;
+		justify-content: center;
+		animation: none;
+	}
+
+	.sponsors-section .carousel-track [id^="marquee2_"] {
+		display: none;
 	}
 }

@@ -5,10 +5,10 @@ import shape from "../../assets/patterns/ssshape.svg";
 
 export default function Construction({ pageNotFound = false }) {
 	return (
-		<div className="flex justify-center items-center w-full h-screen bg-background-dark relative overflow-hidden">
-			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1]">
+		<div className="flex justify-center items-center w-full min-h-dvh bg-background-dark relative overflow-x-hidden">
+			<div className="flex flex-col w-10/12 min-h-dvh justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1]">
 				<div
-					className="flex flex-col items-start gap-10 p-8 rounded-3xl bg-blur-svg relative w-1/2 lg:w-full mt-32"
+					className="flex flex-col items-start gap-10 p-8 rounded-3xl bg-blur-svg relative w-1/2 lg:w-full mt-24 md:mt-16"
 					data-aos="fade-up"
 				>
 					<h2 className="mt-8">{pageNotFound ? t("fourofour.title") : t("construction.title")}</h2>
@@ -19,7 +19,7 @@ export default function Construction({ pageNotFound = false }) {
 							{t("construction.home_btn")}
 						</Button>
 					</div>
-					<div className="absolute -top-[8.5rem] right-1/2 h-48">
+					<div className="absolute -top-[8.5rem] left-1/2 -translate-x-1/2 h-48 md:h-40">
 						<img src={beaver_construction.src} alt="" aria-hidden="true" className="h-full" />
 					</div>
 				</div>

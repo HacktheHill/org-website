@@ -7,7 +7,6 @@ import { sanityClient } from "sanity:client";
 import calendar from "../../assets/icons/calendar.svg";
 import shape from "../../assets/patterns/ssshape.svg";
 import HtH_fall_theme from "../../assets/SVGs/HtH_fall_theme.svg";
-import "../../global.css";
 import { locale, t } from "../../i18n";
 import Button from "../Button/Button";
 
@@ -53,7 +52,7 @@ export default function BlogPage({ posts }) {
 												className="w-full h-full object-cover"
 												alt={post.title?.[`${$locale}`] ?? t("blog.title")}
 											/>
-											<div className="absolute z-10 bg-black bg-opacity-20 w-full h-full"></div>
+											<div className="absolute inset-0 z-10 bg-black/20" aria-hidden="true"></div>
 										</div>
 										<div>
 											<h4 className="mt-4 line-clamp-2 text-2xl lg:text-lg">

@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import beaver5 from "../../assets/beavar/Beaver5.svg";
 import cv from "../../assets/icons/cv.svg";
 import shape from "../../assets/patterns/ssshape.svg";
-import "../../global.css";
 import { t } from "../../i18n";
 import Button from "../Button/Button";
 
@@ -15,13 +14,13 @@ export default function DocumentsPage() {
 
 	return (
 		<div className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
-			<div className="flex flex-col w-10/12 h-fu	ll justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
+			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
 				<div className="flex flex-col text-left w-full" data-aos="fade-up">
 					<h1 data-aos="fade-up">{t("documents.title")}</h1>
 				</div>
-				<div className="grid grid-rows-3 grid-cols-2 gap-8 w-10/12 max-w-2xl xl:flex xl:flex-wrap">
+				<div className="grid grid-cols-2 lg:grid-cols-1 gap-8 w-full max-w-2xl">
 					<div
-						className="flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-blur-svg relative"
+						className="flex flex-col items-start justify-between gap-32 lg:gap-8 p-8 rounded-3xl bg-blur-svg relative"
 						data-aos="fade-right"
 					>
 						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
@@ -36,13 +35,9 @@ export default function DocumentsPage() {
 						<div>
 							<p>{t("documents.constitution_desc")}</p>
 							<div className="w-full flex justify-end mt-4">
-								<a
-									href="https://cdn1.hackthehill.com/legal/constitution.pdf"
-									target="_blank"
-									rel="noreferrer"
-								>
-									<Button fill={false}>{t("documents.constitution_btn")}</Button>
-								</a>
+								<Button fill={false} href="https://cdn1.hackthehill.com/legal/constitution.pdf">
+									{t("documents.constitution_btn")}
+								</Button>
 							</div>
 						</div>
 						<div className="absolute -top-16 right-0 h-24">
@@ -50,7 +45,7 @@ export default function DocumentsPage() {
 						</div>
 					</div>
 					<div
-						className="flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
+						className="flex flex-col items-start justify-between gap-32 lg:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
 						data-aos="fade-left"
 					>
 						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
@@ -65,18 +60,14 @@ export default function DocumentsPage() {
 						<div>
 							<p>{t("documents.policies_desc")}</p>
 							<div className="w-full flex justify-end mt-4">
-								<a
-									href="https://cdn1.hackthehill.com/legal/policies-manual.pdf"
-									target="_blank"
-									rel="noreferrer"
-								>
-									<Button fill={false}>{t("documents.policies_btn")}</Button>
-								</a>
+								<Button fill={false} href="https://cdn1.hackthehill.com/legal/policies-manual.pdf">
+									{t("documents.policies_btn")}
+								</Button>
 							</div>
 						</div>
 					</div>
 					<div
-						className="flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
+						className="flex flex-col items-start justify-between gap-32 lg:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
 						data-aos="fade-right"
 					>
 						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
@@ -91,18 +82,14 @@ export default function DocumentsPage() {
 						<div>
 							<p>{t("documents.financials_desc")}</p>
 							<div className="w-full flex justify-end mt-4">
-								<a
-									href="https://cdn1.hackthehill.com/legal/financials.pdf"
-									target="_blank"
-									rel="noreferrer"
-								>
-									<Button fill={false}>{t("documents.financials_btn")}</Button>
-								</a>
+								<Button fill={false} href="https://cdn1.hackthehill.com/legal/financials.pdf">
+									{t("documents.financials_btn")}
+								</Button>
 							</div>
 						</div>
 					</div>
 					<div
-						className="flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
+						className="flex flex-col items-start justify-between gap-32 lg:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
 						data-aos="fade-left"
 					>
 						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
@@ -117,18 +104,14 @@ export default function DocumentsPage() {
 						<div>
 							<p>{t("documents.ledger_desc")}</p>
 							<div className="w-full flex justify-end mt-4">
-								<a
-									href="https://cdn1.hackthehill.com/legal/general-ledger.pdf"
-									target="_blank"
-									rel="noreferrer"
-								>
-									<Button fill={false}>{t("documents.ledger_btn")}</Button>
-								</a>
+								<Button fill={false} href="https://cdn1.hackthehill.com/legal/general-ledger.pdf">
+									{t("documents.ledger_btn")}
+								</Button>
 							</div>
 						</div>
 					</div>
 					<div
-						className="flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
+						className="flex flex-col items-start justify-between gap-32 lg:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
 						data-aos="fade-right"
 					>
 						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
@@ -143,18 +126,14 @@ export default function DocumentsPage() {
 						<div>
 							<p>{t("documents.privacy_desc")}</p>
 							<div className="w-full flex justify-end mt-4">
-								<a
-									href="https://cdn1.hackthehill.com/legal/privacy-policy.pdf"
-									target="_blank"
-									rel="noreferrer"
-								>
-									<Button fill={false}>{t("documents.privacy_btn")}</Button>
-								</a>
+								<Button fill={false} href="https://cdn1.hackthehill.com/legal/privacy-policy.pdf">
+									{t("documents.privacy_btn")}
+								</Button>
 							</div>
 						</div>
 					</div>
 					<div
-						className="flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-blur-svg overflow-hidden"
+						className="flex flex-col items-start justify-between gap-32 lg:gap-8 p-8 rounded-3xl bg-blur-svg overflow-hidden"
 						data-aos="fade-left"
 					>
 						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
@@ -169,18 +148,14 @@ export default function DocumentsPage() {
 						<div>
 							<p>{t("documents.conduct_desc")}</p>
 							<div className="w-full flex justify-end mt-4">
-								<a
-									href="https://cdn1.hackthehill.com/legal/code-of-conduct.pdf"
-									target="_blank"
-									rel="noreferrer"
-								>
-									<Button fill={false}>{t("documents.conduct_btn")}</Button>
-								</a>
+								<Button fill={false} href="https://cdn1.hackthehill.com/legal/code-of-conduct.pdf">
+									{t("documents.conduct_btn")}
+								</Button>
 							</div>
 						</div>
 					</div>
 					<div
-						className="flex flex-col items-start justify-between gap-32 md:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
+						className="flex flex-col items-start justify-between gap-32 lg:gap-8 p-8 rounded-3xl bg-dark overflow-hidden"
 						data-aos="fade-right"
 					>
 						<div className="flex flex-row justify-between items-center w-full gap-4 flex-wrap">
@@ -195,13 +170,9 @@ export default function DocumentsPage() {
 						<div>
 							<p>{t("documents.service_desc")}</p>
 							<div className="w-full flex justify-end mt-4">
-								<a
-									href="https://cdn1.hackthehill.com/legal/terms-of-service.pdf"
-									target="_blank"
-									rel="noreferrer"
-								>
-									<Button fill={false}>{t("documents.service_btn")}</Button>
-								</a>
+								<Button fill={false} href="https://cdn1.hackthehill.com/legal/terms-of-service.pdf">
+									{t("documents.service_btn")}
+								</Button>
 							</div>
 						</div>
 					</div>

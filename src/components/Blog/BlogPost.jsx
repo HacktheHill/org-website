@@ -4,7 +4,6 @@ import { createImageUrlBuilder } from "@sanity/image-url";
 import { sanityClient } from "sanity:client";
 import shape from "../../assets/patterns/ssshape.svg";
 import HtH_fall_theme from "../../assets/SVGs/HtH_fall_theme.svg";
-import "../../global.css";
 import { locale, t } from "../../i18n";
 import Button from "../Button/Button";
 import "./BlogStyle.css";
@@ -65,9 +64,9 @@ export default function BlogPost({ data }) {
 							className="w-full h-full object-cover"
 							alt={data?.title?.[`${$locale}`] ?? t("blog.title")}
 						/>
-						<div className="absolute z-10 bg-black bg-opacity-20 w-full h-full"></div>
+						<div className="absolute inset-0 z-10 bg-black/20" aria-hidden="true"></div>
 					</div>
-					<div className="w-full justify-between items-center mt-16 mb-32 px-16 md:px-0">
+					<div className="blog-content w-full mt-16 mb-32">
 						<PortableText value={data?.body?.[`${$locale}`]} />
 					</div>
 					<div className="absolute bottom-0 right-0 p-6 mt-16">

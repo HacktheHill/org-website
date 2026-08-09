@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { t } from "../../i18n";
 //Sponsors
 import Blackberry from "/src/assets/Logos/Partners/Blackberry.svg";
@@ -37,7 +37,6 @@ import WIE from "/src/assets/Logos/Collaborators/WIE.svg";
 
 import "./Sponsors.css";
 import waves from "../../assets/patterns/wavesOpacity.svg";
-import union from "../../assets/patterns/uuunion.svg";
 
 export default function Sponsors() {
 	const data = {
@@ -81,16 +80,9 @@ export default function Sponsors() {
 	const [hovered, setHovered] = useState(-1);
 	const [hovered2, setHovered2] = useState(-1);
 
-	const marqueeGroup = (dataGroup, index, group, pauseAnimation, startAnimation, setHoverGroup) => {
+	const marqueeGroup = (dataGroup, index, group, setHoverGroup) => {
 		return (
-			<div
-				id={`marquee${index}_${group}`}
-				className={`marquee-group${group}`}
-				onMouseEnter={() => pauseAnimation(group)}
-				onMouseLeave={() => startAnimation(group)}
-				onFocus={() => pauseAnimation(group)}
-				onBlur={() => startAnimation(group)}
-			>
+			<div id={`marquee${index}_${group}`} className={`marquee-group${group}`}>
 				{dataGroup.map((sponsor, i) => (
 					<a
 						key={i}
@@ -102,13 +94,14 @@ export default function Sponsors() {
 							group === 1
 								? hovered !== -1 && hovered !== i
 									? "opacity-25 translate-x-1 translate-y-1"
-									: "bg-opacity-35 translate-x-0 translate-y-0"
+									: "translate-x-0 translate-y-0"
 								: hovered2 !== -1 && hovered2 !== i
 								? "opacity-25 translate-x-1 translate-y-1"
-								: "bg-opacity-35 translate-x-0 translate-y-0"
+								: "translate-x-0 translate-y-0"
 						}`}
 						onMouseEnter={() => setHoverGroup(i)}
 						onMouseLeave={() => setHoverGroup(-1)}
+						onFocus={() => setHoverGroup(i)}
 						onBlur={() => setHoverGroup(-1)}
 					>
 						<img {...sponsor} alt={`${sponsor.alt} logo`} className="max-w-full max-h-full"></img>
@@ -118,32 +111,22 @@ export default function Sponsors() {
 		);
 	};
 
-	function pauseAnimation(group) {
-		document.getElementById(`marquee1_${group}`).style.animationPlayState = "paused";
-		document.getElementById(`marquee2_${group}`).style.animationPlayState = "paused";
-	}
-
-	function startAnimation(group) {
-		document.getElementById(`marquee1_${group}`).style.animationPlayState = "running";
-		document.getElementById(`marquee2_${group}`).style.animationPlayState = "running";
-	}
-
 	return (
-		<div className="w-full flex flex-col gap-8 items-center justify-center">
+		<section className="sponsors-section w-full flex flex-col gap-8 items-center justify-center">
 			<h2>{t("sponsors.title")}</h2>
 			<div className="w-full flex justify-center items-center relative bg-theme-gradient">
 				<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-28 text-left max-w-2xl z-[2]">
 					<div className="carousel-track z-[2]">
-						{marqueeGroup(data.sponsors, 1, 1, pauseAnimation, startAnimation, setHovered)}
-						{marqueeGroup(data.sponsors, 2, 1, pauseAnimation, startAnimation, setHovered)}
+						{marqueeGroup(data.sponsors, 1, 1, setHovered)}
+						{marqueeGroup(data.sponsors, 2, 1, setHovered)}
 					</div>
 				</div>
 				<img
-				src={waves.src}
-				className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]"
-				alt=""
-				aria-hidden="true"
-			></img>
+					src={waves.src}
+					className="absolute top-0 w-full h-20 z-[1] -translate-y-[1px]"
+					alt=""
+					aria-hidden="true"
+				></img>
 				<img
 					src={waves.src}
 					className="absolute bottom-0 w-full h-20 z-[1] -scale-y-100 -scale-x-100 translate-y-[1px]"
@@ -155,16 +138,16 @@ export default function Sponsors() {
 			<div className="w-full flex justify-center items-center relative bg-theme-gradient">
 				<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-28 text-left max-w-2xl z-[2]">
 					<div className="carousel-track z-[2]">
-						{marqueeGroup(data.collaborators, 1, 2, pauseAnimation, startAnimation, setHovered2)}
-						{marqueeGroup(data.collaborators, 2, 2, pauseAnimation, startAnimation, setHovered2)}
+						{marqueeGroup(data.collaborators, 1, 2, setHovered2)}
+						{marqueeGroup(data.collaborators, 2, 2, setHovered2)}
 					</div>
 				</div>
 				<img
-				src={waves.src}
-				className="absolute top-0 w-full h-20 z-[1]  -translate-y-[1px]"
-				alt=""
-				aria-hidden="true"
-			></img>
+					src={waves.src}
+					className="absolute top-0 w-full h-20 z-[1] -translate-y-[1px]"
+					alt=""
+					aria-hidden="true"
+				></img>
 				<img
 					src={waves.src}
 					className="absolute bottom-0 w-full h-20 z-[1] -scale-y-100 -scale-x-100 translate-y-[1px]"
@@ -172,6 +155,6 @@ export default function Sponsors() {
 					aria-hidden="true"
 				></img>
 			</div>
-		</div>
+		</section>
 	);
 }

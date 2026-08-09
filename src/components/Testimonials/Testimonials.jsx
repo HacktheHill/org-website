@@ -148,12 +148,12 @@ export default function Testimonials() {
 						</div>
 					</div>
 					<div
-						className="flex flex-col justify-center items-between text-end bg-dark rounded-3xl p-8 row-start-10 col-start-8 row-end-13 col-end-13"
+						className="flex flex-col justify-center items-end text-end bg-dark rounded-3xl p-8 row-start-10 col-start-8 row-end-13 col-end-13"
 						data-aos="fade-up"
 					>
 						<div className="self-end">
 							<Button href="https://www.instagram.com/hackthehill" fill={false}>
-								<h4>{t("testimonials.button_text")}</h4>
+								{t("testimonials.button_text")}
 							</Button>
 						</div>
 					</div>

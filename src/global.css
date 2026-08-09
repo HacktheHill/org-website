@@ -1,174 +1,237 @@
-:root {
-	--shade-1: #ebebeb;
-	--shade-2: #e0e0e0;
-	--shade-3: #bdbdbd;
-	--shade-4: #9e9e9e;
-	--shade-5: #757575;
-	--shade-6: #616161;
-	--shade-7: #424242;
-	--shade-8: #212121;
-	--shade-9: #171717;
-	--shade-10: #090909;
-
-	--background-light: #161b22;
-	--background-dark: #0d1117;
-
-	--navbar: #212121a9;
-
-	--primary: #ff3535;
-	--light-accent: #ff7979;
-	--dark-accent: #551a1a;
-
-	--theme-gradient: linear-gradient(90deg, #750d0d 0%, #550505 50%, #3d0505 100%);
-
-	scrollbar-gutter: stable;
-	background-color: var(--background-light);
-	color: var(--shade-3);
+@font-face {
+	font-family: "MonaSans";
+	src: url("/fonts/MonaSans/MonaSans-Light.ttf") format("truetype");
+	font-display: swap;
+	font-weight: 300;
 }
 
-* {
-	scrollbar-color: var(--shade-5) var(--background-dark);
+@font-face {
+	font-family: "MonaSans";
+	src: url("/fonts/MonaSans/MonaSans-Regular.ttf") format("truetype");
+	font-display: swap;
+	font-weight: 400;
 }
 
-h1 {
-	font-family: "MonaSans", sans-serif;
-	font-size: 4rem;
+@font-face {
+	font-family: "MonaSans";
+	src: url("/fonts/MonaSans/MonaSans-Italic.ttf") format("truetype");
+	font-display: swap;
+	font-style: italic;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "MonaSans";
+	src: url("/fonts/MonaSans/MonaSans-Medium.ttf") format("truetype");
+	font-display: swap;
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "MonaSans";
+	src: url("/fonts/MonaSans/MonaSans-SemiBold.ttf") format("truetype");
+	font-display: swap;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "MonaSans";
+	src: url("/fonts/MonaSans/MonaSans-Bold.ttf") format("truetype");
+	font-display: swap;
 	font-weight: 700;
-	letter-spacing: -2.75px;
-	color: #ffffff;
 }
 
-h2 {
-	font-family: "MonaSans", sans-serif;
-	font-size: 2.5rem;
-	font-weight: 600;
-	letter-spacing: -2px;
-	line-height: 1.2;
-	color: #ffffff;
-}
+@layer base {
+	:root {
+		--shade-1: #ebebeb;
+		--shade-2: #e0e0e0;
+		--shade-3: #bdbdbd;
+		--shade-4: #9e9e9e;
+		--shade-5: #757575;
+		--shade-6: #616161;
+		--shade-7: #424242;
+		--shade-8: #212121;
+		--shade-9: #171717;
+		--shade-10: #090909;
 
-h3 {
-	font-family: "MonaSans", sans-serif;
-	font-size: 1.25rem;
-	font-weight: 300;
-	line-height: 1.2;
-}
+		--background-light: #161b22;
+		--background-dark: #0d1117;
 
-h4 {
-	font-family: "MonaSans", sans-serif;
-	font-size: 1.25rem;
-	font-weight: 600;
-	color: #ffffff;
-}
+		--navbar: #212121a9;
 
-h5 {
-	font-family: "MonaSans", sans-serif;
-	font-size: 1rem;
-	font-weight: 300;
-}
+		--primary: #ff3535;
+		--light-accent: #ff7979;
+		--dark-accent: #551a1a;
 
-h6 {
-	font-family: "MonaSans", sans-serif;
-	font-size: 1rem;
-	font-weight: 600;
-	color: #ffffff;
-}
+		--theme-gradient: linear-gradient(90deg, #750d0d 0%, #550505 50%, #3d0505 100%);
 
-p {
-	font-family: "MonaSans", sans-serif;
-	font-size: 1.2rem;
-	font-weight: 300;
-	line-height: 1.2;
-	letter-spacing: 0.5px;
-	vertical-align: baseline;
-}
+		scrollbar-gutter: stable;
+		background-color: var(--background-light);
+		color: var(--shade-3);
+	}
 
-@media screen and (max-width: 1024px) {
-	h1 {
-		font-size: 3.5rem;
-		letter-spacing: -2.5px;
+	* {
+		scrollbar-color: var(--shade-5) var(--background-dark);
 	}
-	h2 {
-		font-size: 2.25rem;
-		letter-spacing: -1.75px;
-	}
-	h3 {
-		font-size: 1.125rem;
-	}
-	h4 {
-		font-size: 1rem;
-	}
-	h5 {
-		font-size: 1rem;
-	}
-	h6 {
-		font-size: 1rem;
-	}
-	p {
-		font-size: 1rem;
-	}
-}
 
-@media screen and (max-width: 768px) {
-	h1 {
-		font-size: 3rem;
-		letter-spacing: -1px;
-	}
-	h2 {
-		font-size: 2rem;
-		letter-spacing: -1.5px;
-	}
-	h3 {
-		font-size: 1rem;
-	}
-	h4 {
-		font-size: 0.85rem;
-	}
-	h5 {
-		font-size: 0.85rem;
-	}
-	h6 {
-		font-size: 0.85rem;
-	}
-	p {
-		font-size: 0.9rem;
-	}
-}
-
-@media screen and (max-width: 480px) {
-	h1 {
-		font-size: 2rem;
-		line-height: 2.5rem;
-	}
-	h2 {
-		font-size: 1.5rem;
-		letter-spacing: -1.25px;
-	}
-	h3 {
-		font-size: 0.875rem;
-	}
-	h4 {
-		font-size: 0.75rem;
-	}
-	h5 {
-		font-size: 0.75rem;
-	}
-	h6 {
-		font-size: 0.75rem;
-	}
-	p {
-		font-size: 0.9rem;
-	}
-}
-
-@media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;
 	}
+
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		overflow-x: hidden;
+		font-family: "MonaSans", sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+		font-family: "MonaSans", sans-serif;
+		line-height: 1.2;
+	}
+
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		letter-spacing: -2.75px;
+		color: #ffffff;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+		font-weight: 600;
+		letter-spacing: -2px;
+		color: #ffffff;
+	}
+
+	h3 {
+		font-size: 1.25rem;
+		font-weight: 300;
+	}
+
+	h4 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #ffffff;
+	}
+
+	h5 {
+		font-size: 1rem;
+		font-weight: 300;
+	}
+
+	h6 {
+		font-size: 1rem;
+		font-weight: 600;
+		color: #ffffff;
+	}
+
+	p {
+		margin: 0;
+		font-family: "MonaSans", sans-serif;
+		font-size: 1.2rem;
+		font-weight: 300;
+		line-height: 1.2;
+		letter-spacing: 0.5px;
+		vertical-align: baseline;
+	}
+
+	:where(a, button, input, select, textarea):focus-visible {
+		outline: 2px solid var(--primary);
+		outline-offset: 3px;
+	}
+
+	@media screen and (max-width: 1024px) {
+		h1 {
+			font-size: 3.5rem;
+			letter-spacing: -2.5px;
+		}
+
+		h2 {
+			font-size: 2.25rem;
+			letter-spacing: -1.75px;
+		}
+
+		h3 {
+			font-size: 1.125rem;
+		}
+
+		h4,
+		h5,
+		h6,
+		p {
+			font-size: 1rem;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		h1 {
+			font-size: 3rem;
+			letter-spacing: -1px;
+		}
+
+		h2 {
+			font-size: 2rem;
+			letter-spacing: -1.5px;
+		}
+
+		h3,
+		h4 {
+			font-size: 1rem;
+		}
+
+		h5,
+		h6,
+		p {
+			font-size: 0.9rem;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		h1 {
+			font-size: 2rem;
+			line-height: 2.5rem;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+			letter-spacing: -1.25px;
+		}
+
+		h3,
+		h4 {
+			font-size: 1rem;
+		}
+
+		h5,
+		h6,
+		p {
+			font-size: 0.9rem;
+		}
+	}
 }
 
-@media (prefers-color-scheme: light) {
-	html {
-		color-scheme: dark;
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	[data-aos] {
+		opacity: 1 !important;
+		transform: none !important;
 	}
 }

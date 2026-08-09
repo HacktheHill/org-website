@@ -5,6 +5,7 @@ import Footer from "../components/Footer/Footer.jsx";
 import Navigation from "../components/Navigation/Navigation.jsx";
 import { defaultLocale, staticT } from "../i18n";
 import "../index.css";
+import "../global.css";
 
 const { title, pathName } = Astro.props;
 
@@ -101,47 +102,5 @@ const structuredDataString = JSON.stringify(structuredData);
 		<Navigation pathName={pathName} client:load />
 		<slot />
 		<Footer client:load />
-		<style is:global>
-			@font-face {
-				font-family: MonaSans;
-				src: url(/fonts/MonaSans/MonaSans-Regular.ttf) format("truetype");
-				font-weight: 300;
-			}
-			@font-face {
-				font-family: MonaSans;
-				src: url(/fonts/MonaSans/MonaSans-Medium.ttf) format("truetype");
-				font-weight: 500;
-			}
-			@font-face {
-				font-family: MonaSans;
-				src: url(/fonts/MonaSans/MonaSans-SemiBold.ttf) format("truetype");
-				font-weight: 600;
-			}
-			@font-face {
-				font-family: MonaSans;
-				src: url(/fonts/MonaSans/MonaSans-Bold.ttf) format("truetype");
-				font-weight: 700;
-			}
-			html,
-			body {
-				margin: 0;
-				font-family:
-					-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-					"Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-				width: 100%;
-				overflow-x: hidden;
-			}
-
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				margin: 0;
-			}
-		</style>
 	</body>
 </html>
