@@ -54,7 +54,7 @@ export default function Navigation(props) {
 					<a
 						href="https://2024.hackthehill.com"
 						target="_blank"
-						rel="noreferrer"
+						rel="noopener noreferrer"
 						className="flex h-8 w-24 xs:w-16 justify-center items-center bg-2024-bg bg-cover bg-top border-none rounded-xl p-4 xs:p-2 text-bg-2024 cursor-pointer font-bold transition-all duration-100 opacity-85 hover:opacity-100 focus-visible:opacity-100"
 					>
 						2024
@@ -80,8 +80,8 @@ export default function Navigation(props) {
 										? i === 0
 											? "translate-y-2 rotate-45"
 											: i === 1
-											? "opacity-0"
-											: "-translate-y-2 -rotate-45"
+												? "opacity-0"
+												: "-translate-y-2 -rotate-45"
 										: ""
 								}`}
 							></div>

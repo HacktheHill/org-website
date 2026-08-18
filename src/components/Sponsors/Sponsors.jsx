@@ -88,7 +88,7 @@ export default function Sponsors() {
 						key={i}
 						href={sponsor.href}
 						target="_blank"
-						rel="noreferrer"
+						rel="noopener noreferrer"
 						className={`sponsor flex aspect-[3/2] justify-center items-center rounded-lg h-40 md:h-24 p-8 md:p-4 transition-all duration-200
 					 ${
 							group === 1
@@ -96,8 +96,8 @@ export default function Sponsors() {
 									? "opacity-25 translate-x-1 translate-y-1"
 									: "translate-x-0 translate-y-0"
 								: hovered2 !== -1 && hovered2 !== i
-								? "opacity-25 translate-x-1 translate-y-1"
-								: "translate-x-0 translate-y-0"
+									? "opacity-25 translate-x-1 translate-y-1"
+									: "translate-x-0 translate-y-0"
 						}`}
 						onMouseEnter={() => setHoverGroup(i)}
 						onMouseLeave={() => setHoverGroup(-1)}
