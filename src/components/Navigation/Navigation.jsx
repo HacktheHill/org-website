@@ -45,6 +45,7 @@ export default function Navigation(props) {
 					<button
 						className="flex h-full w-16 xs:w-12 items-center bg-transparent border-none p-4 xs:p-2 cursor-pointer font-bold transition-all duration-100 hover:text-shade-1 focus-visible:text-shade-1"
 						type="button"
+						aria-label={t("navbar.language_toggle")}
 						onClick={() => {
 							locale.set($locale === "en" ? "fr" : "en");
 						}}
@@ -64,7 +65,7 @@ export default function Navigation(props) {
 					<button
 						id="menu"
 						type="button"
-						aria-label={t("navbar.aria_label")}
+						aria-label={t("navbar.menu_aria_label")}
 						aria-expanded={sidebarOpen}
 						aria-controls="sidebar"
 						className="hidden h-full bg-transparent border-none cursor-pointer p-2 lg:block"

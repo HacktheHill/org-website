@@ -45,6 +45,8 @@ export default {
 	navbar: {
 		links: { events: "Événements", blog: "Blogue", documents: "Documents", team: "Équipe" },
 		aria_label: "Barre de navigation",
+		menu_aria_label: "Basculer le menu de navigation",
+		language_toggle: "Basculer la langue",
 	},
 	hero: {
 		title: "Réseau technologique de la capitale",
