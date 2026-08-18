@@ -45,6 +45,8 @@ export default {
 	navbar: {
 		links: { events: "Events", blog: "Blog", documents: "Documents", team: "Team" },
 		aria_label: "Navigation Bar",
+		menu_aria_label: "Toggle Navigation Menu",
+		language_toggle: "Toggle Language",
 	},
 	hero: {
 		title: "Capital Technology Network",
