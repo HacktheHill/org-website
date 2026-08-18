@@ -45,6 +45,7 @@ export default function Navigation(props) {
 					<button
 						className="flex h-full w-16 xs:w-12 items-center bg-transparent border-none p-4 xs:p-2 cursor-pointer font-bold transition-all duration-100 hover:text-shade-1 focus-visible:text-shade-1"
 						type="button"
+						aria-label={t("navbar.language_toggle")}
 						onClick={() => {
 							locale.set($locale === "en" ? "fr" : "en");
 						}}
@@ -54,7 +55,7 @@ export default function Navigation(props) {
 					<a
 						href="https://2024.hackthehill.com"
 						target="_blank"
-						rel="noreferrer"
+						rel="noopener noreferrer"
 						className="flex h-8 w-24 xs:w-16 justify-center items-center bg-2024-bg bg-cover bg-top border-none rounded-xl p-4 xs:p-2 text-bg-2024 cursor-pointer font-bold transition-all duration-100 opacity-85 hover:opacity-100 focus-visible:opacity-100"
 					>
 						2024
@@ -64,7 +65,7 @@ export default function Navigation(props) {
 					<button
 						id="menu"
 						type="button"
-						aria-label={t("navbar.aria_label")}
+						aria-label={t("navbar.menu_aria_label")}
 						aria-expanded={sidebarOpen}
 						aria-controls="sidebar"
 						className="hidden h-full bg-transparent border-none cursor-pointer p-2 lg:block"
@@ -80,8 +81,8 @@ export default function Navigation(props) {
 										? i === 0
 											? "translate-y-2 rotate-45"
 											: i === 1
-											? "opacity-0"
-											: "-translate-y-2 -rotate-45"
+												? "opacity-0"
+												: "-translate-y-2 -rotate-45"
 										: ""
 								}`}
 							></div>

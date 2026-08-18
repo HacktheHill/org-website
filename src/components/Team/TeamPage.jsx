@@ -86,7 +86,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 						<a
 							href={member.linkedin}
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							aria-label={t("accessibility.linkedin")}
 							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
@@ -97,7 +97,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 						<a
 							href={member.github}
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							aria-label={t("accessibility.github")}
 							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
@@ -108,7 +108,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 						<a
 							href={member.website}
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							aria-label={t("accessibility.website")}
 							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
