@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import beaver3 from "../../assets/beavar/Beaver3.svg";
 import ciena1 from "../../assets/gallery/ciena1.webp";
 import ciena2 from "../../assets/gallery/ciena2.webp";
@@ -113,6 +113,11 @@ export default function Gallery() {
 		}, 500);
 	};
 
+	const selectedAlbumData = useMemo(
+		() => albums?.find(album => album.tag === selectedAlbum),
+		[selectedAlbum], // don't depend on albums which changes every render
+	);
+
 	return (
 		<div className="w-full flex bg-background-light justify-center items-center">
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl md:w-11/12">
@@ -165,15 +170,11 @@ export default function Gallery() {
 					>
 						<div className="rounded-3xl bg-blur-svg gap-4 flex flex-col justify-between col-start-1 col-end-7 row-start-1 row-end-8 p-8">
 							<div className="flex flex-col justify-start items-start gap-8">
-								<h3 className="font-bold text-left">
-									{albums?.find(album => album.tag === selectedAlbum)?.title}
-								</h3>
-								<p className="text-start 2xl:text-[1rem]">
-									{albums?.find(album => album.tag === selectedAlbum)?.description}
-								</p>
+								<h3 className="font-bold text-left">{selectedAlbumData?.title}</h3>
+								<p className="text-start 2xl:text-[1rem]">{selectedAlbumData?.description}</p>
 							</div>
 							<div className="flex justify-end">
-								<Button href={albums?.find(album => album.tag === selectedAlbum)?.link} fill={false}>
+								<Button href={selectedAlbumData?.link} fill={false}>
 									{t("gallery.button_text")}
 								</Button>
 							</div>
@@ -187,8 +188,8 @@ export default function Gallery() {
 							data-aos-offset="-200"
 						>
 							<img
-								src={albums?.find(album => album.tag === selectedAlbum)?.img2.src}
-								alt={albums?.find(album => album.tag === selectedAlbum)?.title}
+								src={selectedAlbumData?.img2.src}
+								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
 							/>
 						</div>
@@ -198,21 +199,21 @@ export default function Gallery() {
 							data-aos-offset="-200"
 						>
 							<img
-								src={albums?.find(album => album.tag === selectedAlbum)?.img1.src}
-								alt={albums?.find(album => album.tag === selectedAlbum)?.title}
+								src={selectedAlbumData?.img1.src}
+								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
 							/>
 						</div>
 						<div className="bg-blur-svg rounded-3xl row-start-8 col-start-9 row-end-13 col-end-13 flex flex-col md:flex-row justify-between items-start gap-8 p-8 text-left overflow-hidden">
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
-								src={albums?.find(album => album.tag === selectedAlbum)?.icon.src}
+								src={selectedAlbumData?.icon.src}
 								alt=""
 								aria-hidden="true"
 							/>
 							<div className="md:text-end md:self-center ">
-								<h2>{albums?.find(album => album.tag === selectedAlbum)?.statNumber}</h2>
-								<h4>{albums?.find(album => album.tag === selectedAlbum)?.statDescription}</h4>
+								<h2>{selectedAlbumData?.statNumber}</h2>
+								<h4>{selectedAlbumData?.statDescription}</h4>
 							</div>
 						</div>
 					</div>
