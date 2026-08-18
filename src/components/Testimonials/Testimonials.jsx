@@ -5,40 +5,41 @@ import { t } from "../../i18n";
 import Button from "../Button/Button";
 
 export default function Testimonials() {
+	const tTestimonials = t("testimonials");
 	const testimonialData = [
 		{
 			id: 3,
-			name: t("testimonials.t3.name"),
-			content: t("testimonials.t3.content"),
-			role: t("testimonials.t3.role"),
+			name: tTestimonials.t3.name,
+			content: tTestimonials.t3.content,
+			role: tTestimonials.t3.role,
 			img: "https://cdn1.hackthehill.com/testimonials/britt-hayman.webp",
 		},
 		{
 			id: 6,
-			name: t("testimonials.t6.name"),
-			content: t("testimonials.t6.content"),
-			role: t("testimonials.t6.role"),
+			name: tTestimonials.t6.name,
+			content: tTestimonials.t6.content,
+			role: tTestimonials.t6.role,
 			img: "https://cdn1.hackthehill.com/testimonials/greg-suignard.webp",
 		},
 		{
 			id: 7,
-			name: t("testimonials.t7.name"),
-			content: t("testimonials.t7.content"),
-			role: t("testimonials.t7.role"),
+			name: tTestimonials.t7.name,
+			content: tTestimonials.t7.content,
+			role: tTestimonials.t7.role,
 			img: "https://cdn1.hackthehill.com/testimonials/elmira-khani.webp",
 		},
 		{
 			id: 1,
-			name: t("testimonials.t1.name"),
-			content: t("testimonials.t1.content"),
-			role: t("testimonials.t1.role"),
+			name: tTestimonials.t1.name,
+			content: tTestimonials.t1.content,
+			role: tTestimonials.t1.role,
 			img: "https://cdn1.hackthehill.com/testimonials/maddie-whibbs.webp",
 		},
 		{
 			id: 2,
-			name: t("testimonials.t2.name"),
-			content: t("testimonials.t2.content"),
-			role: t("testimonials.t2.role"),
+			name: tTestimonials.t2.name,
+			content: tTestimonials.t2.content,
+			role: tTestimonials.t2.role,
 			img: "https://cdn1.hackthehill.com/testimonials/adam-laderoute.webp",
 		},
 	];
@@ -47,8 +48,8 @@ export default function Testimonials() {
 		<div className="flex justify-center items-center w-full bg-background-dark">
 			<div className="relative flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl overflow-hidden md:w-11/12">
 				<div className="flex flex-col text-left w-full z-[1]" data-aos="fade-up">
-					<h1>{t("testimonials.title")}</h1>
-					<h2 className="text-shadow_text">{t("testimonials.subtitle")}</h2>
+					<h1>{tTestimonials.title}</h1>
+					<h2 className="text-shadow_text">{tTestimonials.subtitle}</h2>
 				</div>
 				<div className="grid gap-4 grid-rows-12 grid-cols-12 w-full max-w-2xl xl:flex xl:flex-col xl:px-4 xl:gap-2 z-[1]">
 					<div
@@ -153,7 +154,7 @@ export default function Testimonials() {
 					>
 						<div className="self-end">
 							<Button href="https://www.instagram.com/hackthehill" fill={false}>
-								{t("testimonials.button_text")}
+								{tTestimonials.button_text}
 							</Button>
 						</div>
 					</div>
