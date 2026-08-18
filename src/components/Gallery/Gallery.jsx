@@ -131,6 +131,7 @@ export default function Gallery() {
 							<button
 								type="button"
 								key={album.tag}
+								aria-pressed={album.tag === activeFolder}
 								onClick={() => {
 									handleCardClick(album.tag);
 								}}
