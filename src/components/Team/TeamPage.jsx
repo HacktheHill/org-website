@@ -58,7 +58,18 @@ const sortRank = rank => {
 	return rank;
 };
 
-function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) {
+function TeamMemberCard({
+	member,
+	suf,
+	selectedYear,
+	teams,
+	getTitle,
+	urlFor,
+	fallbackAlt,
+	linkedinLabel,
+	githubLabel,
+	websiteLabel,
+}) {
 	const fallbackAsset = teams.find(t => t.year.toString() === selectedYear)?.fallbackPhoto?.asset;
 	const photoAsset = member?.photo?.[suf]?.asset ?? fallbackAsset;
 	const photoUrl = photoAsset ? urlFor(photoAsset).url() : "";
@@ -75,7 +86,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 			>
 				<img
 					src={photoUrl}
-					alt={member?.name || t("team.fallbackPhotoAlt")}
+					alt={member?.name || fallbackAlt}
 					loading="lazy"
 					className="aspect-square object-cover rounded-[50%] shadow-small-glow"
 				/>
@@ -87,7 +98,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							href={member.linkedin}
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label={t("accessibility.linkedin")}
+							aria-label={linkedinLabel}
 							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
 							<Icon icon={faLinkedin} />
@@ -98,7 +109,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							href={member.github}
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label={t("accessibility.github")}
+							aria-label={githubLabel}
 							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
 							<Icon icon={faGithub} />
@@ -109,7 +120,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							href={member.website}
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label={t("accessibility.website")}
+							aria-label={websiteLabel}
 							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
 							<Icon icon={faGlobe} />
@@ -122,10 +133,18 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 }
 
 export default function TeamPage({ teams }) {
+	// ⚡ Bolt Optimization: Extracted store subscriptions (t() calls) to the parent component.
+	// Passing them as static strings to TeamMemberCard prevents up to O(n) unnecessary
+	// store subscriptions where n is the number of team members (100+).
+	// Impact: Significantly reduces React hook overhead during list renders.
 	const $locale = useStore(locale);
 	const t_teamNames = t("team.teams");
 	const t_positions = t("team.positions");
 	const memberLabel = t("team.member");
+	const fallbackAlt = t("team.fallbackPhotoAlt");
+	const linkedinLabel = t("accessibility.linkedin");
+	const githubLabel = t("accessibility.github");
+	const websiteLabel = t("accessibility.website");
 
 	const builder = createImageUrlBuilder(sanityClient);
 	const urlFor = source => builder.image(source);
@@ -264,6 +283,10 @@ export default function TeamPage({ teams }) {
 								<ul className="flex flex-wrap justify-start w-full mt-2">
 									{subTeams[subTeam].map(member => (
 										<TeamMemberCard
+											fallbackAlt={fallbackAlt}
+											linkedinLabel={linkedinLabel}
+											githubLabel={githubLabel}
+											websiteLabel={websiteLabel}
 											key={getKey(member)}
 											member={member}
 											suf={suf}

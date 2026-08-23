@@ -81,8 +81,8 @@ export default function Navigation(props) {
 										? i === 0
 											? "translate-y-2 rotate-45"
 											: i === 1
-												? "opacity-0"
-												: "-translate-y-2 -rotate-45"
+											? "opacity-0"
+											: "-translate-y-2 -rotate-45"
 										: ""
 								}`}
 							></div>
