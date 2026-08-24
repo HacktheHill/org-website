@@ -99,6 +99,7 @@ export default function Navigation(props) {
 						{["events", "blog", "team", "documents"].map(link => (
 							<a
 								href={link ? `/${link}` : "#"}
+								aria-current={props.pathName === `/${link}` ? "page" : undefined}
 								className={`flex h-full items-center border-none p-4 cursor-pointer font-bold transition-all duration-100 lg:border lg:rounded-xl hover:text-shade-1 focus-visible:text-shade-1 ${
 									props.pathName === `/${link}` ? "text-shade-1" : "text-shade-3"
 								}`}
