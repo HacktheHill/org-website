@@ -31,8 +31,16 @@ export default function BlogPage({ posts }) {
 						{posts?.map((post, i) => (
 							<li
 								key={i}
-								className="basis-1/2 lg:basis-full p-3 md:mb-4 md:border md:border-primary md:rounded-3xl md:p-0 hover:cursor-pointer transition-all duration-300"
+								className="basis-1/2 lg:basis-full p-3 md:mb-4 md:border md:border-primary md:rounded-3xl md:p-0 hover:cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-3xl transition-all duration-300"
 								onClick={() => (globalThis.location.href = `/blog/${post.slug.current}`)}
+								onKeyDown={e => {
+									if (e.key === "Enter" || e.key === " ") {
+										e.preventDefault();
+										globalThis.location.href = `/blog/${post.slug.current}`;
+									}
+								}}
+								tabIndex={0}
+								role="link"
 								data-aos="fade-up"
 								data-aos-offset={i >= 2 ? "-100" : "0"}
 							>
