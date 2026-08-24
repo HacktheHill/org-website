@@ -139,6 +139,7 @@ export default function Calendar({ events }) {
 						>
 							<button
 								type="button"
+								aria-pressed={isEqual(day, selectedDay)}
 								onClick={() => {
 									setSelectedDay(day);
 									setShowUpcomingEvents(0);
@@ -191,6 +192,7 @@ export default function Calendar({ events }) {
 							<div className="flex flex-row justify-center items-center shadow-glow text-sm xs:text-xs">
 								<button
 									type="button"
+									aria-pressed={showUpcomingEvents === -1}
 									onClick={() => setShowUpcomingEvents(-1)}
 									className={`${getToggleClassName(-1)} border-r-[0.5px] rounded-l-md`}
 								>
@@ -198,6 +200,7 @@ export default function Calendar({ events }) {
 								</button>
 								<button
 									type="button"
+									aria-pressed={showUpcomingEvents === 0}
 									onClick={() => setShowUpcomingEvents(0)}
 									className={`${getToggleClassName(0)} border-l-[0.5px] border-r-[0.5px]`}
 								>
@@ -205,6 +208,7 @@ export default function Calendar({ events }) {
 								</button>
 								<button
 									type="button"
+									aria-pressed={showUpcomingEvents === 1}
 									onClick={() => setShowUpcomingEvents(1)}
 									className={`${getToggleClassName(1)} border-l-[0.5px] rounded-r-md`}
 								>
