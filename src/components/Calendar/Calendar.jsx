@@ -29,6 +29,16 @@ function classNames(...classes) {
 export default function Calendar({ events }) {
 	const $locale = useStore(locale);
 	const eventList = events ?? [];
+	// ⚡ Bolt: Hoisted nanostore hook calls to prevent O(n) subscriptions when rendering lists
+	const eventMonths = t("events.months");
+	const previousText = t("events.previous");
+	const upcomingText = t("events.upcoming");
+	const dayText = t("events.day");
+	const noEventsText = t("events.no_events");
+	const prevMonthText = t("accessibility.previous_month");
+	const nextMonthText = t("accessibility.next_month");
+	const weekdayInitials = t("events.weekdayInitials");
+
 	let today = startOfToday();
 	let [selectedDay, setSelectedDay] = useState(today);
 	let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -85,13 +95,13 @@ export default function Calendar({ events }) {
 
 	let eventHeading = null;
 	if (showUpcomingEvents === -1) {
-		eventHeading = t("events.previous");
+		eventHeading = previousText;
 	} else if (showUpcomingEvents === 1) {
-		eventHeading = t("events.upcoming");
+		eventHeading = upcomingText;
 	} else if ($locale === "fr") {
-		eventHeading = `${displayDay} ${t("events.months")[displayMonth] || displayMonth}, ${displayYear}`;
+		eventHeading = `${displayDay} ${eventMonths[displayMonth] || displayMonth}, ${displayYear}`;
 	} else {
-		eventHeading = `${t("events.months")[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
+		eventHeading = `${eventMonths[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
 	}
 
 	const getToggleClassName = value =>
@@ -107,11 +117,11 @@ export default function Calendar({ events }) {
 			>
 				<div className="flex items-center">
 					<h3 className="flex-auto font-semibold">{`${
-						t("events.months")[calendarMonth] || calendarMonth
+						eventMonths[calendarMonth] || calendarMonth
 					} ${calendarYear}`}</h3>
 					<button
 						type="button"
-						aria-label={t("accessibility.previous_month")}
+						aria-label={prevMonthText}
 						onClick={previousMonth}
 						className="p-1.5 mr-4 transition-all duration-200 opacity-75 hover:opacity-100 focus-visible:opacity-100"
 					>
@@ -120,14 +130,14 @@ export default function Calendar({ events }) {
 					<button
 						onClick={nextMonth}
 						type="button"
-						aria-label={t("accessibility.next_month")}
+						aria-label={nextMonthText}
 						className="p-1.5 transition-all duration-200 opacity-75 hover:opacity-100 focus-visible:opacity-100"
 					>
 						<img src={chevron.src} alt="" aria-hidden="true" width="8px" />
 					</button>
 				</div>
 				<div className="grid grid-cols-7 mt-10 text-xs leading-6 text-center">
-					{t("events.weekdayInitials").map((day, i) => (
+					{weekdayInitials.map((day, i) => (
 						<div key={i}>{day}</div>
 					))}
 				</div>
@@ -194,21 +204,21 @@ export default function Calendar({ events }) {
 									onClick={() => setShowUpcomingEvents(-1)}
 									className={`${getToggleClassName(-1)} border-r-[0.5px] rounded-l-md`}
 								>
-									{t("events.previous")}
+									{previousText}
 								</button>
 								<button
 									type="button"
 									onClick={() => setShowUpcomingEvents(0)}
 									className={`${getToggleClassName(0)} border-l-[0.5px] border-r-[0.5px]`}
 								>
-									{t("events.day")}
+									{dayText}
 								</button>
 								<button
 									type="button"
 									onClick={() => setShowUpcomingEvents(1)}
 									className={`${getToggleClassName(1)} border-l-[0.5px] rounded-r-md`}
 								>
-									{t("events.upcoming")}
+									{upcomingText}
 								</button>
 							</div>
 						</div>
@@ -216,8 +226,16 @@ export default function Calendar({ events }) {
 						<div className="min-h-0 flex-1 overflow-auto w-full pr-4">
 							<ol className="flex flex-col gap-2">
 								{displayedEvents.length > 0
-									? displayedEvents.map((event, i) => <Event event={event} index={i} key={i} />)
-									: t("events.no_events")}
+									? displayedEvents.map((event, i) => (
+											<Event
+												event={event}
+												index={i}
+												key={i}
+												eventMonths={eventMonths}
+												locale={$locale}
+											/>
+									  ))
+									: noEventsText}
 							</ol>
 						</div>
 					</div>
@@ -233,17 +251,17 @@ export default function Calendar({ events }) {
 	);
 }
 
-function Event({ event, index }) {
-	const $locale = useStore(locale);
+// ⚡ Bolt: Passed `eventMonths` and `locale` as props to prevent O(n) nanostore subscriptions when rendering the list of events.
+function Event({ event, index, eventMonths, locale }) {
 	let start = parseISO(event?.start);
 	let end = parseISO(event?.end);
 
 	let displayDay = start.toString().slice(8, 10);
 	let displayMonth = start.toString().slice(4, 7);
 	let displayYear = start.toString().slice(11, 15);
-	let eventDate = `${t("events.months")[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
-	if ($locale === "fr") {
-		eventDate = `${displayDay} ${t("events.months")[displayMonth] || displayMonth}, ${displayYear}`;
+	let eventDate = `${eventMonths[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
+	if (locale === "fr") {
+		eventDate = `${displayDay} ${eventMonths[displayMonth] || displayMonth}, ${displayYear}`;
 	}
 
 	return (
@@ -253,7 +271,7 @@ function Event({ event, index }) {
 			}`}
 		>
 			<div className="flex flex-col gap-4 w-full">
-				<h4 className="font-semibold">{event?.title?.[`${$locale}`]}</h4>
+				<h4 className="font-semibold">{event?.title?.[locale]}</h4>
 				<p className="text-sm italic mb-4 items-center flex flex-row flex-wrap">
 					<span>{eventDate}</span>
 					<img
@@ -272,11 +290,11 @@ function Event({ event, index }) {
 					/>
 					<span className="not-italic">{event?.location}</span>
 				</p>
-				<p className="text-sm">{toPlainText(event?.details?.[`${$locale}`])}</p>
+				<p className="text-sm">{toPlainText(event?.details?.[locale])}</p>
 
 				<div className="flex justify-end mt-4 ">
 					<Button disabled={event?.disabled} href={event?.link} fill={true}>
-						{event?.link_text?.[`${$locale}`]}
+						{event?.link_text?.[locale]}
 					</Button>
 				</div>
 			</div>
