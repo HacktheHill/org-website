@@ -89,15 +89,16 @@ export default function Sponsors() {
 						href={sponsor.href}
 						target="_blank"
 						rel="noopener noreferrer"
-						className={`sponsor flex aspect-[3/2] justify-center items-center rounded-lg h-40 md:h-24 p-8 md:p-4 transition-all duration-200
+						aria-label={`${sponsor.alt} website`}
+						className={`sponsor flex aspect-[3/2] justify-center items-center rounded-lg h-40 md:h-24 p-8 md:p-4 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none
 					 ${
 							group === 1
 								? hovered !== -1 && hovered !== i
 									? "opacity-25 translate-x-1 translate-y-1"
 									: "translate-x-0 translate-y-0"
 								: hovered2 !== -1 && hovered2 !== i
-									? "opacity-25 translate-x-1 translate-y-1"
-									: "translate-x-0 translate-y-0"
+								? "opacity-25 translate-x-1 translate-y-1"
+								: "translate-x-0 translate-y-0"
 						}`}
 						onMouseEnter={() => setHoverGroup(i)}
 						onMouseLeave={() => setHoverGroup(-1)}
