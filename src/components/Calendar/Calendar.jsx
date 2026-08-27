@@ -14,7 +14,7 @@ import {
 	parseISO,
 	startOfToday,
 } from "date-fns";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import beaver3 from "../../assets/beavar/Beaver3.svg";
 import calendar from "../../assets/icons/calendar.svg";
 import chevron from "../../assets/icons/chevron_white.svg";
@@ -28,11 +28,12 @@ function classNames(...classes) {
 
 export default function Calendar({ events }) {
 	const $locale = useStore(locale);
-	const eventList = events ?? [];
-	let today = startOfToday();
+	// ⚡ Bolt: Memoized derived state to prevent redundant O(n) filtering/parsing during typical re-renders (like day selection)
+	const eventList = useMemo(() => events ?? [], [events]);
+	const today = useMemo(() => startOfToday(), []);
 	let [selectedDay, setSelectedDay] = useState(today);
 	let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
-	let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
+	const firstDayCurrentMonth = useMemo(() => parse(currentMonth, "MMM-yyyy", new Date()), [currentMonth]);
 	let calendarMonth = currentMonth.split("-")[0];
 	let calendarYear = currentMonth.split("-")[1];
 
@@ -50,10 +51,15 @@ export default function Calendar({ events }) {
 		"col-start-7",
 	];
 
-	let days = eachDayOfInterval({
-		start: firstDayCurrentMonth,
-		end: endOfMonth(firstDayCurrentMonth),
-	});
+	// ⚡ Bolt: Prevent recalculation of month interval unless current month changes
+	const days = useMemo(
+		() =>
+			eachDayOfInterval({
+				start: firstDayCurrentMonth,
+				end: endOfMonth(firstDayCurrentMonth),
+			}),
+		[firstDayCurrentMonth],
+	);
 
 	function previousMonth() {
 		let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
@@ -65,10 +71,17 @@ export default function Calendar({ events }) {
 		setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
 	}
 
-	let selectedDayEvents = eventList.filter(event => isSameDay(parseISO(event?.start), selectedDay));
+	// ⚡ Bolt: Expensive date parsing `parseISO` isolated to specific state updates
+	const selectedDayEvents = useMemo(
+		() => eventList.filter(event => isSameDay(parseISO(event?.start), selectedDay)),
+		[eventList, selectedDay],
+	);
 
-	let pastEvents = eventList.filter(event => parseISO(event?.start) < today);
-	let upcomingEvents = eventList.filter(event => parseISO(event?.start) >= today);
+	const pastEvents = useMemo(() => eventList.filter(event => parseISO(event?.start) < today), [eventList, today]);
+	const upcomingEvents = useMemo(
+		() => eventList.filter(event => parseISO(event?.start) >= today),
+		[eventList, today],
+	);
 
 	let displayedEvents = (() => {
 		if (showUpcomingEvents === -1 && pastEvents?.length > 0) {
