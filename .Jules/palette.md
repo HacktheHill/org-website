@@ -7,3 +7,8 @@
 
 **Learning:** Found several custom toggle buttons (e.g., calendar day selectors, event filters, gallery album selectors) that visually indicate their active/selected state using classes, but fail to communicate this state to screen readers.
 **Action:** When building custom toggle buttons that control UI state, always include `aria-pressed="true|false"` (for toggle buttons) or `aria-selected="true|false"` (for tab-like selectors) to ensure assistive technologies can announce the current state.
+
+## 2024-05-24 - Hiding Duplicate Marquee Content from Assistive Technologies
+
+**Learning:** Found a common issue where infinite CSS marquees are implemented by duplicating a block of content in the DOM. This causes screen readers to read everything twice, and creates double the tab stops for keyboard users, making the navigation extremely tedious.
+**Action:** When creating infinite marquees using duplicated DOM content, ensure the duplicate elements have `aria-hidden="true"` so screen readers ignore them, and `tabIndex="-1"` on any interactive elements inside the duplicates so keyboard users aren't forced to tab through the same items twice.

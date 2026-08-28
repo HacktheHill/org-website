@@ -82,13 +82,18 @@ export default function Sponsors() {
 
 	const marqueeGroup = (dataGroup, index, group, setHoverGroup) => {
 		return (
-			<div id={`marquee${index}_${group}`} className={`marquee-group${group}`}>
+			<div
+				id={`marquee${index}_${group}`}
+				className={`marquee-group${group}`}
+				aria-hidden={index === 2 ? "true" : undefined}
+			>
 				{dataGroup.map((sponsor, i) => (
 					<a
 						key={i}
 						href={sponsor.href}
 						target="_blank"
 						rel="noopener noreferrer"
+						tabIndex={index === 2 ? -1 : undefined}
 						className={`sponsor flex aspect-[3/2] justify-center items-center rounded-lg h-40 md:h-24 p-8 md:p-4 transition-all duration-200
 					 ${
 							group === 1
