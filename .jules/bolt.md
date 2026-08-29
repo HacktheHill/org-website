@@ -1,4 +1,4 @@
-## 2024-03-21 - i18n hook usage within components
+## 2024-08-29 - Nanostore Subscriptions in Lists
 
-**Learning:** In this codebase, the translation function `t()` exported from `src/i18n.ts` is not a simple utility function but a React hook (`useT` under the hood) that subscribes to a nanostore.
-**Action:** Be extremely careful when using `t()` inside arrays of objects or data structures within a component's render body. Each call creates a separate subscription. Try to extract static data outside the component or `useMemo` these arrays, and pass localized strings directly instead of calling the hook multiple times if it causes performance issues, or better yet, avoid recreating large arrays that use `t()` on every render.
+**Learning:** Using the translation hook `t()` (which subscribes to a nanostore under the hood) directly inside a component mapped over a large list (like `TeamMemberCard` for the whole team) causes O(n) store subscriptions. This severely impacts React's render performance and can cause significant delays during mount or state changes.
+**Action:** Always hoist `t()` hook calls that use nanostores (or any other global store subscriptions) up to the nearest list parent component. Create a static `labels` object and pass it down as a prop to O(1) subscriptions.
