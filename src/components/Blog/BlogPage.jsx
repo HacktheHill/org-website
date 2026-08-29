@@ -14,6 +14,7 @@ const builder = createImageUrlBuilder(sanityClient);
 const urlFor = source => builder.image(source);
 
 export default function BlogPage({ posts }) {
+	const tBlog = t("blog");
 	const $locale = useStore(locale);
 
 	useEffect(() => {
@@ -24,7 +25,7 @@ export default function BlogPage({ posts }) {
 		<div className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 text-left max-w-2xl z-[1] md:w-11/12">
 				<div className="flex flex-col text-left w-full" data-aos="fade-up">
-					<h1 data-aos="fade-up">{t("blog.title")}</h1>
+					<h1 data-aos="fade-up">{tBlog.title}</h1>
 				</div>
 				{posts?.length !== 0 && (
 					<ul className="grid grid-cols-2 lg:flex lg:flex-wrap justify-between w-full max-w-2xl auto-rows-[1fr]">
@@ -50,7 +51,7 @@ export default function BlogPage({ posts }) {
 														: HtH_fall_theme.src
 												}
 												className="w-full h-full object-cover"
-												alt={post.title?.[`${$locale}`] ?? t("blog.title")}
+												alt={post.title?.[`${$locale}`] ?? tBlog.title}
 											/>
 											<div className="absolute inset-0 z-10 bg-black/20" aria-hidden="true"></div>
 										</div>
@@ -61,7 +62,7 @@ export default function BlogPage({ posts }) {
 										</div>
 									</div>
 									<div className="p-2 w-full">
-										<p className="mt-4 text-base lg:text-sm">{`${t("blog.author_prefix")} ${
+										<p className="mt-4 text-base lg:text-sm">{`${tBlog.author_prefix} ${
 											post?.author
 										}`}</p>
 										<div className="w-full flex justify-between items-center mt-4">
@@ -82,7 +83,7 @@ export default function BlogPage({ posts }) {
 												)}
 											</div>
 											<Button href={`/blog/${post.slug.current}`} fill={true}>
-												{t("blog.read")}
+												{tBlog.read}
 											</Button>
 										</div>
 									</div>
