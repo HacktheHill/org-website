@@ -58,7 +58,7 @@ const sortRank = rank => {
 	return rank;
 };
 
-function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) {
+function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, tLabels }) {
 	const fallbackAsset = teams.find(t => t.year.toString() === selectedYear)?.fallbackPhoto?.asset;
 	const photoAsset = member?.photo?.[suf]?.asset ?? fallbackAsset;
 	const photoUrl = photoAsset ? urlFor(photoAsset).url() : "";
@@ -75,7 +75,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 			>
 				<img
 					src={photoUrl}
-					alt={member?.name || t("team.fallbackPhotoAlt")}
+					alt={member?.name || tLabels.fallbackPhotoAlt}
 					loading="lazy"
 					className="aspect-square object-cover rounded-[50%] shadow-small-glow"
 				/>
@@ -87,7 +87,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							href={member.linkedin}
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label={t("accessibility.linkedin")}
+							aria-label={tLabels.linkedin}
 							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
 							<Icon icon={faLinkedin} />
@@ -98,7 +98,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							href={member.github}
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label={t("accessibility.github")}
+							aria-label={tLabels.github}
 							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
 							<Icon icon={faGithub} />
@@ -109,7 +109,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor }) 
 							href={member.website}
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label={t("accessibility.website")}
+							aria-label={tLabels.website}
 							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
 						>
 							<Icon icon={faGlobe} />
@@ -126,6 +126,15 @@ export default function TeamPage({ teams }) {
 	const t_teamNames = t("team.teams");
 	const t_positions = t("team.positions");
 	const memberLabel = t("team.member");
+
+	// Bolt Optimization: Hoisting translation hooks to the parent prevents
+	// O(n) store subscriptions inside the mapped TeamMemberCard component.
+	const tLabels = {
+		fallbackPhotoAlt: t("team.fallbackPhotoAlt"),
+		linkedin: t("accessibility.linkedin"),
+		github: t("accessibility.github"),
+		website: t("accessibility.website"),
+	};
 
 	const builder = createImageUrlBuilder(sanityClient);
 	const urlFor = source => builder.image(source);
@@ -271,6 +280,7 @@ export default function TeamPage({ teams }) {
 											teams={teams}
 											getTitle={getTitle}
 											urlFor={urlFor}
+											tLabels={tLabels}
 										/>
 									))}
 								</ul>
