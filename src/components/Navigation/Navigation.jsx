@@ -15,14 +15,21 @@ export default function Navigation(props) {
 				setSidebarOpen(false);
 			}
 		};
+		const handleKeyDown = e => {
+			if (e.key === "Escape") {
+				setSidebarOpen(false);
+			}
+		};
 
 		handleScroll();
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		window.addEventListener("resize", handleResize);
+		window.addEventListener("keydown", handleKeyDown);
 
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", handleResize);
+			window.removeEventListener("keydown", handleKeyDown);
 		};
 	}, []);
 
@@ -99,6 +106,7 @@ export default function Navigation(props) {
 						{["events", "blog", "team", "documents"].map(link => (
 							<a
 								href={link ? `/${link}` : "#"}
+								aria-current={props.pathName === `/${link}` ? "page" : undefined}
 								className={`flex h-full items-center border-none p-4 cursor-pointer font-bold transition-all duration-100 lg:border lg:rounded-xl hover:text-shade-1 focus-visible:text-shade-1 ${
 									props.pathName === `/${link}` ? "text-shade-1" : "text-shade-3"
 								}`}
