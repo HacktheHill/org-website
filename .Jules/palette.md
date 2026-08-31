@@ -7,3 +7,8 @@
 
 **Learning:** Found several custom toggle buttons (e.g., calendar day selectors, event filters, gallery album selectors) that visually indicate their active/selected state using classes, but fail to communicate this state to screen readers.
 **Action:** When building custom toggle buttons that control UI state, always include `aria-pressed="true|false"` (for toggle buttons) or `aria-selected="true|false"` (for tab-like selectors) to ensure assistive technologies can announce the current state.
+
+## 2026-08-31 - Enhancing Custom Navigation Accessibility
+
+**Learning:** When building custom navigation menus (like mobile sidebars), users expect standard interactions and explicit state announcements. Forgetting to bind the `Escape` key to close temporary overlays forces keyboard users to hunt for the toggle button. Furthermore, merely styling the active link doesn't help screen reader users identify their current location in the site.
+**Action:** Always add a global `Escape` key listener to close custom modals/sidebars, and apply `aria-current="page"` to the currently active navigation link to semantically communicate state.
