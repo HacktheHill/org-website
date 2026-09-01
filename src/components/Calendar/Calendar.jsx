@@ -40,6 +40,16 @@ export default function Calendar({ events }) {
 	let displayYear = selectedDay.toString().slice(11, 15);
 	let displayDay = selectedDay.toString().slice(8, 10);
 	const [showUpcomingEvents, setShowUpcomingEvents] = useState(-1);
+
+	const tPrevious = t("events.previous");
+	const tUpcoming = t("events.upcoming");
+	const tDay = t("events.day");
+	const tMonths = t("events.months");
+	const tWeekdayInitials = t("events.weekdayInitials");
+	const tNoEvents = t("events.no_events");
+	const tPreviousMonth = t("accessibility.previous_month");
+	const tNextMonth = t("accessibility.next_month");
+
 	let colStartClasses = [
 		"",
 		"col-start-2",
@@ -85,13 +95,13 @@ export default function Calendar({ events }) {
 
 	let eventHeading = null;
 	if (showUpcomingEvents === -1) {
-		eventHeading = t("events.previous");
+		eventHeading = tPrevious;
 	} else if (showUpcomingEvents === 1) {
-		eventHeading = t("events.upcoming");
+		eventHeading = tUpcoming;
 	} else if ($locale === "fr") {
-		eventHeading = `${displayDay} ${t("events.months")[displayMonth] || displayMonth}, ${displayYear}`;
+		eventHeading = `${displayDay} ${tMonths[displayMonth] || displayMonth}, ${displayYear}`;
 	} else {
-		eventHeading = `${t("events.months")[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
+		eventHeading = `${tMonths[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
 	}
 
 	const getToggleClassName = value =>
@@ -107,11 +117,11 @@ export default function Calendar({ events }) {
 			>
 				<div className="flex items-center">
 					<h3 className="flex-auto font-semibold">{`${
-						t("events.months")[calendarMonth] || calendarMonth
+						tMonths[calendarMonth] || calendarMonth
 					} ${calendarYear}`}</h3>
 					<button
 						type="button"
-						aria-label={t("accessibility.previous_month")}
+						aria-label={tPreviousMonth}
 						onClick={previousMonth}
 						className="p-1.5 mr-4 transition-all duration-200 opacity-75 hover:opacity-100 focus-visible:opacity-100"
 					>
@@ -120,14 +130,14 @@ export default function Calendar({ events }) {
 					<button
 						onClick={nextMonth}
 						type="button"
-						aria-label={t("accessibility.next_month")}
+						aria-label={tNextMonth}
 						className="p-1.5 transition-all duration-200 opacity-75 hover:opacity-100 focus-visible:opacity-100"
 					>
 						<img src={chevron.src} alt="" aria-hidden="true" width="8px" />
 					</button>
 				</div>
 				<div className="grid grid-cols-7 mt-10 text-xs leading-6 text-center">
-					{t("events.weekdayInitials").map((day, i) => (
+					{tWeekdayInitials.map((day, i) => (
 						<div key={i}>{day}</div>
 					))}
 				</div>
@@ -196,7 +206,7 @@ export default function Calendar({ events }) {
 									onClick={() => setShowUpcomingEvents(-1)}
 									className={`${getToggleClassName(-1)} border-r-[0.5px] rounded-l-md`}
 								>
-									{t("events.previous")}
+									{tPrevious}
 								</button>
 								<button
 									type="button"
@@ -204,7 +214,7 @@ export default function Calendar({ events }) {
 									onClick={() => setShowUpcomingEvents(0)}
 									className={`${getToggleClassName(0)} border-l-[0.5px] border-r-[0.5px]`}
 								>
-									{t("events.day")}
+									{tDay}
 								</button>
 								<button
 									type="button"
@@ -212,7 +222,7 @@ export default function Calendar({ events }) {
 									onClick={() => setShowUpcomingEvents(1)}
 									className={`${getToggleClassName(1)} border-l-[0.5px] rounded-r-md`}
 								>
-									{t("events.upcoming")}
+									{tUpcoming}
 								</button>
 							</div>
 						</div>
@@ -221,7 +231,7 @@ export default function Calendar({ events }) {
 							<ol className="flex flex-col gap-2">
 								{displayedEvents.length > 0
 									? displayedEvents.map((event, i) => <Event event={event} index={i} key={i} />)
-									: t("events.no_events")}
+									: tNoEvents}
 							</ol>
 						</div>
 					</div>
@@ -239,15 +249,16 @@ export default function Calendar({ events }) {
 
 function Event({ event, index }) {
 	const $locale = useStore(locale);
+	const tMonths = t("events.months");
 	let start = parseISO(event?.start);
 	let end = parseISO(event?.end);
 
 	let displayDay = start.toString().slice(8, 10);
 	let displayMonth = start.toString().slice(4, 7);
 	let displayYear = start.toString().slice(11, 15);
-	let eventDate = `${t("events.months")[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
+	let eventDate = `${tMonths[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
 	if ($locale === "fr") {
-		eventDate = `${displayDay} ${t("events.months")[displayMonth] || displayMonth}, ${displayYear}`;
+		eventDate = `${displayDay} ${tMonths[displayMonth] || displayMonth}, ${displayYear}`;
 	}
 
 	return (
