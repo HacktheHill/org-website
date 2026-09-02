@@ -5,7 +5,7 @@ import { useStore } from "@nanostores/react";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 import shape from "../../assets/patterns/ssshape.svg";
 import { sanityClient } from "sanity:client";
@@ -141,7 +141,6 @@ export default function TeamPage({ teams }) {
 	});
 
 	const suf = `year_${selectedYear}`;
-	const [subTeams, setSubTeams] = useState({});
 
 	// Sync year param in URL
 	useEffect(() => {
@@ -161,10 +160,10 @@ export default function TeamPage({ teams }) {
 		AOS.init({ once: false, duration: 700 });
 	}, []);
 
-	// Organize subTeams
-	useEffect(() => {
+	// Organize subTeams (optimized to avoid unnecessary re-renders)
+	const subTeams = useMemo(() => {
 		const teamObj = teams.find(t => t.year.toString() === selectedYear);
-		if (!teamObj) return setSubTeams({});
+		if (!teamObj) return {};
 
 		const newSubTeams = {};
 
@@ -205,8 +204,8 @@ export default function TeamPage({ teams }) {
 			});
 		});
 
-		setSubTeams(newSubTeams);
-	}, [selectedYear, teams]);
+		return newSubTeams;
+	}, [selectedYear, teams, suf]);
 
 	const getTitle = member => {
 		const a = member.assignment;
