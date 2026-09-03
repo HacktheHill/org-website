@@ -14,7 +14,7 @@ import {
 	parseISO,
 	startOfToday,
 } from "date-fns";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import beaver3 from "../../assets/beavar/Beaver3.svg";
 import calendar from "../../assets/icons/calendar.svg";
 import chevron from "../../assets/icons/chevron_white.svg";
@@ -29,7 +29,25 @@ function classNames(...classes) {
 export default function Calendar({ events }) {
 	const $locale = useStore(locale);
 	const eventList = events ?? [];
-	let today = startOfToday();
+	const today = useMemo(() => startOfToday(), []);
+
+	const parsedEvents = useMemo(() => {
+		return eventList.map(event => ({
+			...event,
+			parsedStart: event?.start ? parseISO(event.start) : new Date(0),
+			parsedEnd: event?.end ? parseISO(event.end) : new Date(0),
+		}));
+	}, [eventList]);
+
+	const tPrevious = t("events.previous");
+	const tUpcoming = t("events.upcoming");
+	const tMonths = t("events.months");
+	const tWeekdayInitials = t("events.weekdayInitials");
+	const tDay = t("events.day");
+	const tNoEvents = t("events.no_events");
+	const tAriaPrevMonth = t("accessibility.previous_month");
+	const tAriaNextMonth = t("accessibility.next_month");
+
 	let [selectedDay, setSelectedDay] = useState(today);
 	let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
 	let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
@@ -65,10 +83,19 @@ export default function Calendar({ events }) {
 		setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
 	}
 
-	let selectedDayEvents = eventList.filter(event => isSameDay(parseISO(event?.start), selectedDay));
+	// PERFORMANCE: Cache the filtered event arrays to avoid recalculating
+	// the selected, past, and upcoming events on every render (especially when hovering dates).
+	const selectedDayEvents = useMemo(
+		() => parsedEvents.filter(event => isSameDay(event.parsedStart, selectedDay)),
+		[parsedEvents, selectedDay],
+	);
 
-	let pastEvents = eventList.filter(event => parseISO(event?.start) < today);
-	let upcomingEvents = eventList.filter(event => parseISO(event?.start) >= today);
+	const pastEvents = useMemo(() => parsedEvents.filter(event => event.parsedStart < today), [parsedEvents, today]);
+
+	const upcomingEvents = useMemo(
+		() => parsedEvents.filter(event => event.parsedStart >= today),
+		[parsedEvents, today],
+	);
 
 	let displayedEvents = (() => {
 		if (showUpcomingEvents === -1 && pastEvents?.length > 0) {
@@ -85,13 +112,13 @@ export default function Calendar({ events }) {
 
 	let eventHeading = null;
 	if (showUpcomingEvents === -1) {
-		eventHeading = t("events.previous");
+		eventHeading = tPrevious;
 	} else if (showUpcomingEvents === 1) {
-		eventHeading = t("events.upcoming");
+		eventHeading = tUpcoming;
 	} else if ($locale === "fr") {
-		eventHeading = `${displayDay} ${t("events.months")[displayMonth] || displayMonth}, ${displayYear}`;
+		eventHeading = `${displayDay} ${tMonths[displayMonth] || displayMonth}, ${displayYear}`;
 	} else {
-		eventHeading = `${t("events.months")[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
+		eventHeading = `${tMonths[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
 	}
 
 	const getToggleClassName = value =>
@@ -107,11 +134,11 @@ export default function Calendar({ events }) {
 			>
 				<div className="flex items-center">
 					<h3 className="flex-auto font-semibold">{`${
-						t("events.months")[calendarMonth] || calendarMonth
+						tMonths[calendarMonth] || calendarMonth
 					} ${calendarYear}`}</h3>
 					<button
 						type="button"
-						aria-label={t("accessibility.previous_month")}
+						aria-label={tAriaPrevMonth}
 						onClick={previousMonth}
 						className="p-1.5 mr-4 transition-all duration-200 opacity-75 hover:opacity-100 focus-visible:opacity-100"
 					>
@@ -120,14 +147,14 @@ export default function Calendar({ events }) {
 					<button
 						onClick={nextMonth}
 						type="button"
-						aria-label={t("accessibility.next_month")}
+						aria-label={tAriaNextMonth}
 						className="p-1.5 transition-all duration-200 opacity-75 hover:opacity-100 focus-visible:opacity-100"
 					>
 						<img src={chevron.src} alt="" aria-hidden="true" width="8px" />
 					</button>
 				</div>
 				<div className="grid grid-cols-7 mt-10 text-xs leading-6 text-center">
-					{t("events.weekdayInitials").map((day, i) => (
+					{tWeekdayInitials.map((day, i) => (
 						<div key={i}>{day}</div>
 					))}
 				</div>
@@ -167,7 +194,7 @@ export default function Calendar({ events }) {
 							</button>
 
 							<div className="w-1 h-1 mx-auto mt-1">
-								{eventList.some(event => isSameDay(parseISO(event?.start), day)) && (
+								{parsedEvents.some(event => isSameDay(event.parsedStart, day)) && (
 									<div className="w-1 h-1 rounded-full bg-white"></div>
 								)}
 							</div>
@@ -196,7 +223,7 @@ export default function Calendar({ events }) {
 									onClick={() => setShowUpcomingEvents(-1)}
 									className={`${getToggleClassName(-1)} border-r-[0.5px] rounded-l-md`}
 								>
-									{t("events.previous")}
+									{tPrevious}
 								</button>
 								<button
 									type="button"
@@ -204,7 +231,7 @@ export default function Calendar({ events }) {
 									onClick={() => setShowUpcomingEvents(0)}
 									className={`${getToggleClassName(0)} border-l-[0.5px] border-r-[0.5px]`}
 								>
-									{t("events.day")}
+									{tDay}
 								</button>
 								<button
 									type="button"
@@ -212,7 +239,7 @@ export default function Calendar({ events }) {
 									onClick={() => setShowUpcomingEvents(1)}
 									className={`${getToggleClassName(1)} border-l-[0.5px] rounded-r-md`}
 								>
-									{t("events.upcoming")}
+									{tUpcoming}
 								</button>
 							</div>
 						</div>
@@ -221,7 +248,7 @@ export default function Calendar({ events }) {
 							<ol className="flex flex-col gap-2">
 								{displayedEvents.length > 0
 									? displayedEvents.map((event, i) => <Event event={event} index={i} key={i} />)
-									: t("events.no_events")}
+									: tNoEvents}
 							</ol>
 						</div>
 					</div>
@@ -239,15 +266,17 @@ export default function Calendar({ events }) {
 
 function Event({ event, index }) {
 	const $locale = useStore(locale);
-	let start = parseISO(event?.start);
-	let end = parseISO(event?.end);
+	const tMonths = t("events.months");
+
+	let start = event.parsedStart || parseISO(event?.start);
+	let end = event.parsedEnd || parseISO(event?.end);
 
 	let displayDay = start.toString().slice(8, 10);
 	let displayMonth = start.toString().slice(4, 7);
 	let displayYear = start.toString().slice(11, 15);
-	let eventDate = `${t("events.months")[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
+	let eventDate = `${tMonths[displayMonth] || displayMonth} ${displayDay}, ${displayYear}`;
 	if ($locale === "fr") {
-		eventDate = `${displayDay} ${t("events.months")[displayMonth] || displayMonth}, ${displayYear}`;
+		eventDate = `${displayDay} ${tMonths[displayMonth] || displayMonth}, ${displayYear}`;
 	}
 
 	return (
