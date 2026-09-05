@@ -14,7 +14,7 @@ import {
 	parseISO,
 	startOfToday,
 } from "date-fns";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import beaver3 from "../../assets/beavar/Beaver3.svg";
 import calendar from "../../assets/icons/calendar.svg";
 import chevron from "../../assets/icons/chevron_white.svg";
@@ -28,7 +28,16 @@ function classNames(...classes) {
 
 export default function Calendar({ events }) {
 	const $locale = useStore(locale);
-	const eventList = events ?? [];
+
+	// ⚡ Bolt: Memoize parsed dates to prevent expensive parseISO calls during render loops
+	const eventList = useMemo(() => {
+		return (events ?? []).map(event => ({
+			...event,
+			parsedStart: parseISO(event?.start),
+			parsedEnd: parseISO(event?.end),
+		}));
+	}, [events]);
+
 	let today = startOfToday();
 	let [selectedDay, setSelectedDay] = useState(today);
 	let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -65,10 +74,10 @@ export default function Calendar({ events }) {
 		setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
 	}
 
-	let selectedDayEvents = eventList.filter(event => isSameDay(parseISO(event?.start), selectedDay));
+	let selectedDayEvents = eventList.filter(event => isSameDay(event.parsedStart, selectedDay));
 
-	let pastEvents = eventList.filter(event => parseISO(event?.start) < today);
-	let upcomingEvents = eventList.filter(event => parseISO(event?.start) >= today);
+	let pastEvents = eventList.filter(event => event.parsedStart < today);
+	let upcomingEvents = eventList.filter(event => event.parsedStart >= today);
 
 	let displayedEvents = (() => {
 		if (showUpcomingEvents === -1 && pastEvents?.length > 0) {
@@ -167,7 +176,7 @@ export default function Calendar({ events }) {
 							</button>
 
 							<div className="w-1 h-1 mx-auto mt-1">
-								{eventList.some(event => isSameDay(parseISO(event?.start), day)) && (
+								{eventList.some(event => isSameDay(event.parsedStart, day)) && (
 									<div className="w-1 h-1 rounded-full bg-white"></div>
 								)}
 							</div>
@@ -239,8 +248,8 @@ export default function Calendar({ events }) {
 
 function Event({ event, index }) {
 	const $locale = useStore(locale);
-	let start = parseISO(event?.start);
-	let end = parseISO(event?.end);
+	let start = event.parsedStart || parseISO(event?.start);
+	let end = event.parsedEnd || parseISO(event?.end);
 
 	let displayDay = start.toString().slice(8, 10);
 	let displayMonth = start.toString().slice(4, 7);
