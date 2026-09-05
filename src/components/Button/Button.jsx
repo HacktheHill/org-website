@@ -3,6 +3,20 @@ import chevron from "../../assets/icons/chevron.svg";
 import chevron_white from "../../assets/icons/chevron_white.svg";
 import "./Button.css";
 
+// Sanitize URL to prevent XSS attacks via javascript:, vbscript:, or data: URIs
+const sanitizeUrl = url => {
+	if (!url) return url;
+	try {
+		const parsedUrl = new URL(url, "http://localhost");
+		if (["javascript:", "vbscript:", "data:"].includes(parsedUrl.protocol)) {
+			return "#";
+		}
+	} catch (e) {
+		return "#";
+	}
+	return url;
+};
+
 export default function Button({ children, onClick, disabled = false, fill = true, flip = false, href, target, rel }) {
 	const [isHovered, setIsHovered] = useState(false);
 	const isExternalHref = /^https?:\/\//.test(href ?? "");
@@ -81,7 +95,7 @@ export default function Button({ children, onClick, disabled = false, fill = tru
 		return (
 			<a
 				className={className}
-				href={href}
+				href={sanitizeUrl(href)}
 				target={linkTarget}
 				rel={linkRel}
 				onClick={onClick}
