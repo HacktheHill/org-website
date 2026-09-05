@@ -8,6 +8,20 @@ import { locale, t } from "../../i18n";
 import Button from "../Button/Button";
 import "./BlogStyle.css";
 
+// Sanitize URL to prevent XSS attacks via javascript:, vbscript:, or data: URIs
+const sanitizeUrl = url => {
+	if (!url) return url;
+	try {
+		const parsedUrl = new URL(url, "http://localhost");
+		if (["javascript:", "vbscript:", "data:"].includes(parsedUrl.protocol)) {
+			return "#";
+		}
+	} catch (e) {
+		return "#";
+	}
+	return url;
+};
+
 export default function BlogPost({ data }) {
 	const $locale = useStore(locale);
 	const builder = createImageUrlBuilder(sanityClient);
@@ -37,7 +51,7 @@ export default function BlogPost({ data }) {
 							{data?.authorLink ? (
 								<a
 									className="text-primary cursor-pointer"
-									href={data.authorLink}
+									href={sanitizeUrl(data.authorLink)}
 									target="_blank"
 									rel="noopener noreferrer"
 								>
