@@ -96,17 +96,21 @@ export default function Navigation(props) {
 								: "flex flex-row gap-4 items-center lg:hidden"
 						}
 					>
-						{["events", "blog", "team", "documents"].map(link => (
-							<a
-								href={link ? `/${link}` : "#"}
-								className={`flex h-full items-center border-none p-4 cursor-pointer font-bold transition-all duration-100 lg:border lg:rounded-xl hover:text-shade-1 focus-visible:text-shade-1 ${
-									props.pathName === `/${link}` ? "text-shade-1" : "text-shade-3"
-								}`}
-								key={link}
-							>
-								{t(`navbar.links.${link}`)}
-							</a>
-						))}
+						{["events", "blog", "team", "documents"].map(link => {
+							const isCurrentPage = props.pathName === `/${link}`;
+							return (
+								<a
+									href={link ? `/${link}` : "#"}
+									className={`flex h-full items-center border-none p-4 cursor-pointer font-bold transition-all duration-100 lg:border lg:rounded-xl hover:text-shade-1 focus-visible:text-shade-1 ${
+										isCurrentPage ? "text-shade-1" : "text-shade-3"
+									}`}
+									aria-current={isCurrentPage ? "page" : undefined}
+									key={link}
+								>
+									{t(`navbar.links.${link}`)}
+								</a>
+							);
+						})}
 					</div>
 				</div>
 			</nav>
