@@ -5,7 +5,7 @@ import { useStore } from "@nanostores/react";
 import { createImageUrlBuilder } from "@sanity/image-url";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 
 import shape from "../../assets/patterns/ssshape.svg";
 import { sanityClient } from "sanity:client";
@@ -139,21 +139,23 @@ export default function TeamPage({ teams }) {
 	const urlFor = source => builder.image(source);
 
 	const defaultYear = teams[0]?.year.toString() ?? "";
-	const [selectedYear, setSelectedYear] = useState(() => {
-		if (typeof globalThis.window !== "undefined") {
-			const param = new URLSearchParams(globalThis.location.search).get("year");
-			const validYears = teams.map(t => t.year.toString());
-			return validYears.includes(param) ? param : defaultYear;
-		}
-		return defaultYear;
-	});
+	const [selectedYear, setSelectedYear] = useState(defaultYear);
+	const hasReadYear = useRef(false);
 
 	const suf = `year_${selectedYear}`;
-	const [subTeams, setSubTeams] = useState({});
 
 	// Sync year param in URL
 	useEffect(() => {
 		const params = new URLSearchParams(globalThis.location.search);
+		// Read deep links after hydration so the initial client tree matches the server.
+		if (!hasReadYear.current) {
+			hasReadYear.current = true;
+			const year = params.get("year");
+			if (teams.some(team => team.year.toString() === year) && year !== selectedYear) {
+				setSelectedYear(year);
+				return;
+			}
+		}
 		if (selectedYear === defaultYear) {
 			params.delete("year");
 		} else {
@@ -162,17 +164,17 @@ export default function TeamPage({ teams }) {
 		const queryString = params.toString();
 		const newUrl = queryString ? `${globalThis.location.pathname}?${queryString}` : globalThis.location.pathname;
 		globalThis.history.replaceState({}, "", newUrl);
-	}, [selectedYear, defaultYear]);
+	}, [selectedYear, defaultYear, teams]);
 
 	// Init AOS
 	useEffect(() => {
 		AOS.init({ once: false, duration: 700 });
 	}, []);
 
-	// Organize subTeams
-	useEffect(() => {
+	// Organize subTeams (optimized to avoid unnecessary re-renders)
+	const subTeams = useMemo(() => {
 		const teamObj = teams.find(t => t.year.toString() === selectedYear);
-		if (!teamObj) return setSubTeams({});
+		if (!teamObj) return {};
 
 		const newSubTeams = {};
 
@@ -213,8 +215,8 @@ export default function TeamPage({ teams }) {
 			});
 		});
 
-		setSubTeams(newSubTeams);
-	}, [selectedYear, teams]);
+		return newSubTeams;
+	}, [selectedYear, teams, suf]);
 
 	const getTitle = member => {
 		const a = member.assignment;
