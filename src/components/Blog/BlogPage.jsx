@@ -8,7 +8,6 @@ import calendar from "../../assets/icons/calendar.svg";
 import shape from "../../assets/patterns/ssshape.svg";
 import HtH_fall_theme from "../../assets/SVGs/HtH_fall_theme.svg";
 import { locale, t } from "../../i18n";
-import Button from "../Button/Button";
 
 const builder = createImageUrlBuilder(sanityClient);
 const urlFor = source => builder.image(source);
@@ -33,7 +32,6 @@ export default function BlogPage({ posts }) {
 							<li
 								key={i}
 								className="basis-1/2 lg:basis-full p-3 md:mb-4 md:border md:border-primary md:rounded-3xl md:p-0 hover:cursor-pointer transition-all duration-300"
-								onClick={() => (globalThis.location.href = `/blog/${post.slug.current}`)}
 								data-aos="fade-up"
 								data-aos-offset={i >= 2 ? "-100" : "0"}
 							>
@@ -57,7 +55,7 @@ export default function BlogPage({ posts }) {
 										</div>
 										<div>
 											<h4 className="mt-4 line-clamp-2 text-2xl lg:text-lg">
-												{post.title?.[`${$locale}`]}
+												<a href={`/blog/${post.slug.current}`} className="after:absolute after:inset-0 after:z-20 after:rounded-3xl focus-visible:outline-none focus-visible:after:ring-inset focus-visible:after:ring-2 focus-visible:after:ring-primary">{post.title?.[`${$locale}`] ?? tBlog.title}</a>
 											</h4>
 										</div>
 									</div>
@@ -82,9 +80,7 @@ export default function BlogPage({ posts }) {
 													},
 												)}
 											</div>
-											<Button href={`/blog/${post.slug.current}`} fill={true}>
-												{tBlog.read}
-											</Button>
+											<span aria-hidden="true" className="rounded-md bg-white px-6 py-2 text-sm font-medium text-black">{tBlog.read}</span>
 										</div>
 									</div>
 								</div>
