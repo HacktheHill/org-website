@@ -1,3 +1,4 @@
+import { safeUrl } from "../../utils/safeUrl";
 import { useStore } from "@nanostores/react";
 import { PortableText } from "@portabletext/react";
 import { createImageUrlBuilder } from "@sanity/image-url";
@@ -37,7 +38,7 @@ export default function BlogPost({ data }) {
 							{data?.authorLink ? (
 								<a
 									className="text-primary cursor-pointer"
-									href={data.authorLink}
+									href={safeUrl(data.authorLink)}
 									target="_blank"
 									rel="noopener noreferrer"
 								>
