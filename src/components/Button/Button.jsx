@@ -1,3 +1,4 @@
+import { safeUrl } from "../../utils/safeUrl";
 import { useState } from "react";
 import chevron from "../../assets/icons/chevron.svg";
 import chevron_white from "../../assets/icons/chevron_white.svg";
@@ -81,7 +82,7 @@ export default function Button({ children, onClick, disabled = false, fill = tru
 		return (
 			<a
 				className={className}
-				href={href}
+				href={safeUrl(href)}
 				target={linkTarget}
 				rel={linkRel}
 				onClick={onClick}
