@@ -1,10 +1,13 @@
 import { useStore } from "@nanostores/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { locale, t } from "../../i18n";
 import logo from "../../assets/Logos/HtH/HtH_red_glow.svg";
 
 export default function Navigation(props) {
 	const $locale = useStore(locale);
+	const menuButton = useRef(null);
+	const sidebar = useRef(null);
+	const pathName = props.pathName.replace(/\/+$/, "") || "/";
 	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 
@@ -15,14 +18,22 @@ export default function Navigation(props) {
 				setSidebarOpen(false);
 			}
 		};
+		const handleKeyDown = e => {
+			if (e.key === "Escape" && menuButton.current?.getAttribute("aria-expanded") === "true") {
+				if (sidebar.current?.contains(document.activeElement)) menuButton.current?.focus();
+				setSidebarOpen(false);
+			}
+		};
 
 		handleScroll();
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		window.addEventListener("resize", handleResize);
+		window.addEventListener("keydown", handleKeyDown);
 
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", handleResize);
+			window.removeEventListener("keydown", handleKeyDown);
 		};
 	}, []);
 
@@ -64,6 +75,7 @@ export default function Navigation(props) {
 				<div>
 					<button
 						id="menu"
+						ref={menuButton}
 						type="button"
 						aria-label={t("navbar.menu_aria_label")}
 						aria-expanded={sidebarOpen}
@@ -90,6 +102,7 @@ export default function Navigation(props) {
 					</button>
 					<div
 						id="sidebar"
+						ref={sidebar}
 						className={
 							sidebarOpen
 								? "absolute flex flex-col top-16 right-0 z-50 border bg-shade-9 border-shade-7 transition-all duration-500 lg:rounded-bl-xl lg:border-t-0 lg:border-r-0 lg:shadow-md"
@@ -99,8 +112,9 @@ export default function Navigation(props) {
 						{["events", "blog", "team", "documents"].map(link => (
 							<a
 								href={link ? `/${link}` : "#"}
+								aria-current={pathName === `/${link}` ? "page" : undefined}
 								className={`flex h-full items-center border-none p-4 cursor-pointer font-bold transition-all duration-100 lg:border lg:rounded-xl hover:text-shade-1 focus-visible:text-shade-1 ${
-									props.pathName === `/${link}` ? "text-shade-1" : "text-shade-3"
+									pathName === `/${link}` ? "text-shade-1" : "text-shade-3"
 								}`}
 								key={link}
 							>
