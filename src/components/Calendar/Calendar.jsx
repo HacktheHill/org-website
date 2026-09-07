@@ -106,7 +106,7 @@ export default function Calendar({ events }) {
 	}
 
 	const getToggleClassName = value =>
-		`border border-shade-2 px-3 py-1 transition-all duration-200 ${
+		`relative border border-shade-2 px-3 py-1 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:z-10 ${
 			showUpcomingEvents === value ? "text-black bg-shade-2" : "text-white"
 		}`;
 
@@ -172,6 +172,7 @@ export default function Calendar({ events }) {
 									!isEqual(day, selectedDay) && " hover:text-white",
 									(isEqual(day, selectedDay) || isToday(day)) && "font-semibold",
 									"mx-auto flex h-8 w-8 items-center justify-center rounded-full",
+									"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-shade-9",
 								)}
 							>
 								<time dateTime={format(day, "yyyy-MM-dd")}>{format(day, "d")}</time>
