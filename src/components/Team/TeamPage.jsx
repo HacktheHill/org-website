@@ -10,6 +10,7 @@ import { useEffect, useState, useMemo, useRef } from "react";
 import shape from "../../assets/patterns/ssshape.svg";
 import { sanityClient } from "sanity:client";
 import { locale, t } from "../../i18n";
+import { safeUrl } from "../../utils/safeUrl";
 
 const executiveRoles = ["President", "ExecutiveVP", "VPOperations", "CoDirector", "DirectorAtLarge", "Secretary"];
 
@@ -84,7 +85,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 				<div className="w-full flex justify-center gap-4 text-xl h-8">
 					{member.linkedin && (
 						<a
-							href={member.linkedin}
+							href={safeUrl(member.linkedin)}
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={labels.linkedin}
@@ -95,7 +96,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 					)}
 					{member.github && (
 						<a
-							href={member.github}
+							href={safeUrl(member.github)}
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={labels.github}
@@ -106,7 +107,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 					)}
 					{member.website && (
 						<a
-							href={member.website}
+							href={safeUrl(member.website)}
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={labels.website}
