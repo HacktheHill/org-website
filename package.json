@@ -37,5 +37,10 @@
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
 		"prettier": "^2.8.4"
+	},
+	"overrides": {
+		"@module-federation/dts-plugin": {
+			"undici": "7.29.1"
+		}
 	}
 }
