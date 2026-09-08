@@ -188,10 +188,12 @@ export default function Gallery() {
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>
+							{/* ⚡ Bolt: Add lazy loading to large album images to defer offscreen image network requests */}
 							<img
 								src={selectedAlbumData?.img2.src}
 								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
+								loading="lazy"
 							/>
 						</div>
 						<div
@@ -199,10 +201,12 @@ export default function Gallery() {
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>
+							{/* ⚡ Bolt: Add lazy loading to large album images to defer offscreen image network requests */}
 							<img
 								src={selectedAlbumData?.img1.src}
 								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
+								loading="lazy"
 							/>
 						</div>
 						<div className="bg-blur-svg rounded-3xl row-start-8 col-start-9 row-end-13 col-end-13 flex flex-col md:flex-row justify-between items-start gap-8 p-8 text-left overflow-hidden">
