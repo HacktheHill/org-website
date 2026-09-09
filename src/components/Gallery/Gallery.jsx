@@ -188,7 +188,9 @@ export default function Gallery() {
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>
+							{/* ⚡ Bolt: Added loading="lazy" to defer loading images until they enter the viewport, improving page load speed. */}
 							<img
+								loading="lazy"
 								src={selectedAlbumData?.img2.src}
 								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
@@ -199,7 +201,9 @@ export default function Gallery() {
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>
+							{/* ⚡ Bolt: Added loading="lazy" to defer loading images until they enter the viewport, improving page load speed. */}
 							<img
+								loading="lazy"
 								src={selectedAlbumData?.img1.src}
 								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"

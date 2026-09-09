@@ -42,7 +42,9 @@ export default function BlogPage({ posts }) {
 								>
 									<div className="flex flex-col gap-4">
 										<div className="rounded-xl w-full h-48 overflow-hidden flex items-center justify-center bg-shade-9 relative shadow-small-glow">
+											{/* ⚡ Bolt: Added loading="lazy" to defer loading blog images until they enter the viewport. */}
 											<img
+												loading="lazy"
 												src={
 													post?.coverImage
 														? urlFor(post?.coverImage?.asset).url()
@@ -55,7 +57,12 @@ export default function BlogPage({ posts }) {
 										</div>
 										<div>
 											<h4 className="mt-4 line-clamp-2 text-2xl lg:text-lg">
-												<a href={`/blog/${post.slug.current}`} className="after:absolute after:inset-0 after:z-20 after:rounded-3xl focus-visible:outline-none focus-visible:after:ring-inset focus-visible:after:ring-2 focus-visible:after:ring-primary">{post.title?.[`${$locale}`] ?? tBlog.title}</a>
+												<a
+													href={`/blog/${post.slug.current}`}
+													className="after:absolute after:inset-0 after:z-20 after:rounded-3xl focus-visible:outline-none focus-visible:after:ring-inset focus-visible:after:ring-2 focus-visible:after:ring-primary"
+												>
+													{post.title?.[`${$locale}`] ?? tBlog.title}
+												</a>
 											</h4>
 										</div>
 									</div>
@@ -80,7 +87,12 @@ export default function BlogPage({ posts }) {
 													},
 												)}
 											</div>
-											<span aria-hidden="true" className="rounded-md bg-white px-6 py-2 text-sm font-medium text-black">{tBlog.read}</span>
+											<span
+												aria-hidden="true"
+												className="rounded-md bg-white px-6 py-2 text-sm font-medium text-black"
+											>
+												{tBlog.read}
+											</span>
 										</div>
 									</div>
 								</div>
