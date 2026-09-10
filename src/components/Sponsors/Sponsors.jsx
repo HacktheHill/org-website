@@ -110,7 +110,12 @@ export default function Sponsors() {
 						onFocus={() => setHoverGroup(i)}
 						onBlur={() => setHoverGroup(-1)}
 					>
-						<img {...sponsor} alt={`${sponsor.alt} logo`} className="max-w-full max-h-full"></img>
+						<img
+							{...sponsor}
+							alt={`${sponsor.alt} logo`}
+							className="max-w-full max-h-full"
+							loading="lazy"
+						></img>
 					</a>
 				))}
 			</div>

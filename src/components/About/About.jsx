@@ -39,6 +39,7 @@ export default function About() {
 									{...team1}
 									className="w-full h-full object-cover rounded-2xl"
 									alt={t("about.image_alt_1")}
+									loading="lazy"
 								/>
 							</div>
 						</div>
@@ -104,6 +105,7 @@ export default function About() {
 									{...team3}
 									className="w-full h-full object-cover rounded-2xl"
 									alt={t("about.image_alt_2")}
+									loading="lazy"
 								/>
 							</div>
 						</div>
@@ -168,6 +170,7 @@ export default function About() {
 									{...about3}
 									className="w-full h-full object-cover rounded-2xl"
 									alt={t("about.image_alt_3")}
+									loading="lazy"
 								/>
 							</div>
 						</div>
