@@ -180,7 +180,13 @@ export default function Gallery() {
 								</Button>
 							</div>
 							<div className="absolute -top-16 left-0 h-24">
-								<img src={beaver3.src} alt="" aria-hidden="true" className="h-full -scale-x-100" />
+								<img
+									src={beaver3.src}
+									alt=""
+									aria-hidden="true"
+									className="h-full -scale-x-100"
+									loading="lazy"
+								/>
 							</div>
 						</div>
 						<div
@@ -192,6 +198,7 @@ export default function Gallery() {
 								src={selectedAlbumData?.img2.src}
 								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
+								loading="lazy"
 							/>
 						</div>
 						<div
@@ -203,6 +210,7 @@ export default function Gallery() {
 								src={selectedAlbumData?.img1.src}
 								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
+								loading="lazy"
 							/>
 						</div>
 						<div className="bg-blur-svg rounded-3xl row-start-8 col-start-9 row-end-13 col-end-13 flex flex-col md:flex-row justify-between items-start gap-8 p-8 text-left overflow-hidden">
@@ -211,6 +219,7 @@ export default function Gallery() {
 								src={selectedAlbumData?.icon.src}
 								alt=""
 								aria-hidden="true"
+								loading="lazy"
 							/>
 							<div className="md:text-end md:self-center ">
 								<h2>{selectedAlbumData?.statNumber}</h2>
