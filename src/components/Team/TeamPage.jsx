@@ -10,6 +10,7 @@ import { useEffect, useState, useMemo, useRef } from "react";
 import shape from "../../assets/patterns/ssshape.svg";
 import { sanityClient } from "sanity:client";
 import { locale, t } from "../../i18n";
+import { safeUrl } from "../../utils/safeUrl";
 
 const executiveRoles = ["President", "ExecutiveVP", "VPOperations", "CoDirector", "DirectorAtLarge", "Secretary"];
 
@@ -63,6 +64,10 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 	const photoAsset = member?.photo?.[suf]?.asset ?? fallbackAsset;
 	const photoUrl = photoAsset ? urlFor(photoAsset).url() : "";
 
+	const safeLinkedin = safeUrl(member.linkedin);
+	const safeGithub = safeUrl(member.github);
+	const safeWebsite = safeUrl(member.website);
+
 	return (
 		<li
 			className="basis-1/4 xl:basis-1/3 md:!basis-1/2 xs:!basis-full p-4 md:p-1 min-h-[22rem] md:min-h-[14rem] xs:!min-h-[20rem]"
@@ -82,9 +87,9 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 				<h6 className="mt-2">{member.name}</h6>
 				<h5>{getTitle(member)}</h5>
 				<div className="w-full flex justify-center gap-4 text-xl h-8">
-					{member.linkedin && (
+					{safeLinkedin && (
 						<a
-							href={member.linkedin}
+							href={safeLinkedin}
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={labels.linkedin}
@@ -93,9 +98,9 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 							<Icon icon={faLinkedin} />
 						</a>
 					)}
-					{member.github && (
+					{safeGithub && (
 						<a
-							href={member.github}
+							href={safeGithub}
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={labels.github}
@@ -104,9 +109,9 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 							<Icon icon={faGithub} />
 						</a>
 					)}
-					{member.website && (
+					{safeWebsite && (
 						<a
-							href={member.website}
+							href={safeWebsite}
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={labels.website}
