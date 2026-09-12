@@ -61,6 +61,7 @@ export default function Testimonials() {
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%]"
 								src={testimonialData[2].img}
 								alt={testimonialData[2].name}
+								loading="lazy"
 							/>
 							<div>
 								<h4>{testimonialData[2].name}</h4>
@@ -72,6 +73,7 @@ export default function Testimonials() {
 								{...quote}
 								alt=""
 								aria-hidden="true"
+								loading="lazy"
 								className="w-6 aspect-square self-start opacity-85 md:w-3"
 							/>
 							<p>{testimonialData[2].content}</p>
@@ -79,11 +81,12 @@ export default function Testimonials() {
 								{...quote}
 								alt=""
 								aria-hidden="true"
+								loading="lazy"
 								className="-scale-100 w-6 aspect-square self-end opacity-85 md:w-3"
 							/>
 						</div>
 						<div className="absolute -top-16 right-0 h-24">
-							<img src={beaver4.src} alt="" aria-hidden="true" className="h-full" />
+							<img src={beaver4.src} alt="" aria-hidden="true" loading="lazy" className="h-full" />
 						</div>
 					</div>
 					<div
@@ -95,6 +98,7 @@ export default function Testimonials() {
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 								src={testimonialData[0].img}
 								alt={testimonialData[0].name}
+								loading="lazy"
 							/>
 							<div>
 								<h4>{testimonialData[0].name}</h4>
@@ -106,6 +110,7 @@ export default function Testimonials() {
 								{...quote}
 								alt=""
 								aria-hidden="true"
+								loading="lazy"
 								className="w-6 aspect-square self-start opacity-85 md:w-3"
 							/>
 							<p>{testimonialData[0].content}</p>
@@ -113,6 +118,7 @@ export default function Testimonials() {
 								{...quote}
 								alt=""
 								aria-hidden="true"
+								loading="lazy"
 								className="-scale-100 w-6 aspect-square self-end opacity-85 md:w-3"
 							/>
 						</div>
@@ -126,6 +132,7 @@ export default function Testimonials() {
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%]"
 								src={testimonialData[1].img}
 								alt={testimonialData[1].name}
+								loading="lazy"
 							/>
 							<div>
 								<h4>{testimonialData[1].name}</h4>
@@ -137,6 +144,7 @@ export default function Testimonials() {
 								{...quote}
 								alt=""
 								aria-hidden="true"
+								loading="lazy"
 								className="w-6 aspect-square self-start opacity-85 md:w-3"
 							/>
 							<p>{testimonialData[1].content}</p>
@@ -144,6 +152,7 @@ export default function Testimonials() {
 								{...quote}
 								alt=""
 								aria-hidden="true"
+								loading="lazy"
 								className="-scale-100 w-6 aspect-square self-end opacity-85 md:w-3"
 							/>
 						</div>
@@ -163,6 +172,7 @@ export default function Testimonials() {
 					src={blob.src}
 					alt=""
 					aria-hidden="true"
+					loading="lazy"
 					className="w-full max-w-bg-deco opacity-35 absolute translate-y-24 scale-[1.25] pointer-events-none md:hidden"
 				/>
 			</div>
