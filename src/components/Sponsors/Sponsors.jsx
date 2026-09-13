@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { t } from "../../i18n";
+import { safeUrl } from "../../utils/safeUrl";
 //Sponsors
 import Blackberry from "/src/assets/Logos/Partners/Blackberry.svg";
 import CSE from "/src/assets/Logos/Partners/CSE.svg";
@@ -90,7 +91,7 @@ export default function Sponsors() {
 				{dataGroup.map((sponsor, i) => (
 					<a
 						key={i}
-						href={sponsor.href}
+						href={safeUrl(sponsor.href)}
 						target="_blank"
 						rel="noopener noreferrer"
 						tabIndex={index === 2 ? -1 : undefined}
