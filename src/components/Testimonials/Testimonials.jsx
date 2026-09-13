@@ -61,6 +61,7 @@ export default function Testimonials() {
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%]"
 								src={testimonialData[2].img}
 								alt={testimonialData[2].name}
+								loading="lazy"
 							/>
 							<div>
 								<h4>{testimonialData[2].name}</h4>
@@ -95,6 +96,7 @@ export default function Testimonials() {
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 								src={testimonialData[0].img}
 								alt={testimonialData[0].name}
+								loading="lazy"
 							/>
 							<div>
 								<h4>{testimonialData[0].name}</h4>
@@ -126,6 +128,7 @@ export default function Testimonials() {
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%]"
 								src={testimonialData[1].img}
 								alt={testimonialData[1].name}
+								loading="lazy"
 							/>
 							<div>
 								<h4>{testimonialData[1].name}</h4>
