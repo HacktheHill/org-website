@@ -110,7 +110,12 @@ export default function Sponsors() {
 						onFocus={() => setHoverGroup(i)}
 						onBlur={() => setHoverGroup(-1)}
 					>
-						<img {...sponsor} alt={`${sponsor.alt} logo`} className="max-w-full max-h-full"></img>
+						<img
+							{...sponsor}
+							alt={`${sponsor.alt} logo`}
+							className="max-w-full max-h-full"
+							loading="lazy"
+						></img>
 					</a>
 				))}
 			</div>
@@ -132,12 +137,14 @@ export default function Sponsors() {
 					className="absolute top-0 w-full h-20 z-[1] -translate-y-[1px]"
 					alt=""
 					aria-hidden="true"
+					loading="lazy"
 				></img>
 				<img
 					src={waves.src}
 					className="absolute bottom-0 w-full h-20 z-[1] -scale-y-100 -scale-x-100 translate-y-[1px]"
 					alt=""
 					aria-hidden="true"
+					loading="lazy"
 				></img>
 			</div>
 			<h2 className="mt-32">{t("collaborators.title")}</h2>
@@ -153,12 +160,14 @@ export default function Sponsors() {
 					className="absolute top-0 w-full h-20 z-[1] -translate-y-[1px]"
 					alt=""
 					aria-hidden="true"
+					loading="lazy"
 				></img>
 				<img
 					src={waves.src}
 					className="absolute bottom-0 w-full h-20 z-[1] -scale-y-100 -scale-x-100 translate-y-[1px]"
 					alt=""
 					aria-hidden="true"
+					loading="lazy"
 				></img>
 			</div>
 		</section>
