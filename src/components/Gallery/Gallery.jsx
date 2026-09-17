@@ -188,10 +188,13 @@ export default function Gallery() {
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>
+							{/* ⚡ Bolt Performance Optimization: Added loading="lazy" to defer off-screen image loading.
+								    Impact: Reduces initial page load time and network data transfer by not loading gallery images until they are in the viewport. */}
 							<img
 								src={selectedAlbumData?.img2.src}
 								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
+								loading="lazy"
 							/>
 						</div>
 						<div
@@ -199,18 +202,24 @@ export default function Gallery() {
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>
+							{/* ⚡ Bolt Performance Optimization: Added loading="lazy" to large gallery images.
+								    Impact: Defers network requests for images out of viewport, reducing LCP delay. */}
 							<img
 								src={selectedAlbumData?.img1.src}
 								alt={selectedAlbumData?.title}
 								className="w-full h-full object-cover object-left rounded-2xl"
+								loading="lazy"
 							/>
 						</div>
 						<div className="bg-blur-svg rounded-3xl row-start-8 col-start-9 row-end-13 col-end-13 flex flex-col md:flex-row justify-between items-start gap-8 p-8 text-left overflow-hidden">
+							{/* ⚡ Bolt Performance Optimization: Added loading="lazy"
+								    Impact: Defers loading until scrolled into view. */}
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 								src={selectedAlbumData?.icon.src}
 								alt=""
 								aria-hidden="true"
+								loading="lazy"
 							/>
 							<div className="md:text-end md:self-center ">
 								<h2>{selectedAlbumData?.statNumber}</h2>
