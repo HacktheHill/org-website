@@ -7,3 +7,8 @@
 
 **Learning:** Found several custom toggle buttons (e.g., calendar day selectors, event filters, gallery album selectors) that visually indicate their active/selected state using classes, but fail to communicate this state to screen readers.
 **Action:** When building custom toggle buttons that control UI state, always include `aria-pressed="true|false"` (for toggle buttons) or `aria-selected="true|false"` (for tab-like selectors) to ensure assistive technologies can announce the current state.
+
+## 2024-05-18 - Standardize Focus Rings on Global Interactive Elements
+
+**Learning:** Adding `focus-visible` styles enhances keyboard accessibility and provides consistent visual feedback across reusable elements like buttons. The specific pattern used in this project is `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`.
+**Action:** Always verify that interactive elements, especially custom ones like the core `Button` component, use this standard pattern to maintain a consistent accessibility experience.
