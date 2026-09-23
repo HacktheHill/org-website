@@ -10,7 +10,7 @@ export default function Button({ children, onClick, disabled = false, fill = tru
 	const linkTarget = target ?? (isExternalHref ? "_blank" : undefined);
 	const linkRel = rel ?? (linkTarget === "_blank" ? "noopener noreferrer" : undefined);
 	const className = [
-		"backface flex flex-col items-center justify-center border-none no-underline text-center rounded-md transition-all duration-200 py-2",
+		"backface flex flex-col items-center justify-center border-none no-underline text-center rounded-md transition-all duration-200 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
 		fill
 			? `text-black bg-white ${disabled ? "" : "hover:bg-button_hover focus-visible:bg-button_hover"}`
 			: "text-white bg-transparent",
