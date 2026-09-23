@@ -47,12 +47,17 @@ export default function Sponsors() {
 	const data = {
 		sponsors: [
 			{ href: "https://ciena.ca/", ...Ciena, alt: "Ciena" },
-			{ href: "https://www.cgi.com/", ...CGI, alt: "CGI" },
-			{ href: "https://www.seuo-uosu.com/", ...UOSU, alt: "UOSU" },
-			{ href: "https://elevenlabs.io/", ...ElevenLabs, alt: "ElevenLabs" },
-			{ href: "https://backboard.io/", ...Backboard, alt: "Backboard" },
-			{ href: "https://www.facebook.com/uottawaeeffdg/", ...EEF, alt: "Engineering Endowment Fund" },
-			{ ...MathemaTech, alt: "MathemaTech" },
+			{ href: "https://www.cgi.com/", ...CGI, alt: "CGI", monochrome: true },
+			{ href: "https://www.seuo-uosu.com/", ...UOSU, alt: "UOSU", monochrome: true },
+			{ href: "https://elevenlabs.io/", ...ElevenLabs, alt: "ElevenLabs", monochrome: true },
+			{ href: "https://backboard.io/", ...Backboard, alt: "Backboard", monochrome: true },
+			{
+				href: "https://www.facebook.com/uottawaeeffdg/",
+				...EEF,
+				alt: "Engineering Endowment Fund",
+				monochrome: true,
+			},
+			{ ...MathemaTech, alt: "MathemaTech", monochrome: true },
 			{ href: "https://blackberry.com/", ...Blackberry, alt: "Blackberry" },
 			{ href: "https://canadiantire.ca/", ...CanadianTire, alt: "Canadian Tire" },
 			{ href: "https://lonehaven.com/", ...lonehaven, alt: "Lonehaven" },
@@ -97,7 +102,7 @@ export default function Sponsors() {
 				className={`marquee-group${group}`}
 				aria-hidden={index === 2 ? "true" : undefined}
 			>
-				{dataGroup.map((sponsor, i) => (
+				{dataGroup.map(({ monochrome, ...sponsor }, i) => (
 					<a
 						key={i}
 						href={sponsor.href}
@@ -120,7 +125,11 @@ export default function Sponsors() {
 						onFocus={() => setHoverGroup(i)}
 						onBlur={() => setHoverGroup(-1)}
 					>
-						<img {...sponsor} alt={`${sponsor.alt} logo`} className="max-w-full max-h-full"></img>
+						<img
+							{...sponsor}
+							alt={`${sponsor.alt} logo`}
+							className={`max-w-full max-h-full${monochrome ? " sponsor-monochrome" : ""}`}
+						></img>
 					</a>
 				))}
 			</div>

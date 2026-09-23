@@ -38,6 +38,10 @@
 	transition: 0.2s ease;
 }
 
+.sponsors-section .sponsor-monochrome {
+	filter: brightness(0) invert(1);
+}
+
 @media (max-width: 768px) {
 	.sponsors-section .marquee-group1 {
 		animation-duration: 60s;
