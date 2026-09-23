@@ -49,12 +49,12 @@ export default function Navigation(props) {
 					<a
 						href="/"
 						aria-label={t("seo.site_name")}
-						className="flex h-full items-center bg-transparent border-none p-4 xs:p-2 cursor-pointer transition-all duration-100 opacity-85 hover:opacity-100 focus-visible:opacity-100"
+						className="flex h-full items-center bg-transparent border-none p-4 xs:p-2 cursor-pointer transition-all duration-100 opacity-85 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
 					>
 						<img {...logo} alt="" aria-hidden="true" className="w-[75px] xs:w-14" />
 					</a>
 					<button
-						className="flex h-full w-16 xs:w-12 items-center bg-transparent border-none p-4 xs:p-2 cursor-pointer font-bold transition-all duration-100 hover:text-shade-1 focus-visible:text-shade-1"
+						className="flex h-full w-16 xs:w-12 items-center bg-transparent border-none p-4 xs:p-2 cursor-pointer font-bold transition-all duration-100 hover:text-shade-1 focus-visible:text-shade-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
 						type="button"
 						aria-label={t("navbar.language_toggle")}
 						onClick={() => {
@@ -67,7 +67,7 @@ export default function Navigation(props) {
 						href="https://2024.hackthehill.com"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="flex h-8 w-24 xs:w-16 justify-center items-center bg-2024-bg bg-cover bg-top border-none rounded-xl p-4 xs:p-2 text-bg-2024 cursor-pointer font-bold transition-all duration-100 opacity-85 hover:opacity-100 focus-visible:opacity-100"
+						className="flex h-8 w-24 xs:w-16 justify-center items-center bg-2024-bg bg-cover bg-top border-none rounded-xl p-4 xs:p-2 text-bg-2024 cursor-pointer font-bold transition-all duration-100 opacity-85 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
 					>
 						2024
 					</a>
@@ -80,7 +80,7 @@ export default function Navigation(props) {
 						aria-label={t("navbar.menu_aria_label")}
 						aria-expanded={sidebarOpen}
 						aria-controls="sidebar"
-						className="hidden h-full bg-transparent border-none cursor-pointer p-2 lg:block"
+						className="hidden h-full bg-transparent border-none cursor-pointer p-2 lg:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
 						onClick={() => {
 							setSidebarOpen(open => !open);
 						}}
@@ -113,7 +113,7 @@ export default function Navigation(props) {
 							<a
 								href={link ? `/${link}` : "#"}
 								aria-current={pathName === `/${link}` ? "page" : undefined}
-								className={`flex h-full items-center border-none p-4 cursor-pointer font-bold transition-all duration-100 lg:border lg:rounded-xl hover:text-shade-1 focus-visible:text-shade-1 ${
+								className={`flex h-full items-center border-none p-4 cursor-pointer font-bold transition-all duration-100 lg:border hover:text-shade-1 focus-visible:text-shade-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl ${
 									pathName === `/${link}` ? "text-shade-1" : "text-shade-3"
 								}`}
 								key={link}
