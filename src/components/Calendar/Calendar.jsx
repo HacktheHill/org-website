@@ -232,7 +232,15 @@ export default function Calendar({ events }) {
 						<div className="min-h-0 flex-1 overflow-auto w-full pr-4">
 							<ol className="flex flex-col gap-2">
 								{displayedEvents.length > 0
-									? displayedEvents.map((event, i) => <Event event={event} index={i} key={i} eventLabels={eventLabels} $locale={$locale} />)
+									? displayedEvents.map((event, i) => (
+											<Event
+												event={event}
+												index={i}
+												key={i}
+												eventLabels={eventLabels}
+												$locale={$locale}
+											/>
+									  ))
 									: eventLabels.no_events}
 							</ol>
 						</div>
