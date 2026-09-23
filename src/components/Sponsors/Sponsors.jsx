@@ -5,6 +5,12 @@ import Blackberry from "/src/assets/Logos/Partners/Blackberry.svg";
 import CSE from "/src/assets/Logos/Partners/CSE.svg";
 import CanadianTire from "/src/assets/Logos/Partners/CanadianTire.svg";
 import Ciena from "/src/assets/Logos/Partners/Ciena.svg";
+import CGI from "/src/assets/Logos/Partners/CGI.svg";
+import ElevenLabs from "/src/assets/Logos/Partners/ElevenLabs.svg";
+import Backboard from "/src/assets/Logos/Partners/Backboard.svg";
+import EEF from "/src/assets/Logos/Partners/EEF.svg";
+import MathemaTech from "/src/assets/Logos/Partners/MathemaTech.svg";
+import UOSU from "/src/assets/Logos/Partners/UOSU.svg";
 import DigitalOcean from "/src/assets/Logos/Partners/DigitalOcean.svg";
 import Google from "/src/assets/Logos/Partners/Google.svg";
 import GitHub from "/src/assets/Logos/Partners/GitHub.svg";
@@ -26,7 +32,6 @@ import Carleton from "/src/assets/Logos/Collaborators/Carleton.svg";
 import CarletonIEEE from "/src/assets/Logos/Collaborators/CarletonIEEE.svg";
 import CCSS from "/src/assets/Logos/Collaborators/CCSS.png";
 import CSSA from "/src/assets/Logos/Collaborators/CSSA.svg";
-import EEF from "/src/assets/Logos/Collaborators/EEF.svg";
 import IEEE from "/src/assets/Logos/Collaborators/IEEE.svg";
 import MakerJam from "/src/assets/Logos/Collaborators/MakerJam.svg";
 import SCESoc from "/src/assets/Logos/Collaborators/SCESoc.svg";
@@ -42,6 +47,12 @@ export default function Sponsors() {
 	const data = {
 		sponsors: [
 			{ href: "https://ciena.ca/", ...Ciena, alt: "Ciena" },
+			{ href: "https://www.cgi.com/", ...CGI, alt: "CGI" },
+			{ href: "https://www.seuo-uosu.com/", ...UOSU, alt: "UOSU" },
+			{ href: "https://elevenlabs.io/", ...ElevenLabs, alt: "ElevenLabs" },
+			{ href: "https://backboard.io/", ...Backboard, alt: "Backboard" },
+			{ href: "https://www.facebook.com/uottawaeeffdg/", ...EEF, alt: "Engineering Endowment Fund" },
+			{ ...MathemaTech, alt: "MathemaTech" },
 			{ href: "https://blackberry.com/", ...Blackberry, alt: "Blackberry" },
 			{ href: "https://canadiantire.ca/", ...CanadianTire, alt: "Canadian Tire" },
 			{ href: "https://lonehaven.com/", ...lonehaven, alt: "Lonehaven" },
@@ -66,7 +77,6 @@ export default function Sponsors() {
 			{ href: "https://www.instagram.com/ieeecarleton/", ...CarletonIEEE, alt: "IEEE Carleton" },
 			{ href: "https://ccss.carleton.ca/", ...CCSS, alt: "CCSS" },
 			{ href: "https://cssa-aei.ca/", ...CSSA, alt: "CSSA" },
-			{ href: "https://www.facebook.com/uottawaeeffdg/", ...EEF, alt: "EEF" },
 			{ href: "https://ieeeuottawa.ca/", ...IEEE, alt: "IEEE" },
 			{ href: "https://www.uottawa.ca/faculty-engineering/events/maker-jam", ...MakerJam, alt: "MakerJam" },
 			{ href: "https://scesoc.ca/", ...SCESoc, alt: "SCESoc" },
