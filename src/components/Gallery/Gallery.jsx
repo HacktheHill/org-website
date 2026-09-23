@@ -188,9 +188,11 @@ export default function Gallery() {
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>
+							{/* ⚡ Bolt: defer network requests for off-screen images to improve page load time */}
 							<img
 								src={selectedAlbumData?.img2.src}
 								alt={selectedAlbumData?.title}
+								loading="lazy"
 								className="w-full h-full object-cover object-left rounded-2xl"
 							/>
 						</div>
@@ -199,18 +201,22 @@ export default function Gallery() {
 							data-aos="zoom-in"
 							data-aos-offset="-200"
 						>
+							{/* ⚡ Bolt: defer network requests for off-screen images to improve page load time */}
 							<img
 								src={selectedAlbumData?.img1.src}
 								alt={selectedAlbumData?.title}
+								loading="lazy"
 								className="w-full h-full object-cover object-left rounded-2xl"
 							/>
 						</div>
 						<div className="bg-blur-svg rounded-3xl row-start-8 col-start-9 row-end-13 col-end-13 flex flex-col md:flex-row justify-between items-start gap-8 p-8 text-left overflow-hidden">
+							{/* ⚡ Bolt: defer network requests for off-screen images to improve page load time */}
 							<img
 								className="box-border h-20 w-20 aspect-square object-cover rounded-[50%] shadow-glow"
 								src={selectedAlbumData?.icon.src}
 								alt=""
 								aria-hidden="true"
+								loading="lazy"
 							/>
 							<div className="md:text-end md:self-center ">
 								<h2>{selectedAlbumData?.statNumber}</h2>
