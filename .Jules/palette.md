@@ -7,3 +7,8 @@
 
 **Learning:** Found several custom toggle buttons (e.g., calendar day selectors, event filters, gallery album selectors) that visually indicate their active/selected state using classes, but fail to communicate this state to screen readers.
 **Action:** When building custom toggle buttons that control UI state, always include `aria-pressed="true|false"` (for toggle buttons) or `aria-selected="true|false"` (for tab-like selectors) to ensure assistive technologies can announce the current state.
+
+## 2024-10-24 - Consistent Focus States on Custom UI Elements
+
+**Learning:** Found several UI elements like custom dropdowns (select tags) and icon-only social media links lacking visible focus states when navigating by keyboard. Native focus rings are sometimes stripped by reset stylesheets or custom styling (`outline: none`), rendering keyboard navigation invisible to users.
+**Action:** Always ensure that every interactive element has a clear and consistent focus state. Reintroduce a visible focus ring utilizing Tailwind's `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary` utility classes to guarantee that keyboard users can track their position on the page. Add `focus-visible:rounded-sm` or similar to tailor the focus ring shape to match the element.

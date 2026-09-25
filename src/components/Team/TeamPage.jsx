@@ -93,7 +93,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={labels.linkedin}
-							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
+							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-sm opacity-80"
 						>
 							<Icon icon={faLinkedin} />
 						</a>
@@ -104,7 +104,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={labels.github}
-							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
+							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-sm opacity-80"
 						>
 							<Icon icon={faGithub} />
 						</a>
@@ -115,7 +115,7 @@ function TeamMemberCard({ member, suf, selectedYear, teams, getTitle, urlFor, la
 							target="_blank"
 							rel="noopener noreferrer"
 							aria-label={labels.website}
-							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 opacity-80"
+							className="transition-all duration-300 text-white hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-sm opacity-80"
 						>
 							<Icon icon={faGlobe} />
 						</a>
@@ -253,7 +253,7 @@ export default function TeamPage({ teams }) {
 				>
 					<h1>{t("team.title")}</h1>
 					<select
-						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer"
+						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
 						onChange={e => setSelectedYear(e.target.value)}
 						value={selectedYear}
 						aria-label={t("team.selectYear")}
