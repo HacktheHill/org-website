@@ -50,12 +50,18 @@ export default function BlogPage({ posts }) {
 												}
 												className="w-full h-full object-cover"
 												alt={post.title?.[`${$locale}`] ?? tBlog.title}
+												loading={i > 2 ? "lazy" : undefined}
 											/>
 											<div className="absolute inset-0 z-10 bg-black/20" aria-hidden="true"></div>
 										</div>
 										<div>
 											<h4 className="mt-4 line-clamp-2 text-2xl lg:text-lg">
-												<a href={`/blog/${post.slug.current}`} className="after:absolute after:inset-0 after:z-20 after:rounded-3xl focus-visible:outline-none focus-visible:after:ring-inset focus-visible:after:ring-2 focus-visible:after:ring-primary">{post.title?.[`${$locale}`] ?? tBlog.title}</a>
+												<a
+													href={`/blog/${post.slug.current}`}
+													className="after:absolute after:inset-0 after:z-20 after:rounded-3xl focus-visible:outline-none focus-visible:after:ring-inset focus-visible:after:ring-2 focus-visible:after:ring-primary"
+												>
+													{post.title?.[`${$locale}`] ?? tBlog.title}
+												</a>
 											</h4>
 										</div>
 									</div>
@@ -80,7 +86,12 @@ export default function BlogPage({ posts }) {
 													},
 												)}
 											</div>
-											<span aria-hidden="true" className="rounded-md bg-white px-6 py-2 text-sm font-medium text-black">{tBlog.read}</span>
+											<span
+												aria-hidden="true"
+												className="rounded-md bg-white px-6 py-2 text-sm font-medium text-black"
+											>
+												{tBlog.read}
+											</span>
 										</div>
 									</div>
 								</div>
@@ -94,12 +105,14 @@ export default function BlogPage({ posts }) {
 				alt=""
 				aria-hidden="true"
 				className="w-full md:w-[200%] md:translate-x-0 md:-translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] -translate-x-1/2 -translate-y-1/4"
+				loading="lazy"
 			/>
 			<img
 				src={shape.src}
 				alt=""
 				aria-hidden="true"
 				className="w-full md:w-[200%] md:translate-x-0 md:translate-y-1/3 max-w-bg-deco opacity-25 absolute z-[0] translate-x-1/2 translate-y-[10%] -scale-y-75 scale-x-75"
+				loading="lazy"
 			/>
 		</div>
 	);
