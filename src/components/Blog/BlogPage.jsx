@@ -50,6 +50,7 @@ export default function BlogPage({ posts }) {
 												}
 												className="w-full h-full object-cover"
 												alt={post.title?.[`${$locale}`] ?? tBlog.title}
+												loading={i > 2 ? "lazy" : undefined}
 											/>
 											<div className="absolute inset-0 z-10 bg-black/20" aria-hidden="true"></div>
 										</div>
