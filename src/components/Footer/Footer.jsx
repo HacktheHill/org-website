@@ -112,12 +112,13 @@ export default function Footer() {
 					<p className="text-white text-sm whitespace-nowrap font-bold">{t("footer.message")}</p>
 					<button
 						type="button"
-						className={`self-center text-white text-sm whitespace-nowrap font-bold bg-transparent border-none p-0 ${
+						aria-label={t("accessibility.heart")}
+						className={`self-center text-white text-sm whitespace-nowrap font-bold bg-transparent border-none p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-sm ${
 							isHeartActive ? "animate-heart" : ""
 						}`}
 						onClick={toggleHeart}
 					>
-						<span role="img" aria-label={t("accessibility.heart")} className="cursor-pointer">
+						<span role="img" aria-hidden="true" className="cursor-pointer">
 							❤️
 						</span>
 					</button>
