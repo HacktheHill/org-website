@@ -7,3 +7,8 @@
 
 **Learning:** Found several custom toggle buttons (e.g., calendar day selectors, event filters, gallery album selectors) that visually indicate their active/selected state using classes, but fail to communicate this state to screen readers.
 **Action:** When building custom toggle buttons that control UI state, always include `aria-pressed="true|false"` (for toggle buttons) or `aria-selected="true|false"` (for tab-like selectors) to ensure assistive technologies can announce the current state.
+
+## 2024-10-24 - Consistent Focus Styles for Custom Buttons
+
+**Learning:** When creating custom `<button>` or `<a>` components that diverge from standard browser styling (like `Button.jsx`), it is common to inadvertently remove or rely solely on `hover` states, leaving keyboard users without a clear focus indicator.
+**Action:** Always ensure that custom interactive components include explicit `focus-visible` styles. In this design system, standardizing on a consistent focus ring (e.g., `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`) ensures keyboard accessibility and UI consistency across the site.
