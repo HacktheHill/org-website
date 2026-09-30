@@ -42,12 +42,14 @@ export default function BlogPage({ posts }) {
 								>
 									<div className="flex flex-col gap-4">
 										<div className="rounded-xl w-full h-48 overflow-hidden flex items-center justify-center bg-shade-9 relative shadow-small-glow">
+											{/* ⚡ Bolt: Only lazy-load images below the fold to protect LCP metrics */}
 											<img
 												src={
 													post?.coverImage
 														? urlFor(post?.coverImage?.asset).url()
 														: HtH_fall_theme.src
 												}
+												loading={i > 2 ? "lazy" : undefined}
 												className="w-full h-full object-cover"
 												alt={post.title?.[`${$locale}`] ?? tBlog.title}
 											/>
