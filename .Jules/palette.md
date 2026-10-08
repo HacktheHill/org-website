@@ -7,3 +7,8 @@
 
 **Learning:** Found several custom toggle buttons (e.g., calendar day selectors, event filters, gallery album selectors) that visually indicate their active/selected state using classes, but fail to communicate this state to screen readers.
 **Action:** When building custom toggle buttons that control UI state, always include `aria-pressed="true|false"` (for toggle buttons) or `aria-selected="true|false"` (for tab-like selectors) to ensure assistive technologies can announce the current state.
+
+## 2026-10-08 - Consistent Focus Rings on Navigation Elements
+
+**Learning:** The navigation menu contained multiple interactive elements (logo, language toggle, external links, internal links, hamburger menu) that lacked custom keyboard focus indicators. Default `focus-visible:opacity-100` is often insufficient for users relying on keyboard navigation to clearly identify which element holds focus in complex, heavily styled regions like navigation bars.
+**Action:** Apply the standard focus ring pattern (`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`) with appropriate border radii (e.g. `rounded-lg`) to all interactive elements within navigation menus to ensure clear, consistent, and highly visible keyboard accessibility.
