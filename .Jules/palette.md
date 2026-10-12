@@ -7,3 +7,7 @@
 
 **Learning:** Found several custom toggle buttons (e.g., calendar day selectors, event filters, gallery album selectors) that visually indicate their active/selected state using classes, but fail to communicate this state to screen readers.
 **Action:** When building custom toggle buttons that control UI state, always include `aria-pressed="true|false"` (for toggle buttons) or `aria-selected="true|false"` (for tab-like selectors) to ensure assistive technologies can announce the current state.
+
+## 2026-10-12 - Consistent Focus Rings on Navigation
+**Learning:** Top-level navigation components (like logos, icon buttons, and custom sidebar links) often lose default browser focus outlines due to custom styling. Screen reader users and keyboard navigators rely heavily on these elements being clearly focused.
+**Action:** Always apply the standard focus ring pattern (`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`) with appropriate rounded corners to interactive elements in custom navigation bars to ensure accessibility.
