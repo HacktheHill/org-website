@@ -253,7 +253,7 @@ export default function TeamPage({ teams }) {
 				>
 					<h1>{t("team.title")}</h1>
 					<select
-						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer"
+						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
 						onChange={e => setSelectedYear(e.target.value)}
 						value={selectedYear}
 						aria-label={t("team.selectYear")}
