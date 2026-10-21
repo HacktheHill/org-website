@@ -7,3 +7,8 @@
 
 **Learning:** Found several custom toggle buttons (e.g., calendar day selectors, event filters, gallery album selectors) that visually indicate their active/selected state using classes, but fail to communicate this state to screen readers.
 **Action:** When building custom toggle buttons that control UI state, always include `aria-pressed="true|false"` (for toggle buttons) or `aria-selected="true|false"` (for tab-like selectors) to ensure assistive technologies can announce the current state.
+
+## 2024-10-21 - ARIA Label Placement on Interactive Elements
+
+**Learning:** Found a button containing a static inner child `<span role="img">` where the `aria-label` was incorrectly placed on the inner child rather than the `<button>` itself. This causes inconsistent or duplicated screen reader announcements because the focusable element (the button) didn't have the label.
+**Action:** Place `aria-label`s directly on interactive elements (e.g., `<button>`) rather than on their static inner children (e.g., `<span role="img">`) to ensure reliable screen reader announcements. Use `aria-hidden="true"` on inner static children if they are purely visual icons/emojis.
