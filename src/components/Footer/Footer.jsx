@@ -33,7 +33,7 @@ export default function Footer() {
 			<button
 				type="button"
 				aria-label={t("accessibility.beaver")}
-				className={`h-24 z-[1] absolute bottom-0 left-16 lg:hidden cursor-pointer bg-transparent border-none p-0 ${
+				className={`h-24 z-[1] absolute bottom-0 left-16 lg:hidden cursor-pointer bg-transparent border-none p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
 					isBeaverActive ? "animate-beaver" : ""
 				}`}
 				onClick={toggleBeaver}
@@ -112,12 +112,13 @@ export default function Footer() {
 					<p className="text-white text-sm whitespace-nowrap font-bold">{t("footer.message")}</p>
 					<button
 						type="button"
-						className={`self-center text-white text-sm whitespace-nowrap font-bold bg-transparent border-none p-0 ${
+						aria-label={t("accessibility.heart")}
+						className={`self-center text-white text-sm whitespace-nowrap font-bold bg-transparent border-none p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
 							isHeartActive ? "animate-heart" : ""
 						}`}
 						onClick={toggleHeart}
 					>
-						<span role="img" aria-label={t("accessibility.heart")} className="cursor-pointer">
+						<span role="img" aria-hidden="true" className="cursor-pointer">
 							❤️
 						</span>
 					</button>
