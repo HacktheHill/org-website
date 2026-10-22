@@ -252,18 +252,23 @@ export default function TeamPage({ teams }) {
 					data-aos="fade-up"
 				>
 					<h1>{t("team.title")}</h1>
-					<select
-						className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer"
-						onChange={e => setSelectedYear(e.target.value)}
-						value={selectedYear}
-						aria-label={t("team.selectYear")}
-					>
-						{teams.map(team => (
-							<option key={team.year} value={String(team.year)}>
-								{team.year}
-							</option>
-						))}
-					</select>
+					<div className="flex flex-col gap-1 items-start md:items-end">
+						<label htmlFor="team-year-select" className="text-sm font-medium sr-only md:not-sr-only">
+							{t("team.selectYear")}
+						</label>
+						<select
+							id="team-year-select"
+							className="w-auto h-10 py-2 px-4 rounded-lg bg-blur-svg cursor-pointer"
+							onChange={e => setSelectedYear(e.target.value)}
+							value={selectedYear}
+						>
+							{teams.map(team => (
+								<option key={team.year} value={String(team.year)}>
+									{team.year}
+								</option>
+							))}
+						</select>
+					</div>
 				</div>
 
 				<ul className="flex flex-wrap justify-evenly w-10/12 md:w-full max-w-2xl gap-16 md:gap-10">
