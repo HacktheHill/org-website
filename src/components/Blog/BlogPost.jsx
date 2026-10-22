@@ -1,4 +1,3 @@
-import { safeUrl } from "../../utils/safeUrl";
 import { useStore } from "@nanostores/react";
 import { PortableText } from "@portabletext/react";
 import { createImageUrlBuilder } from "@sanity/image-url";
@@ -6,6 +5,7 @@ import { sanityClient } from "sanity:client";
 import shape from "../../assets/patterns/ssshape.svg";
 import HtH_fall_theme from "../../assets/SVGs/HtH_fall_theme.svg";
 import { locale, t } from "../../i18n";
+import { safeUrl } from "../../utils/safeUrl";
 import Button from "../Button/Button";
 import "./BlogStyle.css";
 
@@ -68,7 +68,17 @@ export default function BlogPost({ data }) {
 						<div className="absolute inset-0 z-10 bg-black/20" aria-hidden="true"></div>
 					</div>
 					<div className="blog-content w-full mt-16 mb-32">
-						<PortableText value={data?.body?.[`${$locale}`]} />
+						<PortableText
+							value={data?.body?.[`${$locale}`]}
+							components={{
+								marks: {
+									link: ({ children, value }) => {
+										const href = safeUrl(value?.href);
+										return href ? <a href={href} target="_blank" rel="noopener noreferrer">{children}</a> : <>{children}</>;
+									}
+								}
+							}}
+						/>
 					</div>
 					<div className="absolute bottom-0 right-0 p-6 mt-16">
 						<Button href="/blog" fill={false}>
