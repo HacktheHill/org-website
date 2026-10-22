@@ -7,3 +7,8 @@
 **Vulnerability:** XSS (Cross-Site Scripting) vulnerability found in `src/components/Team/TeamPage.jsx`. User-provided URLs (like linkedin, github, and website links from the CMS) were directly used in `href` attributes without validation, allowing potential `javascript:` or `data:` payloads.
 **Learning:** The project pattern is to fetch content from Sanity CMS, which means URLs supplied by users could be malicious. The codebase already had a utility (`src/utils/safeUrl.js`) to mitigate this risk, but it was not applied consistently across all components that render external links.
 **Prevention:** Always use the `safeUrl` utility when rendering dynamic URLs in `href` or `src` attributes, especially for data fetched from external sources or a CMS. Ensure that components check if the sanitized URL is valid (truthy) before rendering the anchor tag.
+
+## 2024-10-22 - PortableText XSS via Unsanitized Link Marks
+**Vulnerability:** XSS vulnerability found in `@portabletext/react` usage within `src/components/Blog/BlogPost.jsx`. The default `marks.link` configuration renders `href` attributes without sanitization, allowing `javascript:` schemas to execute code.
+**Learning:** Default configurations of rich text renderers often do not sanitize link schemas. The provided URLs from headless CMS platforms (like Sanity) should be treated as untrusted input.
+**Prevention:** Always override `marks.link` in the `components` prop of `<PortableText />` and sanitize `value.href` using the project's `safeUrl` utility before rendering the anchor tag.
