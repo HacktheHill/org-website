@@ -18,6 +18,26 @@ export default function BlogPost({ data }) {
 		return builder.image(source);
 	}
 
+	// 🛡️ Sentinel: Sanitize hrefs in PortableText to prevent XSS via javascript: schemas
+	const customComponents = {
+		marks: {
+			link: ({ value, children }) => {
+				const href = safeUrl(value?.href);
+				if (!href) return children;
+
+				const isExternal = href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel');
+				return (
+					<a
+						href={href}
+						{...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+					>
+						{children}
+					</a>
+				);
+			},
+		},
+	};
+
 	return (
 		<div id="post" className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 md:pt-16 md:pb-0 text-left max-w-2xl z-[1] md:w-full">
@@ -68,7 +88,7 @@ export default function BlogPost({ data }) {
 						<div className="absolute inset-0 z-10 bg-black/20" aria-hidden="true"></div>
 					</div>
 					<div className="blog-content w-full mt-16 mb-32">
-						<PortableText value={data?.body?.[`${$locale}`]} />
+						<PortableText value={data?.body?.[`${$locale}`]} components={customComponents} />
 					</div>
 					<div className="absolute bottom-0 right-0 p-6 mt-16">
 						<Button href="/blog" fill={false}>
