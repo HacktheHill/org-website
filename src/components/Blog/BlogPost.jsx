@@ -18,6 +18,26 @@ export default function BlogPost({ data }) {
 		return builder.image(source);
 	}
 
+	// Security: Override default link mark to sanitize URLs (prevents javascript: XSS)
+	// and conditionally apply target="_blank" only for external links.
+	const portableTextComponents = {
+		marks: {
+			link: ({ children, value }) => {
+				const sanitizedUrl = safeUrl(value?.href);
+				const isExternal = sanitizedUrl && sanitizedUrl.startsWith("http");
+				return (
+					<a
+						href={sanitizedUrl}
+						target={isExternal ? "_blank" : undefined}
+						rel={isExternal ? "noopener noreferrer" : undefined}
+					>
+						{children}
+					</a>
+				);
+			},
+		},
+	};
+
 	return (
 		<div id="post" className="flex justify-center items-center w-full bg-background-dark relative overflow-hidden">
 			<div className="flex flex-col w-10/12 h-full justify-center items-center gap-20 py-36 md:pt-16 md:pb-0 text-left max-w-2xl z-[1] md:w-full">
@@ -68,7 +88,7 @@ export default function BlogPost({ data }) {
 						<div className="absolute inset-0 z-10 bg-black/20" aria-hidden="true"></div>
 					</div>
 					<div className="blog-content w-full mt-16 mb-32">
-						<PortableText value={data?.body?.[`${$locale}`]} />
+						<PortableText value={data?.body?.[`${$locale}`]} components={portableTextComponents} />
 					</div>
 					<div className="absolute bottom-0 right-0 p-6 mt-16">
 						<Button href="/blog" fill={false}>
